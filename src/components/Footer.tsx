@@ -15,7 +15,7 @@ export default function Footer() {
     <footer className="border-t border-border bg-muted">
       <div className="container grid gap-10 py-16 md:grid-cols-3">
         <div>
-          <h3 className="text-lg font-medium">Wild Haven</h3>
+          <h3 className="text-lg font-medium">Duna Natura</h3>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Off-grid camping between the Atlantic and the maritime pine forest.
           </p>
@@ -41,10 +41,10 @@ export default function Footer() {
             Contact Us
           </p>
           <a
-            href="mailto:hello@wildhaven.com"
+            href="mailto:hello@dunanatura.com"
             className="mt-4 block text-sm transition-smooth hover:text-primary"
           >
-            hello@wildhaven.com
+            hello@dunanatura.com
           </a>
           <p className="mt-1 text-sm text-muted-foreground">Mon – Fri: 9am – 5pm</p>
 
@@ -64,7 +64,7 @@ export default function Footer() {
 
       <div className="border-t border-border">
         <div className="container py-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Wild Haven. All rights reserved.
+          © {new Date().getFullYear()} Duna Natura. All rights reserved.
         </div>
       </div>
     </footer>

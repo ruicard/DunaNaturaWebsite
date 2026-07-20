@@ -8,7 +8,7 @@ export default function About() {
         </h1>
         <div className="mt-8 space-y-6 text-muted-foreground leading-relaxed">
           <p>
-            Wild Haven is a collection of off-grid camping spots tucked between
+            Duna Natura is a collection of off-grid camping spots tucked between
             the maritime pine forest and the wild beaches of Portugal's northern
             coast. We believe the best kind of rest comes from slowing down —
             trading notifications for birdsong and screens for the horizon.

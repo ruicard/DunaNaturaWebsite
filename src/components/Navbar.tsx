@@ -38,7 +38,7 @@ export default function Navbar() {
             solid ? "text-foreground" : "text-white"
           )}
         >
-          Wild Haven
+          Duna Natura
         </Link>
 
         <nav className="flex items-center gap-8">
