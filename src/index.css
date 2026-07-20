@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens captured from the original Wild Haven / Duna Natura site */
+@layer base {
+  :root {
+    --background: 38 35% 97%;
+    --foreground: 200 30% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 30% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 30% 14%;
+
+    --primary: 195 45% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 38 30% 93%;
+    --secondary-foreground: 200 30% 14%;
+
+    --muted: 38 25% 94%;
+    --muted-foreground: 200 15% 42%;
+
+    --accent: 38 40% 90%;
+    --accent-foreground: 200 30% 20%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 38 20% 88%;
+    --input: 38 20% 88%;
+    --ring: 195 45% 38%;
+
+    --radius: 0.5rem;
+
+    --hero-gradient: linear-gradient(135deg, hsl(195 40% 80% / 0.3), hsl(38 40% 92% / 0.3));
+    --overlay-gradient: linear-gradient(180deg, transparent 0%, hsl(0 0% 0% / 0.4) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-weight: 400;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.2em] text-primary;
+  }
+  .hero-overlay {
+    background: var(--overlay-gradient);
+  }
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
