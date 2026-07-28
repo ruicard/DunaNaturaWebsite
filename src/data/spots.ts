@@ -39,3 +39,10 @@ export const spots: Spot[] = [
 ];
 
 export const HERO_IMAGE = `${CDN}/hero-camping-CbW0tLde.jpg`;
+
+export const HERO_IMAGES = [
+  HERO_IMAGE,
+  `${CDN}/spot-forest-COOsvQmS.jpg`,
+  `${CDN}/spot-lake-Cxpl3zJZ.jpg`,
+  `${CDN}/spot-meadow-BDscIEdG.jpg`,
+];
