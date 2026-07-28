@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import FeaturedSpots from "@/components/FeaturedSpots";
+import HouseGallery from "@/components/HouseGallery";
 import Experience from "@/components/Experience";
 import Reservations from "@/components/Reservations";
 
@@ -7,7 +7,7 @@ export default function Index() {
   return (
     <>
       <Hero />
-      <FeaturedSpots />
+      <HouseGallery />
       <Experience />
       <Reservations />
     </>

@@ -1,0 +1,13 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // The site only needs to read which dates are booked; writing a
+    // booking should happen from a trusted context (Firebase console,
+    // an admin tool, or a Cloud Function), not directly from the browser.
+    match /bookings/{bookingId} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}

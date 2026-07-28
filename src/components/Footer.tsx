@@ -3,7 +3,7 @@ import { Instagram, Facebook } from "lucide-react";
 
 const pages = [
   { label: "Home", to: "/" },
-  { label: "Locations", to: "/#locations" },
+  { label: "Gallery", to: "/#gallery" },
   { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
   { label: "Book Now", to: "/#reservations" },

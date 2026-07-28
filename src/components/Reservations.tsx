@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Minus, Plus, ChevronLeft, ChevronRight } from "lucide-react";
+import { Minus, Plus, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { toDateKey, useBookedDates } from "@/hooks/useBookedDates";
 
 const DOW = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const MONTHS = [
@@ -11,13 +12,29 @@ function startOfDay(d: Date) {
   return new Date(d.getFullYear(), d.getMonth(), d.getDate());
 }
 
+function addDays(d: Date, n: number) {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+}
+
+function datesBetween(start: Date, end: Date): Date[] {
+  const days: Date[] = [];
+  for (let cursor = start; cursor < end; cursor = addDays(cursor, 1)) {
+    days.push(cursor);
+  }
+  return days;
+}
+
 export default function Reservations() {
   const today = startOfDay(new Date());
+  const { bookedDates, loading, error } = useBookedDates();
   const [adults, setAdults] = useState(2);
   const [kids, setKids] = useState(0);
   const [view, setView] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
   const [checkIn, setCheckIn] = useState<Date | null>(null);
   const [checkOut, setCheckOut] = useState<Date | null>(null);
+  const [rangeError, setRangeError] = useState<string | null>(null);
+
+  const isBooked = (date: Date) => bookedDates.has(toDateKey(date));
 
   const year = view.getFullYear();
   const month = view.getMonth();
@@ -28,15 +45,30 @@ export default function Reservations() {
     view > new Date(today.getFullYear(), today.getMonth(), 1);
 
   function pick(date: Date) {
+    if (date < today || isBooked(date) || Boolean(error)) return;
+
     if (!checkIn || (checkIn && checkOut)) {
       setCheckIn(date);
       setCheckOut(null);
-    } else if (date <= checkIn) {
+      setRangeError(null);
+      return;
+    }
+
+    if (date <= checkIn) {
       setCheckIn(date);
       setCheckOut(null);
-    } else {
-      setCheckOut(date);
+      setRangeError(null);
+      return;
     }
+
+    const blocked = datesBetween(checkIn, date).some(isBooked);
+    if (blocked) {
+      setRangeError("Some nights in that range are already booked — pick a different check-out date.");
+      return;
+    }
+
+    setCheckOut(date);
+    setRangeError(null);
   }
 
   const nights =
@@ -91,16 +123,28 @@ export default function Reservations() {
                 clear
               </button>
             )}
-            <button className="mt-8 w-full rounded-md bg-primary py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90">
+            <button
+              disabled={!checkIn || !checkOut}
+              className="mt-8 w-full rounded-md bg-primary py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+            >
               Continue
             </button>
           </div>
 
           {/* Calendar */}
           <div className="rounded-lg bg-card p-8 shadow-soft">
-            <p className="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
-              Check-in & Check-out
-            </p>
+            <div className="mb-4 flex items-center justify-between">
+              <p className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
+                Check-in & Check-out
+              </p>
+              {loading && (
+                <span className="flex items-center gap-1.5 text-[0.65rem] text-muted-foreground">
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                  Checking availability
+                </span>
+              )}
+            </div>
+
             <div className="mb-4 flex items-center justify-between">
               <button
                 disabled={!canGoPrev}
@@ -122,7 +166,7 @@ export default function Reservations() {
               </button>
             </div>
 
-            <div className="grid grid-cols-7 gap-1 text-center">
+            <div className={`grid grid-cols-7 gap-1 text-center ${loading ? "opacity-50" : ""}`}>
               {DOW.map((d) => (
                 <span key={d} className="py-1 text-[0.7rem] font-medium text-muted-foreground">
                   {d}
@@ -131,6 +175,7 @@ export default function Reservations() {
               {cells.map((date, i) => {
                 if (!date) return <span key={i} />;
                 const isPast = date < today;
+                const booked = !isPast && isBooked(date);
                 const isIn = checkIn && date.getTime() === checkIn.getTime();
                 const isOut = checkOut && date.getTime() === checkOut.getTime();
                 const inRange =
@@ -139,11 +184,16 @@ export default function Reservations() {
                 return (
                   <button
                     key={i}
-                    disabled={isPast}
+                    disabled={isPast || booked}
+                    title={booked ? "Already booked" : undefined}
                     onClick={() => pick(date)}
                     className={[
-                      "aspect-square rounded-md text-sm transition-smooth",
-                      isPast ? "cursor-not-allowed text-muted-foreground/40" : "hover:bg-muted",
+                      "relative aspect-square rounded-md text-sm transition-smooth",
+                      isPast ? "cursor-not-allowed text-muted-foreground/30" : "",
+                      booked && !isPast
+                        ? "cursor-not-allowed bg-muted text-muted-foreground/50 line-through decoration-muted-foreground/40"
+                        : "",
+                      !isPast && !booked && !selected ? "hover:bg-muted" : "",
                       selected ? "bg-primary text-primary-foreground hover:bg-primary" : "",
                       inRange ? "bg-primary/15" : "",
                     ].join(" ")}
@@ -154,8 +204,27 @@ export default function Reservations() {
               })}
             </div>
 
+            <div className="mt-4 flex items-center justify-center gap-4 text-[0.7rem] text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full border border-border" />
+                Available
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/40" />
+                Booked
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full bg-primary" />
+                Selected
+              </span>
+            </div>
+
             <div className="mt-6 border-t border-border pt-4 text-sm">
-              {checkIn && checkOut ? (
+              {error ? (
+                <p className="text-destructive">{error}</p>
+              ) : rangeError ? (
+                <p className="text-destructive">{rangeError}</p>
+              ) : checkIn && checkOut ? (
                 <p className="text-foreground">
                   {nights} night{nights !== 1 ? "s" : ""} · {adults + kids} guest
                   {adults + kids !== 1 ? "s" : ""}
