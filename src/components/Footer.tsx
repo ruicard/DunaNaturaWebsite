@@ -1,39 +1,14 @@
-import { Link } from "react-router-dom";
 import { Instagram, Facebook } from "lucide-react";
-
-const pages = [
-  { label: "Home", to: "/" },
-  { label: "Gallery", to: "/#gallery" },
-  { label: "About", to: "/about" },
-  { label: "Contact", to: "/contact" },
-  { label: "Book Now", to: "/#reservations" },
-  { label: "Admin Panel", to: "/admin" },
-];
 
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-muted">
-      <div className="container grid gap-10 py-16 md:grid-cols-3">
+      <div className="container grid gap-10 py-16 md:grid-cols-2">
         <div>
           <h3 className="text-lg font-medium">Duna Natura</h3>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Off-grid camping between the Atlantic and the maritime pine forest.
           </p>
-        </div>
-
-        <div>
-          <p className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
-            Pages
-          </p>
-          <ul className="mt-4 space-y-2 text-sm">
-            {pages.map((p) => (
-              <li key={p.label}>
-                <Link to={p.to} className="transition-smooth hover:text-primary">
-                  {p.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div>

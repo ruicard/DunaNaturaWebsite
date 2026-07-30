@@ -2,12 +2,60 @@ rules_version = '2';
 
 service cloud.firestore {
   match /databases/{database}/documents {
-    // The site only needs to read which dates are booked; writing a
-    // booking should happen from a trusted context (Firebase console,
-    // an admin tool, or a Cloud Function), not directly from the browser.
+    function isAdmin() {
+      return request.auth != null;
+    }
+
+    function isDateString(value) {
+      return value is string && value.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$');
+    }
+
+    // Public collection: only what's needed to render the availability
+    // calendar (no guest-identifying information lives here). Anyone can
+    // create a pending hold for a date range; only a signed-in admin can
+    // change or remove entries.
     match /bookings/{bookingId} {
       allow read: if true;
-      allow write: if false;
+      allow create: if request.resource.data.keys().hasOnly(['checkIn', 'checkOut', 'status'])
+        && isDateString(request.resource.data.checkIn)
+        && isDateString(request.resource.data.checkOut)
+        && request.resource.data.status == 'pending';
+      allow update, delete: if isAdmin();
+    }
+
+    // Private collection: full reservation requests, including the
+    // guest's name/email/comments. Only a signed-in admin can read or
+    // manage them; the public site can only create new requests.
+    match /reservationRequests/{requestId} {
+      allow read: if isAdmin();
+      allow create: if request.resource.data.keys().hasAll([
+          'name', 'email', 'checkIn', 'checkOut', 'guests', 'adults', 'children',
+          'childrenAges', 'comments', 'promoCode', 'reservationDate', 'status', 'bookingId'
+        ])
+        && request.resource.data.bookingId is string
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() < 200
+        && request.resource.data.email is string
+        && request.resource.data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+        && isDateString(request.resource.data.checkIn)
+        && isDateString(request.resource.data.checkOut)
+        && request.resource.data.guests is int
+        && request.resource.data.guests > 0
+        && request.resource.data.guests <= 20
+        && request.resource.data.adults is int
+        && request.resource.data.adults > 0
+        && request.resource.data.adults <= 6
+        && request.resource.data.children is int
+        && request.resource.data.children >= 0
+        && request.resource.data.childrenAges is list
+        && request.resource.data.comments is string
+        && request.resource.data.comments.size() < 2000
+        && request.resource.data.promoCode is string
+        && request.resource.data.promoCode.size() < 50
+        && request.resource.data.status == 'pending'
+        && request.resource.data.reservationDate == request.time;
+      allow update, delete: if isAdmin();
     }
   }
 }

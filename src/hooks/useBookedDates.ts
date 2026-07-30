@@ -6,7 +6,7 @@ import { db } from "@/lib/firebase";
 //   checkIn:  "YYYY-MM-DD"  (first night occupied)
 //   checkOut: "YYYY-MM-DD"  (departure day, not occupied — matches the
 //                            check-in/check-out semantics used by the calendar)
-//   status:   "confirmed" | "pending" | "cancelled"  (optional, defaults to booked)
+//   status:   "confirmed" | "pending" | "canceled"  (optional, defaults to booked)
 interface BookingDoc {
   checkIn?: string;
   checkOut?: string;
@@ -53,7 +53,7 @@ export function useBookedDates(): UseBookedDatesResult {
         const dates = new Set<string>();
         snapshot.forEach((doc) => {
           const booking = doc.data() as BookingDoc;
-          if (booking.status === "cancelled") return;
+          if (booking.status === "canceled") return;
           if (!booking.checkIn || !booking.checkOut) return;
           for (const key of expandRange(booking.checkIn, booking.checkOut)) {
             dates.add(key);

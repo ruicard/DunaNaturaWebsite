@@ -1,6 +1,23 @@
-import { useState } from "react";
-import { Minus, Plus, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { useRef, useState, type FormEvent } from "react";
+import { Minus, Plus, X, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import { toDateKey, useBookedDates } from "@/hooks/useBookedDates";
+
+interface ReservationDetails {
+  name: string;
+  email: string;
+  comments: string;
+}
+
+const MIN_CHILD_AGE = 0;
+const MAX_CHILD_AGE = 17;
+const MAX_ADULTS = 6;
+
+interface Child {
+  id: number;
+  age: number;
+}
 
 const DOW = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 const MONTHS = [
@@ -28,13 +45,30 @@ export default function Reservations() {
   const today = startOfDay(new Date());
   const { bookedDates, loading, error } = useBookedDates();
   const [adults, setAdults] = useState(2);
-  const [kids, setKids] = useState(0);
+  const [children, setChildren] = useState<Child[]>([]);
+  const nextChildId = useRef(0);
   const [view, setView] = useState(new Date(today.getFullYear(), today.getMonth(), 1));
   const [checkIn, setCheckIn] = useState<Date | null>(null);
   const [checkOut, setCheckOut] = useState<Date | null>(null);
   const [rangeError, setRangeError] = useState<string | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [reservation, setReservation] = useState<ReservationDetails | null>(null);
 
   const isBooked = (date: Date) => bookedDates.has(toDateKey(date));
+
+  function addChild() {
+    nextChildId.current += 1;
+    setChildren((c) => [...c, { id: nextChildId.current, age: 8 }]);
+  }
+
+  function removeChild(id: number) {
+    setChildren((c) => c.filter((child) => child.id !== id));
+  }
+
+  function setChildAge(id: number, age: number) {
+    const clamped = Math.min(MAX_CHILD_AGE, Math.max(MIN_CHILD_AGE, age));
+    setChildren((c) => c.map((child) => (child.id === id ? { ...child, age: clamped } : child)));
+  }
 
   const year = view.getFullYear();
   const month = view.getMonth();
@@ -80,8 +114,15 @@ export default function Reservations() {
   for (let i = 0; i < firstWeekday; i++) cells.push(null);
   for (let d = 1; d <= daysInMonth; d++) cells.push(new Date(year, month, d));
 
+  const totalGuests = adults + children.length;
+  const tripSummary =
+    checkIn && checkOut
+      ? `${MONTHS[checkIn.getMonth()]} ${checkIn.getDate()} – ${MONTHS[checkOut.getMonth()]} ${checkOut.getDate()} · ${nights} night${nights !== 1 ? "s" : ""} · ${totalGuests} guest${totalGuests !== 1 ? "s" : ""}`
+      : "";
+
   return (
-    <section id="reservations" className="bg-background py-24">
+    <>
+      <section id="reservations" className="bg-background py-24">
       <div className="container">
         <div className="mb-14 text-center">
           <p className="eyebrow">Reservations</p>
@@ -98,37 +139,80 @@ export default function Reservations() {
               label="Adults"
               value={`${adults} adult${adults !== 1 ? "s" : ""}`}
               onDec={() => setAdults((v) => Math.max(1, v - 1))}
-              onInc={() => setAdults((v) => v + 1)}
+              onInc={() => setAdults((v) => Math.min(MAX_ADULTS, v + 1))}
+              incDisabled={adults >= MAX_ADULTS}
             />
             <div className="my-6 h-px bg-border" />
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
-                Kids
+                Children
               </span>
               <button
-                onClick={() => setKids((v) => v + 1)}
+                onClick={addChild}
                 className="flex items-center gap-1 text-sm font-medium text-primary transition-smooth hover:opacity-70"
               >
-                <Plus className="h-4 w-4" /> Add Kid
+                <Plus className="h-4 w-4" /> Add Child
               </button>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              {kids === 0 ? "No kids added" : `${kids} kid${kids !== 1 ? "s" : ""} added`}
-            </p>
-            {kids > 0 && (
+            {children.length === 0 ? (
+              <p className="mt-4 text-sm text-muted-foreground">No children added</p>
+            ) : (
+              <div className="mt-4 space-y-2">
+                {children.map((child, index) => (
+                  <div
+                    key={child.id}
+                    className="flex items-center justify-between rounded-md border border-border px-3 py-2"
+                  >
+                    <span className="text-sm">Child {index + 1}</span>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setChildAge(child.id, child.age - 1)}
+                        disabled={child.age <= MIN_CHILD_AGE}
+                        className="flex h-7 w-7 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted disabled:opacity-30"
+                        aria-label={`Decrease age for child ${index + 1}`}
+                      >
+                        <Minus className="h-3.5 w-3.5" />
+                      </button>
+                      <span className="w-16 text-center text-sm">
+                        {child.age} yr{child.age !== 1 ? "s" : ""}
+                      </span>
+                      <button
+                        onClick={() => setChildAge(child.id, child.age + 1)}
+                        disabled={child.age >= MAX_CHILD_AGE}
+                        className="flex h-7 w-7 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted disabled:opacity-30"
+                        aria-label={`Increase age for child ${index + 1}`}
+                      >
+                        <Plus className="h-3.5 w-3.5" />
+                      </button>
+                      <button
+                        onClick={() => removeChild(child.id)}
+                        className="ml-1 text-muted-foreground transition-smooth hover:text-destructive"
+                        aria-label={`Remove child ${index + 1}`}
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {reservation ? (
+              <div className="mt-8 rounded-md border border-primary/30 bg-primary/5 p-4 text-sm">
+                <p className="font-medium text-foreground">Request sent!</p>
+                <p className="mt-1 text-muted-foreground">
+                  Thanks, {reservation.name}. We'll reach out at {reservation.email} to confirm
+                  your stay.
+                </p>
+              </div>
+            ) : (
               <button
-                onClick={() => setKids(0)}
-                className="mt-2 text-xs text-muted-foreground underline"
+                disabled={!checkIn || !checkOut}
+                onClick={() => setDialogOpen(true)}
+                className="mt-8 w-full rounded-md bg-primary py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
               >
-                clear
+                Continue
               </button>
             )}
-            <button
-              disabled={!checkIn || !checkOut}
-              className="mt-8 w-full rounded-md bg-primary py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
-            >
-              Continue
-            </button>
           </div>
 
           {/* Calendar */}
@@ -226,8 +310,8 @@ export default function Reservations() {
                 <p className="text-destructive">{rangeError}</p>
               ) : checkIn && checkOut ? (
                 <p className="text-foreground">
-                  {nights} night{nights !== 1 ? "s" : ""} · {adults + kids} guest
-                  {adults + kids !== 1 ? "s" : ""}
+                  {nights} night{nights !== 1 ? "s" : ""} · {adults + children.length} guest
+                  {adults + children.length !== 1 ? "s" : ""}
                 </p>
               ) : checkIn ? (
                 <p className="text-muted-foreground">Select your check-out date</p>
@@ -238,7 +322,20 @@ export default function Reservations() {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+
+      {dialogOpen && checkIn && checkOut && (
+        <ReservationDialog
+          summary={tripSummary}
+          booking={{ checkIn, checkOut, adults, children }}
+          onClose={() => setDialogOpen(false)}
+          onSubmitted={(details) => {
+            setReservation(details);
+            setDialogOpen(false);
+          }}
+        />
+      )}
+    </>
   );
 }
 
@@ -247,11 +344,13 @@ function Stepper({
   value,
   onDec,
   onInc,
+  incDisabled,
 }: {
   label: string;
   value: string;
   onDec: () => void;
   onInc: () => void;
+  incDisabled?: boolean;
 }) {
   return (
     <div className="flex items-center justify-between">
@@ -271,11 +370,196 @@ function Stepper({
         </button>
         <button
           onClick={onInc}
-          className="flex h-8 w-8 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted"
+          disabled={incDisabled}
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted disabled:cursor-not-allowed disabled:opacity-30"
           aria-label={`Increase ${label}`}
         >
           <Plus className="h-4 w-4" />
         </button>
+      </div>
+    </div>
+  );
+}
+
+function ReservationDialog({
+  summary,
+  booking,
+  onClose,
+  onSubmitted,
+}: {
+  summary: string;
+  booking: { checkIn: Date; checkOut: Date; adults: number; children: Child[] };
+  onClose: () => void;
+  onSubmitted: (details: ReservationDetails) => void;
+}) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [comments, setComments] = useState("");
+  const [promoCode, setPromoCode] = useState("");
+  const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    const nextErrors: { name?: string; email?: string } = {};
+    if (!name.trim()) nextErrors.name = "Name is required";
+    if (!email.trim()) {
+      nextErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      nextErrors.email = "Enter a valid email address";
+    }
+
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
+
+    setSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const checkInKey = toDateKey(booking.checkIn);
+      const checkOutKey = toDateKey(booking.checkOut);
+
+      const bookingRef = await addDoc(collection(db, "bookings"), {
+        checkIn: checkInKey,
+        checkOut: checkOutKey,
+        status: "pending",
+      });
+
+      await addDoc(collection(db, "reservationRequests"), {
+        name: name.trim(),
+        email: email.trim(),
+        checkIn: checkInKey,
+        checkOut: checkOutKey,
+        guests: booking.adults + booking.children.length,
+        adults: booking.adults,
+        children: booking.children.length,
+        childrenAges: booking.children.map((child) => child.age),
+        comments: comments.trim(),
+        promoCode: promoCode.trim(),
+        reservationDate: serverTimestamp(),
+        status: "pending",
+        bookingId: bookingRef.id,
+      });
+
+      onSubmitted({ name: name.trim(), email: email.trim(), comments: comments.trim() });
+    } catch {
+      setSubmitError("Something went wrong sending your request. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="reservation-dialog-title"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-md rounded-lg bg-card p-8 shadow-hover"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="mb-6 flex items-start justify-between gap-4">
+          <div>
+            <h3 id="reservation-dialog-title" className="text-xl font-medium">
+              Your Details
+            </h3>
+            {summary && <p className="mt-1 text-sm text-muted-foreground">{summary}</p>}
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="text-muted-foreground transition-smooth hover:text-foreground"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label
+              htmlFor="reservation-name"
+              className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
+            >
+              Name
+            </label>
+            <input
+              id="reservation-name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary"
+              placeholder="Your full name"
+            />
+            {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
+          </div>
+
+          <div>
+            <label
+              htmlFor="reservation-email"
+              className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
+            >
+              Email
+            </label>
+            <input
+              id="reservation-email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary"
+              placeholder="you@example.com"
+            />
+            {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
+          </div>
+
+          <div>
+            <label
+              htmlFor="reservation-comments"
+              className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
+            >
+              Comments <span className="normal-case text-muted-foreground/70">(optional)</span>
+            </label>
+            <textarea
+              id="reservation-comments"
+              value={comments}
+              onChange={(e) => setComments(e.target.value)}
+              rows={3}
+              className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary"
+              placeholder="Anything we should know?"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="reservation-promo-code"
+              className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
+            >
+              Promo Code <span className="normal-case text-muted-foreground/70">(optional)</span>
+            </label>
+            <input
+              id="reservation-promo-code"
+              type="text"
+              value={promoCode}
+              onChange={(e) => setPromoCode(e.target.value)}
+              className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary"
+              placeholder="Have a code?"
+            />
+          </div>
+
+          {submitError && <p className="text-xs text-destructive">{submitError}</p>}
+
+          <button
+            type="submit"
+            disabled={submitting}
+            className="mt-2 w-full rounded-md bg-primary py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {submitting ? "Sending…" : "Send Request"}
+          </button>
+        </form>
       </div>
     </div>
   );
