@@ -78,7 +78,7 @@ export default function PricingManager() {
     if (row.docId) {
       updateRow(row.key, { saving: true, error: null });
       try {
-        await deleteDoc(doc(db, "nightlyRates", row.docId));
+        await deleteDoc(doc(db, "Pricing", row.docId));
       } catch {
         updateRow(row.key, { saving: false, error: "Couldn't delete this period." });
         return;
@@ -119,16 +119,16 @@ export default function PricingManager() {
     updateRow(row.key, { saving: true, error: null });
     try {
       if (row.docId) {
-        await updateDoc(doc(db, "nightlyRates", row.docId), {
-          startDate: row.startDate,
-          endDate: row.endDate,
+        await updateDoc(doc(db, "Pricing", row.docId), {
+          "start-date": row.startDate,
+          "end-date": row.endDate,
           price,
         });
         updateRow(row.key, { saving: false });
       } else {
-        const ref = await addDoc(collection(db, "nightlyRates"), {
-          startDate: row.startDate,
-          endDate: row.endDate,
+        const ref = await addDoc(collection(db, "Pricing"), {
+          "start-date": row.startDate,
+          "end-date": row.endDate,
           price,
         });
         updateRow(row.key, { saving: false, docId: ref.id });

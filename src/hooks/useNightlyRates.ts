@@ -15,8 +15,8 @@ interface UseNightlyRatesResult {
   error: string | null;
 }
 
-// Only subscribes once `enabled` is true (i.e. the admin is signed in) —
-// Firestore rules reject this read for anonymous visitors anyway.
+// Firestore collection "Pricing" stores fields "start-date"/"end-date"/"price";
+// this hook maps them to the camelCase NightlyRate shape used across the app.
 export function useNightlyRates(enabled: boolean): UseNightlyRatesResult {
   const [rates, setRates] = useState<NightlyRate[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,7 +25,7 @@ export function useNightlyRates(enabled: boolean): UseNightlyRatesResult {
   useEffect(() => {
     if (!enabled) return;
 
-    const q = query(collection(db, "nightlyRates"), orderBy("startDate"));
+    const q = query(collection(db, "Pricing"), orderBy("start-date"));
     const unsubscribe = onSnapshot(
       q,
       (snapshot) => {
@@ -34,8 +34,8 @@ export function useNightlyRates(enabled: boolean): UseNightlyRatesResult {
             const data = doc.data();
             return {
               id: doc.id,
-              startDate: data.startDate ?? "",
-              endDate: data.endDate ?? "",
+              startDate: data["start-date"] ?? "",
+              endDate: data["end-date"] ?? "",
               price: typeof data.price === "number" ? data.price : 0,
             };
           })

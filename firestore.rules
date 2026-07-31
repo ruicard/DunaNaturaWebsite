@@ -60,7 +60,7 @@ service cloud.firestore {
 
     // Nightly pricing periods — shown on the public booking calendar, so
     // anyone can read them; only a signed-in admin can manage them.
-    match /nightlyRates/{rateId} {
+    match /Pricing/{rateId} {
       allow read: if true;
       allow write: if isAdmin();
     }
