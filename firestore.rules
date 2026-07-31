@@ -57,5 +57,11 @@ service cloud.firestore {
         && request.resource.data.reservationDate == request.time;
       allow update, delete: if isAdmin();
     }
+
+    // Nightly pricing periods — internal business data, not needed by the
+    // public site, so it's admin-only for read and write alike.
+    match /nightlyRates/{rateId} {
+      allow read, write: if isAdmin();
+    }
   }
 }

@@ -9,6 +9,7 @@ import {
   type ReservationRequest,
   type ReservationStatus,
 } from "@/hooks/useReservationRequests";
+import PricingManager from "@/components/PricingManager";
 
 export default function Admin() {
   const { user, loading, signIn, signOut } = useAdminAuth();
@@ -199,9 +200,7 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
               <th className="whitespace-nowrap px-4 py-3">Promo Code</th>
               <th className="px-4 py-3">Comments</th>
               <th className="whitespace-nowrap px-4 py-3">Status</th>
-              <th className="sticky right-0 whitespace-nowrap bg-muted px-4 py-3 text-right">
-                Edit
-              </th>
+              <th className="whitespace-nowrap px-4 py-3 text-right">Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -264,7 +263,7 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
                   <td className="whitespace-nowrap px-4 py-3">
                     <StatusBadge status={r.status} />
                   </td>
-                  <td className="sticky right-0 whitespace-nowrap bg-background px-4 py-3 text-right">
+                  <td className="whitespace-nowrap px-4 py-3 text-right">
                     {r.status !== "pending" &&
                       (updatingId === r.id ? (
                         <Loader2 className="ml-auto h-4 w-4 animate-spin text-muted-foreground" />
@@ -312,6 +311,8 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
           </tbody>
         </table>
       </div>
+
+      <PricingManager />
     </div>
   );
 }
