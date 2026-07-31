@@ -104,6 +104,11 @@ function AdminLogin({
   );
 }
 
+function formatMoney(value: number | null): string {
+  if (value === null) return "—";
+  return Number.isInteger(value) ? `€${value}` : `€${value.toFixed(2)}`;
+}
+
 const FILTERS: { label: string; value: ReservationStatus | "all" }[] = [
   { label: "All", value: "all" },
   { label: "Requests", value: "pending" },
@@ -198,6 +203,8 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
               <th className="whitespace-nowrap px-4 py-3">Email</th>
               <th className="whitespace-nowrap px-4 py-3">Dates</th>
               <th className="whitespace-nowrap px-4 py-3">Guests</th>
+              <th className="whitespace-nowrap px-4 py-3">Total Price</th>
+              <th className="whitespace-nowrap px-4 py-3">Cleaning Fee</th>
               <th className="whitespace-nowrap px-4 py-3">Promo Code</th>
               <th className="px-4 py-3">Comments</th>
               <th className="whitespace-nowrap px-4 py-3">Status</th>
@@ -207,13 +214,13 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={9} className="px-4 py-6 text-center text-muted-foreground">
+                <td colSpan={11} className="px-4 py-6 text-center text-muted-foreground">
                   Loading…
                 </td>
               </tr>
             ) : filtered.length === 0 ? (
               <tr>
-                <td colSpan={9} className="px-4 py-6 text-center text-muted-foreground">
+                <td colSpan={11} className="px-4 py-6 text-center text-muted-foreground">
                   No reservations found.
                 </td>
               </tr>
@@ -257,6 +264,8 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
                     {r.guests} ({r.adults} adult{r.adults !== 1 ? "s" : ""}
                     {r.children > 0 ? `, ${r.children} child${r.children !== 1 ? "ren" : ""}` : ""})
                   </td>
+                  <td className="whitespace-nowrap px-4 py-3">{formatMoney(r.totalPrice)}</td>
+                  <td className="whitespace-nowrap px-4 py-3">{formatMoney(r.cleaningFee)}</td>
                   <td className="whitespace-nowrap px-4 py-3">{r.promoCode || "—"}</td>
                   <td className="max-w-xs truncate px-4 py-3 text-muted-foreground">
                     {r.comments || "—"}

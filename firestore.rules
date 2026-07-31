@@ -30,7 +30,8 @@ service cloud.firestore {
       allow read: if isAdmin();
       allow create: if request.resource.data.keys().hasAll([
           'name', 'email', 'checkIn', 'checkOut', 'guests', 'adults', 'children',
-          'childrenAges', 'comments', 'promoCode', 'reservationDate', 'status', 'bookingId'
+          'childrenAges', 'comments', 'promoCode', 'reservationDate', 'status', 'bookingId',
+          'totalPrice', 'cleaningFee'
         ])
         && request.resource.data.bookingId is string
         && request.resource.data.name is string
@@ -54,7 +55,11 @@ service cloud.firestore {
         && request.resource.data.promoCode is string
         && request.resource.data.promoCode.size() < 50
         && request.resource.data.status == 'pending'
-        && request.resource.data.reservationDate == request.time;
+        && request.resource.data.reservationDate == request.time
+        && request.resource.data.totalPrice is number
+        && request.resource.data.totalPrice >= 0
+        && request.resource.data.cleaningFee is number
+        && request.resource.data.cleaningFee >= 0;
       allow update, delete: if isAdmin();
     }
 

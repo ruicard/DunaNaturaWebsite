@@ -381,6 +381,8 @@ export default function Reservations() {
         <ReservationDialog
           summary={tripSummary}
           booking={{ checkIn, checkOut, adults, children }}
+          totalPrice={totalCost}
+          cleaningFee={cleaningFeeValue}
           onClose={() => setDialogOpen(false)}
           onSubmitted={(details) => {
             setReservation(details);
@@ -437,11 +439,15 @@ function Stepper({
 function ReservationDialog({
   summary,
   booking,
+  totalPrice,
+  cleaningFee,
   onClose,
   onSubmitted,
 }: {
   summary: string;
   booking: { checkIn: Date; checkOut: Date; adults: number; children: Child[] };
+  totalPrice: number;
+  cleaningFee: number;
   onClose: () => void;
   onSubmitted: (details: ReservationDetails) => void;
 }) {
@@ -494,6 +500,8 @@ function ReservationDialog({
         reservationDate: serverTimestamp(),
         status: "pending",
         bookingId: bookingRef.id,
+        totalPrice,
+        cleaningFee,
       });
 
       onSubmitted({ name: name.trim(), email: email.trim(), comments: comments.trim() });

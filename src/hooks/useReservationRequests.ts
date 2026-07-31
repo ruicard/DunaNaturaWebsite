@@ -18,6 +18,8 @@ export interface ReservationRequest {
   promoCode: string;
   status: ReservationStatus;
   bookingId: string;
+  totalPrice: number | null;
+  cleaningFee: number | null;
 }
 
 interface UseReservationRequestsResult {
@@ -58,6 +60,8 @@ export function useReservationRequests(enabled: boolean): UseReservationRequests
               promoCode: data.promoCode ?? "",
               status: (data.status as ReservationStatus) ?? "pending",
               bookingId: data.bookingId ?? "",
+              totalPrice: typeof data.totalPrice === "number" ? data.totalPrice : null,
+              cleaningFee: typeof data.cleaningFee === "number" ? data.cleaningFee : null,
             };
           })
         );
