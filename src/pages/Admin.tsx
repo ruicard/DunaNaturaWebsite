@@ -10,6 +10,7 @@ import {
   type ReservationStatus,
 } from "@/hooks/useReservationRequests";
 import PricingManager from "@/components/PricingManager";
+import SettingsManager from "@/components/SettingsManager";
 
 export default function Admin() {
   const { user, loading, signIn, signOut } = useAdminAuth();
@@ -313,6 +314,7 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
       </div>
 
       <PricingManager />
+      <SettingsManager />
     </div>
   );
 }

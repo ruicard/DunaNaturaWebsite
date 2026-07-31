@@ -64,5 +64,13 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isAdmin();
     }
+
+    // Booking-wide settings (e.g. the cleaning fee) — shown in the public
+    // booking cost summary, so anyone can read them; only a signed-in
+    // admin can manage them.
+    match /Settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
   }
 }

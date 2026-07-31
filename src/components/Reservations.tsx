@@ -4,6 +4,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { toDateKey, useBookedDates } from "@/hooks/useBookedDates";
 import { useNightlyRates, type NightlyRate } from "@/hooks/useNightlyRates";
+import { useCleaningFee } from "@/hooks/useCleaningFee";
 
 interface ReservationDetails {
   name: string;
@@ -56,6 +57,7 @@ export default function Reservations() {
   const today = startOfDay(new Date());
   const { bookedDates, loading, error } = useBookedDates();
   const { rates } = useNightlyRates(true);
+  const { cleaningFee } = useCleaningFee(true);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState<Child[]>([]);
   const nextChildId = useRef(0);
@@ -121,6 +123,15 @@ export default function Reservations() {
     checkIn && checkOut
       ? Math.round((checkOut.getTime() - checkIn.getTime()) / 86400000)
       : 0;
+
+  const selectedNightlyPrices =
+    checkIn && checkOut
+      ? datesBetween(checkIn, checkOut).map((d) => priceForDate(rates, toDateKey(d)))
+      : [];
+  const hasUnpricedNight = selectedNightlyPrices.some((p) => p === null);
+  const nightsCost = selectedNightlyPrices.reduce((sum: number, p) => sum + (p ?? 0), 0);
+  const cleaningFeeValue = cleaningFee ?? 0;
+  const totalCost = nightsCost + cleaningFeeValue;
 
   const cells: (Date | null)[] = [];
   for (let i = 0; i < firstWeekday; i++) cells.push(null);
@@ -217,13 +228,39 @@ export default function Reservations() {
                 </p>
               </div>
             ) : (
-              <button
-                disabled={!checkIn || !checkOut}
-                onClick={() => setDialogOpen(true)}
-                className="mt-8 w-full rounded-md bg-primary py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
-              >
-                Continue
-              </button>
+              <>
+                {checkIn && checkOut && (
+                  <div className="mt-8 rounded-md border border-border p-4 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-muted-foreground">
+                        {nights} night{nights !== 1 ? "s" : ""}
+                      </span>
+                      <span>{formatPrice(nightsCost)}</span>
+                    </div>
+                    <div className="mt-2 flex items-center justify-between">
+                      <span className="text-muted-foreground">Cleaning fee</span>
+                      <span>{formatPrice(cleaningFeeValue)}</span>
+                    </div>
+                    <div className="mt-3 flex items-center justify-between border-t border-border pt-3 font-medium">
+                      <span>Total</span>
+                      <span>{formatPrice(totalCost)}</span>
+                    </div>
+                    {hasUnpricedNight && (
+                      <p className="mt-2 text-xs text-destructive">
+                        Some nights in this range don't have a price yet — we'll confirm the exact
+                        total with you.
+                      </p>
+                    )}
+                  </div>
+                )}
+                <button
+                  disabled={!checkIn || !checkOut}
+                  onClick={() => setDialogOpen(true)}
+                  className="mt-8 w-full rounded-md bg-primary py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  Continue
+                </button>
+              </>
             )}
           </div>
 
