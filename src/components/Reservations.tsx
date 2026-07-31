@@ -15,6 +15,7 @@ interface ReservationDetails {
 const MIN_CHILD_AGE = 0;
 const MAX_CHILD_AGE = 17;
 const MAX_ADULTS = 6;
+const MIN_NIGHTS = 2;
 
 interface Child {
   id: number;
@@ -112,6 +113,12 @@ export default function Reservations() {
     const blocked = datesBetween(checkIn, date).some(isBooked);
     if (blocked) {
       setRangeError("Some nights in that range are already booked — pick a different check-out date.");
+      return;
+    }
+
+    const nightsSelected = Math.round((date.getTime() - checkIn.getTime()) / 86400000);
+    if (nightsSelected < MIN_NIGHTS) {
+      setRangeError(`Minimum stay is ${MIN_NIGHTS} nights — pick a later check-out date.`);
       return;
     }
 
