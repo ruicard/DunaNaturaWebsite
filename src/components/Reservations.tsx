@@ -3,6 +3,7 @@ import { Minus, Plus, X, ChevronLeft, ChevronRight, Loader2 } from "lucide-react
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { toDateKey, useBookedDates } from "@/hooks/useBookedDates";
+import { useNightlyRates, type NightlyRate } from "@/hooks/useNightlyRates";
 
 interface ReservationDetails {
   name: string;
@@ -41,9 +42,20 @@ function datesBetween(start: Date, end: Date): Date[] {
   return days;
 }
 
+function priceForDate(rates: NightlyRate[], dateKey: string): number | null {
+  const rate = rates.find((r) => r.startDate <= dateKey && dateKey <= r.endDate);
+  return rate ? rate.price : null;
+}
+
+function formatPrice(price: number | null): string {
+  if (price === null) return "tbc";
+  return Number.isInteger(price) ? `€${price}` : `€${price.toFixed(2)}`;
+}
+
 export default function Reservations() {
   const today = startOfDay(new Date());
   const { bookedDates, loading, error } = useBookedDates();
+  const { rates } = useNightlyRates(true);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState<Child[]>([]);
   const nextChildId = useRef(0);
@@ -265,6 +277,7 @@ export default function Reservations() {
                 const inRange =
                   checkIn && checkOut && date > checkIn && date < checkOut;
                 const selected = isIn || isOut;
+                const priceLabel = isPast ? null : formatPrice(priceForDate(rates, toDateKey(date)));
                 return (
                   <button
                     key={i}
@@ -272,7 +285,7 @@ export default function Reservations() {
                     title={booked ? "Already booked" : undefined}
                     onClick={() => pick(date)}
                     className={[
-                      "relative aspect-square rounded-md text-sm transition-smooth",
+                      "relative flex aspect-square flex-col items-center justify-center gap-0.5 rounded-md text-sm transition-smooth",
                       isPast ? "cursor-not-allowed text-muted-foreground/30" : "",
                       booked && !isPast
                         ? "cursor-not-allowed bg-muted text-muted-foreground/50 line-through decoration-muted-foreground/40"
@@ -282,7 +295,10 @@ export default function Reservations() {
                       inRange ? "bg-primary/15" : "",
                     ].join(" ")}
                   >
-                    {date.getDate()}
+                    <span className="leading-none">{date.getDate()}</span>
+                    {priceLabel && (
+                      <span className="text-[0.6rem] leading-none opacity-70">{priceLabel}</span>
+                    )}
                   </button>
                 );
               })}

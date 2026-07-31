@@ -58,10 +58,11 @@ service cloud.firestore {
       allow update, delete: if isAdmin();
     }
 
-    // Nightly pricing periods — internal business data, not needed by the
-    // public site, so it's admin-only for read and write alike.
+    // Nightly pricing periods — shown on the public booking calendar, so
+    // anyone can read them; only a signed-in admin can manage them.
     match /nightlyRates/{rateId} {
-      allow read, write: if isAdmin();
+      allow read: if true;
+      allow write: if isAdmin();
     }
   }
 }
