@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/duna-natura-logo.png";
 
 const links = [
   { label: "About", to: "/about" },
@@ -31,14 +32,8 @@ export default function Navbar() {
       )}
     >
       <div className="container flex h-16 items-center justify-between">
-        <Link
-          to="/"
-          className={cn(
-            "text-lg font-medium tracking-wide transition-smooth",
-            solid ? "text-foreground" : "text-white"
-          )}
-        >
-          Duna Natura
+        <Link to="/" className="flex items-center">
+          <img src={logo} alt="Duna Natura" className="h-10 w-auto" />
         </Link>
 
         <nav className="flex items-center gap-8">

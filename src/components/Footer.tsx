@@ -1,11 +1,12 @@
 import { Instagram, Facebook } from "lucide-react";
+import logo from "@/assets/duna-natura-logo.png";
 
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-muted">
       <div className="container grid gap-10 py-16 md:grid-cols-2">
         <div>
-          <h3 className="text-lg font-medium">Duna Natura</h3>
+          <img src={logo} alt="Duna Natura" className="h-12 w-auto" />
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Off-grid camping between the Atlantic and the maritime pine forest.
           </p>
