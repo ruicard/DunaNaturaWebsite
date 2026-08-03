@@ -68,7 +68,7 @@ export default function Experience() {
           {features.map((f) => (
             <div key={f.title} className="text-center">
               <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <img src={f.icon} alt="" className="h-6 w-6" />
+                <img src={f.icon} alt="" className="h-8 w-8" />
               </div>
               <h3 className="mt-5 text-lg font-medium">{f.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
