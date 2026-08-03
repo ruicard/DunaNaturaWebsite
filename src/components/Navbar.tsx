@@ -24,6 +24,13 @@ export default function Navbar() {
     }
   }
 
+  function handleHomeClick(e: MouseEvent<HTMLAnchorElement>) {
+    if (onHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0 });
+    }
+  }
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -52,6 +59,7 @@ export default function Navbar() {
             <Link
               key={l.to}
               to={l.to}
+              onClick={l.to === "/" ? handleHomeClick : undefined}
               className={cn(
                 "text-xs font-medium uppercase tracking-[0.15em] transition-smooth hover:opacity-70",
                 solid ? "text-foreground" : "text-white"
