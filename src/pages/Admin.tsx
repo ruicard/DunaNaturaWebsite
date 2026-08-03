@@ -17,7 +17,7 @@ export default function Admin() {
 
   if (loading) {
     return (
-      <div className="flex min-h-[70vh] items-center justify-center pt-16">
+      <div className="flex min-h-[70vh] items-center justify-center pt-20">
         <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
       </div>
     );
@@ -51,7 +51,7 @@ function AdminLogin({
   }
 
   return (
-    <div className="flex min-h-[70vh] items-center justify-center px-4 pt-16">
+    <div className="flex min-h-[70vh] items-center justify-center px-4 pt-20">
       <form onSubmit={handleSubmit} className="w-full max-w-sm rounded-lg bg-card p-8 shadow-soft">
         <h1 className="text-xl font-medium">Admin Login</h1>
         <p className="mt-1 text-sm text-muted-foreground">Sign in to manage reservations.</p>

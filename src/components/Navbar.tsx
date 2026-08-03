@@ -1,7 +1,7 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/duna-natura-logo.png";
+import logo from "@/assets/duna-natura-lockup-black.png";
 
 const links = [
   { label: "Home", to: "/" },
@@ -49,9 +49,9 @@ export default function Navbar() {
           : "bg-transparent"
       )}
     >
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Duna Natura" className="h-10 w-auto" />
+          <img src={logo} alt="Duna Natura" className="h-16 w-auto" />
         </Link>
 
         <nav className="flex items-center gap-8">
