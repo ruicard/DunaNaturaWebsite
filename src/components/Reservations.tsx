@@ -163,116 +163,8 @@ export default function Reservations() {
         </div>
 
         <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
-          {/* Guests */}
-          <div className="rounded-lg bg-card p-8 shadow-soft">
-            <Stepper
-              label="Adults"
-              value={`${adults} adult${adults !== 1 ? "s" : ""}`}
-              onDec={() => setAdults((v) => Math.max(1, v - 1))}
-              onInc={() => setAdults((v) => Math.min(MAX_ADULTS, v + 1))}
-              incDisabled={adults >= MAX_ADULTS}
-            />
-            <div className="my-6 h-px bg-border" />
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
-                Children
-              </span>
-              <button
-                onClick={addChild}
-                className="flex items-center gap-1 text-sm font-medium text-primary transition-smooth hover:opacity-70"
-              >
-                <Plus className="h-4 w-4" /> Add Child
-              </button>
-            </div>
-            {children.length === 0 ? (
-              <p className="mt-4 text-sm text-muted-foreground">No children added</p>
-            ) : (
-              <div className="mt-4 space-y-2">
-                {children.map((child, index) => (
-                  <div
-                    key={child.id}
-                    className="flex items-center justify-between rounded-md border border-border px-3 py-2"
-                  >
-                    <span className="text-sm">Child {index + 1}</span>
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => setChildAge(child.id, child.age - 1)}
-                        disabled={child.age <= MIN_CHILD_AGE}
-                        className="flex h-7 w-7 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted disabled:opacity-30"
-                        aria-label={`Decrease age for child ${index + 1}`}
-                      >
-                        <Minus className="h-3.5 w-3.5" />
-                      </button>
-                      <span className="w-16 text-center text-sm">
-                        {child.age} yr{child.age !== 1 ? "s" : ""}
-                      </span>
-                      <button
-                        onClick={() => setChildAge(child.id, child.age + 1)}
-                        disabled={child.age >= MAX_CHILD_AGE}
-                        className="flex h-7 w-7 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted disabled:opacity-30"
-                        aria-label={`Increase age for child ${index + 1}`}
-                      >
-                        <Plus className="h-3.5 w-3.5" />
-                      </button>
-                      <button
-                        onClick={() => removeChild(child.id)}
-                        className="ml-1 text-muted-foreground transition-smooth hover:text-destructive"
-                        aria-label={`Remove child ${index + 1}`}
-                      >
-                        <X className="h-4 w-4" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-            {reservation ? (
-              <div className="mt-8 rounded-md border border-primary/30 bg-primary/5 p-4 text-sm">
-                <p className="font-medium text-foreground">Request sent!</p>
-                <p className="mt-1 text-muted-foreground">
-                  Thanks, {reservation.name}. We'll reach out at {reservation.email} to confirm
-                  your stay.
-                </p>
-              </div>
-            ) : (
-              <>
-                {checkIn && checkOut && (
-                  <div className="mt-8 rounded-md border border-border p-4 text-sm">
-                    <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground">
-                        {nights} night{nights !== 1 ? "s" : ""}
-                      </span>
-                      <span>{formatPrice(nightsCost)}</span>
-                    </div>
-                    <div className="mt-2 flex items-center justify-between">
-                      <span className="text-muted-foreground">Cleaning fee</span>
-                      <span>{formatPrice(cleaningFeeValue)}</span>
-                    </div>
-                    <div className="mt-3 flex items-center justify-between border-t border-border pt-3 font-medium">
-                      <span>Total</span>
-                      <span>{formatPrice(totalCost)}</span>
-                    </div>
-                    {hasUnpricedNight && (
-                      <p className="mt-2 text-xs text-destructive">
-                        Some nights in this range don't have a price yet — we'll confirm the exact
-                        total with you.
-                      </p>
-                    )}
-                  </div>
-                )}
-                <button
-                  disabled={!checkIn || !checkOut}
-                  onClick={() => setDialogOpen(true)}
-                  className="mt-8 w-full rounded-md bg-primary py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
-                >
-                  Continue
-                </button>
-              </>
-            )}
-          </div>
-
           {/* Calendar */}
-          <div className="rounded-lg bg-card p-8 shadow-soft">
+          <div className="rounded-lg bg-card p-8 shadow-soft md:order-2">
             <div className="mb-4 flex items-center justify-between">
               <p className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
                 Check-in & Check-out
@@ -379,6 +271,114 @@ export default function Reservations() {
                 <p className="text-muted-foreground">Select your check-in date</p>
               )}
             </div>
+          </div>
+
+          {/* Guests */}
+          <div className="rounded-lg bg-card p-8 shadow-soft md:order-1">
+            <Stepper
+              label="Adults"
+              value={`${adults} adult${adults !== 1 ? "s" : ""}`}
+              onDec={() => setAdults((v) => Math.max(1, v - 1))}
+              onInc={() => setAdults((v) => Math.min(MAX_ADULTS, v + 1))}
+              incDisabled={adults >= MAX_ADULTS}
+            />
+            <div className="my-6 h-px bg-border" />
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
+                Children
+              </span>
+              <button
+                onClick={addChild}
+                className="flex items-center gap-1 text-sm font-medium text-primary transition-smooth hover:opacity-70"
+              >
+                <Plus className="h-4 w-4" /> Add Child
+              </button>
+            </div>
+            {children.length === 0 ? (
+              <p className="mt-4 text-sm text-muted-foreground">No children added</p>
+            ) : (
+              <div className="mt-4 space-y-2">
+                {children.map((child, index) => (
+                  <div
+                    key={child.id}
+                    className="flex items-center justify-between rounded-md border border-border px-3 py-2"
+                  >
+                    <span className="text-sm">Child {index + 1}</span>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setChildAge(child.id, child.age - 1)}
+                        disabled={child.age <= MIN_CHILD_AGE}
+                        className="flex h-7 w-7 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted disabled:opacity-30"
+                        aria-label={`Decrease age for child ${index + 1}`}
+                      >
+                        <Minus className="h-3.5 w-3.5" />
+                      </button>
+                      <span className="w-16 text-center text-sm">
+                        {child.age} yr{child.age !== 1 ? "s" : ""}
+                      </span>
+                      <button
+                        onClick={() => setChildAge(child.id, child.age + 1)}
+                        disabled={child.age >= MAX_CHILD_AGE}
+                        className="flex h-7 w-7 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted disabled:opacity-30"
+                        aria-label={`Increase age for child ${index + 1}`}
+                      >
+                        <Plus className="h-3.5 w-3.5" />
+                      </button>
+                      <button
+                        onClick={() => removeChild(child.id)}
+                        className="ml-1 text-muted-foreground transition-smooth hover:text-destructive"
+                        aria-label={`Remove child ${index + 1}`}
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+            {reservation ? (
+              <div className="mt-8 rounded-md border border-primary/30 bg-primary/5 p-4 text-sm">
+                <p className="font-medium text-foreground">Request sent!</p>
+                <p className="mt-1 text-muted-foreground">
+                  Thanks, {reservation.name}. We'll reach out at {reservation.email} to confirm
+                  your stay.
+                </p>
+              </div>
+            ) : (
+              <>
+                {checkIn && checkOut && (
+                  <div className="mt-8 rounded-md border border-border p-4 text-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="text-muted-foreground">
+                        {nights} night{nights !== 1 ? "s" : ""}
+                      </span>
+                      <span>{formatPrice(nightsCost)}</span>
+                    </div>
+                    <div className="mt-2 flex items-center justify-between">
+                      <span className="text-muted-foreground">Cleaning fee</span>
+                      <span>{formatPrice(cleaningFeeValue)}</span>
+                    </div>
+                    <div className="mt-3 flex items-center justify-between border-t border-border pt-3 font-medium">
+                      <span>Total</span>
+                      <span>{formatPrice(totalCost)}</span>
+                    </div>
+                    {hasUnpricedNight && (
+                      <p className="mt-2 text-xs text-destructive">
+                        Some nights in this range don't have a price yet — we'll confirm the exact
+                        total with you.
+                      </p>
+                    )}
+                  </div>
+                )}
+                <button
+                  disabled={!checkIn || !checkOut}
+                  onClick={() => setDialogOpen(true)}
+                  className="mt-8 w-full rounded-md bg-primary py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  Continue
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
