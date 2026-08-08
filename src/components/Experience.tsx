@@ -64,14 +64,14 @@ export default function Experience() {
           </p>
         </div>
 
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-10 lg:grid-cols-4">
           {features.map((f) => (
             <div key={f.title} className="text-center">
-              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <img src={f.icon} alt="" className="h-8 w-8" />
+              <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 text-primary sm:h-14 sm:w-14">
+                <img src={f.icon} alt="" className="h-6 w-6 sm:h-8 sm:w-8" />
               </div>
-              <h3 className="mt-5 text-lg font-medium">{f.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <h3 className="mt-3 text-sm font-medium sm:mt-5 sm:text-lg">{f.title}</h3>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground sm:mt-2 sm:text-sm">
                 {f.text}
               </p>
             </div>
