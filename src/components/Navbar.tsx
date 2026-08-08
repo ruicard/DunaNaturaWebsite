@@ -49,19 +49,19 @@ export default function Navbar() {
           : "bg-transparent"
       )}
     >
-      <div className="container flex h-20 items-center justify-between">
-        <Link to="/" className="flex items-center">
-          <img src={logo} alt="Duna Natura" className="h-16 w-auto" />
+      <div className="container flex h-16 items-center justify-between sm:h-20">
+        <Link to="/" className="flex shrink-0 items-center">
+          <img src={logo} alt="Duna Natura" className="h-10 w-auto sm:h-14 md:h-16" />
         </Link>
 
-        <nav className="flex items-center gap-8">
+        <nav className="flex shrink-0 items-center gap-1.5 sm:gap-4 md:gap-8">
           {links.map((l) => (
             <Link
               key={l.to}
               to={l.to}
               onClick={l.to === "/" ? handleHomeClick : undefined}
               className={cn(
-                "text-xs font-medium uppercase tracking-[0.15em] transition-smooth hover:opacity-70",
+                "whitespace-nowrap text-[0.55rem] font-medium uppercase tracking-[0.04em] transition-smooth hover:opacity-70 sm:text-xs sm:tracking-[0.15em]",
                 solid ? "text-foreground" : "text-white"
               )}
             >
@@ -71,7 +71,7 @@ export default function Navbar() {
           <a
             href="#reservations"
             onClick={handleBookNow}
-            className="rounded-md bg-primary px-4 py-2 text-xs font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90"
+            className="whitespace-nowrap rounded-md bg-primary px-1.5 py-1.5 text-[0.55rem] font-medium uppercase tracking-[0.04em] text-primary-foreground transition-smooth hover:opacity-90 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.15em]"
           >
             Book Now
           </a>
