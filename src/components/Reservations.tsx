@@ -16,7 +16,6 @@ interface ReservationDetails {
 const MIN_CHILD_AGE = 0;
 const MAX_CHILD_AGE = 17;
 const MAX_ADULTS = 6;
-const MIN_NIGHTS = 2;
 
 interface Child {
   id: number;
@@ -151,12 +150,6 @@ export default function Reservations() {
       return;
     }
 
-    const nightsSelected = Math.round((date.getTime() - checkIn.getTime()) / 86400000);
-    if (nightsSelected < MIN_NIGHTS) {
-      setRangeError(`Minimum stay is ${MIN_NIGHTS} nights — pick a later check-out date.`);
-      return;
-    }
-
     setCheckOut(date);
     setRangeError(null);
   }
@@ -173,6 +166,7 @@ export default function Reservations() {
   const hasUnpricedNight = selectedNightlyPrices.some((p) => p === null);
   const baseNightsCost = selectedNightlyPrices.reduce((sum: number, p) => sum + (p ?? 0), 0);
   const nightsCost = baseNightsCost * (1 + shortStaySurcharge(surcharges, nights));
+  const avgPricePerNight = nights > 0 ? nightsCost / nights : null;
   const discountAmount = appliedPromo ? nightsCost * (appliedPromo.percent / 100) : 0;
   const totalCost = nightsCost - discountAmount;
 
@@ -384,6 +378,11 @@ export default function Reservations() {
                       <div className="flex items-center justify-between">
                         <span className="text-muted-foreground">
                           {nights} night{nights !== 1 ? "s" : ""}
+                          {avgPricePerNight !== null && (
+                            <span className="ml-1 text-xs text-muted-foreground/70">
+                              ({formatPrice(avgPricePerNight)}/night)
+                            </span>
+                          )}
                         </span>
                         <span>{formatPrice(nightsCost)}</span>
                       </div>
