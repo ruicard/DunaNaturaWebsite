@@ -74,5 +74,12 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isAdmin();
     }
+
+    // Promo codes — validated client-side against the public booking form,
+    // so anyone can read them; only a signed-in admin can manage them.
+    match /PromoCodes/{promoCodeId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
   }
 }

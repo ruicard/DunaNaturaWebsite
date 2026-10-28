@@ -5,6 +5,7 @@ import { db } from "@/lib/firebase";
 import { toDateKey, useBookedDates } from "@/hooks/useBookedDates";
 import { useNightlyRates, type NightlyRate } from "@/hooks/useNightlyRates";
 import { useSurcharges, type Surcharge } from "@/hooks/useSurcharges";
+import { usePromoCodes, type PromoCode } from "@/hooks/usePromoCodes";
 
 interface ReservationDetails {
   name: string;
@@ -64,6 +65,7 @@ export default function Reservations() {
   const { bookedDates, loading, error } = useBookedDates();
   const { rates } = useNightlyRates(true);
   const { surcharges } = useSurcharges(true);
+  const { promoCodes } = usePromoCodes(true);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState<Child[]>([]);
   const nextChildId = useRef(0);
@@ -73,8 +75,36 @@ export default function Reservations() {
   const [rangeError, setRangeError] = useState<string | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [reservation, setReservation] = useState<ReservationDetails | null>(null);
+  const [promoInput, setPromoInput] = useState("");
+  const [appliedPromo, setAppliedPromo] = useState<PromoCode | null>(null);
+  const [promoError, setPromoError] = useState<string | null>(null);
 
   const isBooked = (date: Date) => bookedDates.has(toDateKey(date));
+
+  function applyPromo() {
+    const code = promoInput.trim();
+    if (!code) {
+      setPromoError("Enter a promo code.");
+      return;
+    }
+    const match = promoCodes.find((p) => p.code.toUpperCase() === code.toUpperCase());
+    if (!match) {
+      setPromoError("Invalid promo code.");
+      return;
+    }
+    if (match.expirationDate && toDateKey(today) > match.expirationDate) {
+      setPromoError("This promo code has expired.");
+      return;
+    }
+    setAppliedPromo(match);
+    setPromoError(null);
+  }
+
+  function clearPromo() {
+    setAppliedPromo(null);
+    setPromoInput("");
+    setPromoError(null);
+  }
 
   function addChild() {
     nextChildId.current += 1;
@@ -143,7 +173,8 @@ export default function Reservations() {
   const hasUnpricedNight = selectedNightlyPrices.some((p) => p === null);
   const baseNightsCost = selectedNightlyPrices.reduce((sum: number, p) => sum + (p ?? 0), 0);
   const nightsCost = baseNightsCost * (1 + shortStaySurcharge(surcharges, nights));
-  const totalCost = nightsCost;
+  const discountAmount = appliedPromo ? nightsCost * (appliedPromo.percent / 100) : 0;
+  const totalCost = nightsCost - discountAmount;
 
   const cells: (Date | null)[] = [];
   for (let i = 0; i < firstWeekday; i++) cells.push(null);
@@ -348,24 +379,86 @@ export default function Reservations() {
             ) : (
               <>
                 {checkIn && checkOut && (
-                  <div className="mt-8 rounded-md border border-border p-4 text-sm">
-                    <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground">
-                        {nights} night{nights !== 1 ? "s" : ""}
-                      </span>
-                      <span>{formatPrice(nightsCost)}</span>
+                  <>
+                    <div className="mt-8 rounded-md border border-border p-4 text-sm">
+                      <div className="flex items-center justify-between">
+                        <span className="text-muted-foreground">
+                          {nights} night{nights !== 1 ? "s" : ""}
+                        </span>
+                        <span>{formatPrice(nightsCost)}</span>
+                      </div>
+                      {appliedPromo && (
+                        <div className="mt-2 flex items-center justify-between text-primary">
+                          <span>
+                            Promo ({appliedPromo.code} -{appliedPromo.percent}%)
+                          </span>
+                          <span>-{formatPrice(discountAmount)}</span>
+                        </div>
+                      )}
+                      <div className="mt-3 flex items-center justify-between border-t border-border pt-3 font-medium">
+                        <span>Total</span>
+                        <span>{formatPrice(totalCost)}</span>
+                      </div>
+                      {hasUnpricedNight && (
+                        <p className="mt-2 text-xs text-destructive">
+                          Some nights in this range don't have a price yet — we'll confirm the
+                          exact total with you.
+                        </p>
+                      )}
                     </div>
-                    <div className="mt-3 flex items-center justify-between border-t border-border pt-3 font-medium">
-                      <span>Total</span>
-                      <span>{formatPrice(totalCost)}</span>
+
+                    <div className="mt-4">
+                      <label
+                        htmlFor="promo-code"
+                        className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
+                      >
+                        Promo Code <span className="normal-case text-muted-foreground/70">(optional)</span>
+                      </label>
+                      <div className="mt-1 flex gap-2">
+                        <input
+                          id="promo-code"
+                          type="text"
+                          value={promoInput}
+                          disabled={Boolean(appliedPromo)}
+                          onChange={(e) => {
+                            setPromoInput(e.target.value);
+                            setPromoError(null);
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              e.preventDefault();
+                              applyPromo();
+                            }
+                          }}
+                          placeholder="Have a code?"
+                          className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary disabled:opacity-60"
+                        />
+                        {appliedPromo ? (
+                          <button
+                            type="button"
+                            onClick={clearPromo}
+                            className="whitespace-nowrap rounded-md border border-border px-3 py-2 text-sm font-medium text-muted-foreground transition-smooth hover:bg-muted"
+                          >
+                            Remove
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={applyPromo}
+                            className="whitespace-nowrap rounded-md border border-border px-3 py-2 text-sm font-medium transition-smooth hover:bg-muted"
+                          >
+                            Apply
+                          </button>
+                        )}
+                      </div>
+                      {promoError && <p className="mt-1 text-xs text-destructive">{promoError}</p>}
+                      {appliedPromo && (
+                        <p className="mt-1 text-xs text-primary">
+                          "{appliedPromo.code}" applied — {appliedPromo.percent}% off.
+                        </p>
+                      )}
                     </div>
-                    {hasUnpricedNight && (
-                      <p className="mt-2 text-xs text-destructive">
-                        Some nights in this range don't have a price yet — we'll confirm the exact
-                        total with you.
-                      </p>
-                    )}
-                  </div>
+                  </>
                 )}
                 <button
                   disabled={!checkIn || !checkOut}
@@ -386,6 +479,7 @@ export default function Reservations() {
           summary={tripSummary}
           booking={{ checkIn, checkOut, adults, children }}
           totalPrice={totalCost}
+          promoCode={appliedPromo?.code ?? ""}
           onClose={() => setDialogOpen(false)}
           onSubmitted={(details) => {
             setReservation(details);
@@ -443,19 +537,20 @@ function ReservationDialog({
   summary,
   booking,
   totalPrice,
+  promoCode,
   onClose,
   onSubmitted,
 }: {
   summary: string;
   booking: { checkIn: Date; checkOut: Date; adults: number; children: Child[] };
   totalPrice: number;
+  promoCode: string;
   onClose: () => void;
   onSubmitted: (details: ReservationDetails) => void;
 }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [comments, setComments] = useState("");
-  const [promoCode, setPromoCode] = useState("");
   const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -591,23 +686,6 @@ function ReservationDialog({
               rows={3}
               className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary"
               placeholder="Anything we should know?"
-            />
-          </div>
-
-          <div>
-            <label
-              htmlFor="reservation-promo-code"
-              className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
-            >
-              Promo Code <span className="normal-case text-muted-foreground/70">(optional)</span>
-            </label>
-            <input
-              id="reservation-promo-code"
-              type="text"
-              value={promoCode}
-              onChange={(e) => setPromoCode(e.target.value)}
-              className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary"
-              placeholder="Have a code?"
             />
           </div>
 

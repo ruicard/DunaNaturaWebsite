@@ -11,6 +11,7 @@ import {
 } from "@/hooks/useReservationRequests";
 import PricingManager from "@/components/PricingManager";
 import SurchargeManager from "@/components/SurchargeManager";
+import PromoCodeManager from "@/components/PromoCodeManager";
 
 export default function Admin() {
   const { user, loading, signIn, signOut } = useAdminAuth();
@@ -333,6 +334,7 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
 
       <PricingManager />
       <SurchargeManager />
+      <PromoCodeManager />
     </div>
   );
 }
