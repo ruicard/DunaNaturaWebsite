@@ -13,14 +13,11 @@ export default function Contact() {
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <div className="flex items-center gap-3 rounded-lg bg-card p-5 shadow-soft">
             <Mail className="h-5 w-5 text-primary" />
-            <a href="mailto:hello@dunanatura.com" className="text-sm hover:text-primary">
-              hello@dunanatura.com
+            <a href="mailto:relax@dunanatura.pt" className="text-sm hover:text-primary">
+              relax@dunanatura.pt
             </a>
           </div>
-          <div className="flex items-center gap-3 rounded-lg bg-card p-5 shadow-soft">
-            <Clock className="h-5 w-5 text-primary" />
-            <span className="text-sm text-muted-foreground">Mon – Fri: 9am – 5pm</span>
-          </div>
+          
         </div>
 
         <form

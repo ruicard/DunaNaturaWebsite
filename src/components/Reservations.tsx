@@ -4,7 +4,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { toDateKey, useBookedDates } from "@/hooks/useBookedDates";
 import { useNightlyRates, type NightlyRate } from "@/hooks/useNightlyRates";
-import { useCleaningFee } from "@/hooks/useCleaningFee";
+import { useSurcharges, type Surcharge } from "@/hooks/useSurcharges";
 
 interface ReservationDetails {
   name: string;
@@ -54,11 +54,16 @@ function formatPrice(price: number | null): string {
   return Number.isInteger(price) ? `€${price}` : `€${price.toFixed(2)}`;
 }
 
+function shortStaySurcharge(surcharges: Surcharge[], nights: number): number {
+  const match = surcharges.find((s) => s.nights === nights);
+  return match ? match.percent / 100 : 0;
+}
+
 export default function Reservations() {
   const today = startOfDay(new Date());
   const { bookedDates, loading, error } = useBookedDates();
   const { rates } = useNightlyRates(true);
-  const { cleaningFee } = useCleaningFee(true);
+  const { surcharges } = useSurcharges(true);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState<Child[]>([]);
   const nextChildId = useRef(0);
@@ -136,9 +141,9 @@ export default function Reservations() {
       ? datesBetween(checkIn, checkOut).map((d) => priceForDate(rates, toDateKey(d)))
       : [];
   const hasUnpricedNight = selectedNightlyPrices.some((p) => p === null);
-  const nightsCost = selectedNightlyPrices.reduce((sum: number, p) => sum + (p ?? 0), 0);
-  const cleaningFeeValue = cleaningFee ?? 0;
-  const totalCost = nightsCost + cleaningFeeValue;
+  const baseNightsCost = selectedNightlyPrices.reduce((sum: number, p) => sum + (p ?? 0), 0);
+  const nightsCost = baseNightsCost * (1 + shortStaySurcharge(surcharges, nights));
+  const totalCost = nightsCost;
 
   const cells: (Date | null)[] = [];
   for (let i = 0; i < firstWeekday; i++) cells.push(null);
@@ -213,7 +218,6 @@ export default function Reservations() {
                 const inRange =
                   checkIn && checkOut && date > checkIn && date < checkOut;
                 const selected = isIn || isOut;
-                const priceLabel = isPast ? null : formatPrice(priceForDate(rates, toDateKey(date)));
                 return (
                   <button
                     key={i}
@@ -232,9 +236,6 @@ export default function Reservations() {
                     ].join(" ")}
                   >
                     <span className="leading-none">{date.getDate()}</span>
-                    {priceLabel && (
-                      <span className="text-[0.6rem] leading-none opacity-70">{priceLabel}</span>
-                    )}
                   </button>
                 );
               })}
@@ -354,10 +355,6 @@ export default function Reservations() {
                       </span>
                       <span>{formatPrice(nightsCost)}</span>
                     </div>
-                    <div className="mt-2 flex items-center justify-between">
-                      <span className="text-muted-foreground">Cleaning fee</span>
-                      <span>{formatPrice(cleaningFeeValue)}</span>
-                    </div>
                     <div className="mt-3 flex items-center justify-between border-t border-border pt-3 font-medium">
                       <span>Total</span>
                       <span>{formatPrice(totalCost)}</span>
@@ -389,7 +386,6 @@ export default function Reservations() {
           summary={tripSummary}
           booking={{ checkIn, checkOut, adults, children }}
           totalPrice={totalCost}
-          cleaningFee={cleaningFeeValue}
           onClose={() => setDialogOpen(false)}
           onSubmitted={(details) => {
             setReservation(details);
@@ -447,14 +443,12 @@ function ReservationDialog({
   summary,
   booking,
   totalPrice,
-  cleaningFee,
   onClose,
   onSubmitted,
 }: {
   summary: string;
   booking: { checkIn: Date; checkOut: Date; adults: number; children: Child[] };
   totalPrice: number;
-  cleaningFee: number;
   onClose: () => void;
   onSubmitted: (details: ReservationDetails) => void;
 }) {
@@ -508,7 +502,6 @@ function ReservationDialog({
         status: "pending",
         bookingId: bookingRef.id,
         totalPrice,
-        cleaningFee,
       });
 
       onSubmitted({ name: name.trim(), email: email.trim(), comments: comments.trim() });

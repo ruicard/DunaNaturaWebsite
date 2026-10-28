@@ -1,4 +1,4 @@
-import { Instagram, Facebook } from "lucide-react";
+import { Instagram } from "lucide-react";
 import logo from "@/assets/duna-natura-lockup-color.png";
 
 export default function Footer() {
@@ -8,7 +8,7 @@ export default function Footer() {
         <div>
           <img src={logo} alt="Duna Natura" className="h-16 w-auto" />
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
-            Off-grid camping between the Atlantic and the maritime pine forest.
+            Off-grid stay between the Atlantic and the maritime pine forest.
           </p>
         </div>
 
@@ -17,22 +17,25 @@ export default function Footer() {
             Contact Us
           </p>
           <a
-            href="mailto:hello@dunanatura.com"
+            href="mailto:relax@dunanatura.pt"
             className="mt-4 block text-sm transition-smooth hover:text-primary"
           >
-            hello@dunanatura.com
+            relax@dunanatura.pt
           </a>
-          <p className="mt-1 text-sm text-muted-foreground">Mon – Fri: 9am – 5pm</p>
+          <p className="mt-1 text-sm text-muted-foreground">Esposende, Portugal Northern Coast</p>
 
           <p className="mt-6 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
             Follow Us
           </p>
           <div className="mt-3 flex gap-4">
-            <a href="#" aria-label="Instagram" className="text-muted-foreground transition-smooth hover:text-primary">
+            <a
+              href="https://www.instagram.com/duna.natura"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="text-muted-foreground transition-smooth hover:text-primary"
+            >
               <Instagram className="h-5 w-5" />
-            </a>
-            <a href="#" aria-label="Facebook" className="text-muted-foreground transition-smooth hover:text-primary">
-              <Facebook className="h-5 w-5" />
             </a>
           </div>
         </div>

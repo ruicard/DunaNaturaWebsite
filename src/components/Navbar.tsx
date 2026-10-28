@@ -5,7 +5,6 @@ import logo from "@/assets/duna-natura-lockup-black.png";
 
 const links = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
   { label: "Contact", to: "/contact" },
 ];
 

@@ -35,8 +35,8 @@ const features = [
   },
   {
     icon: kiteIcon,
-    title: "Kite-Surfing",
-    text: "Try something new — let the wind take your adrenaline up.",
+    title: "Surfing",
+    text: "Try something new — let the wind take your adrenaline up with some surfing or kite-surfing lessons.",
   },
   {
     icon: poolIcon,

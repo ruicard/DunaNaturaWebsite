@@ -1,12 +1,17 @@
-// Asset images are referenced from the original deployment.
-// Swap these for local files in /public/assets once you have your own photos.
-const CDN = "https://dunanatura.lovable.app/assets";
+import heroDunesSunset from "@/assets/hero-dunes-sunset.jpg";
+import heroBeach from "@/assets/hero-beach.jpg";
+import heroDuneBoardwalk from "@/assets/hero-dune-boardwalk.jpg";
+import heroForestBoardwalk from "@/assets/hero-forest-boardwalk.jpg";
+import heroDuneOverlook from "@/assets/hero-dune-overlook.jpg";
+import heroEstuaryBoardwalk from "@/assets/hero-estuary-boardwalk.jpg";
 
-export const HERO_IMAGE = `${CDN}/hero-camping-CbW0tLde.jpg`;
+export const HERO_IMAGE = heroDunesSunset;
 
 export const HERO_IMAGES = [
-  HERO_IMAGE,
-  `${CDN}/spot-forest-COOsvQmS.jpg`,
-  `${CDN}/spot-lake-Cxpl3zJZ.jpg`,
-  `${CDN}/spot-meadow-BDscIEdG.jpg`,
+  heroDunesSunset,
+  heroBeach,
+  heroDuneBoardwalk,
+  heroForestBoardwalk,
+  heroDuneOverlook,
+  heroEstuaryBoardwalk,
 ];

@@ -1,6 +1,6 @@
 import { useState, type FormEvent, type MouseEvent } from "react";
 import { createPortal } from "react-dom";
-import { Loader2, Check, X, Pencil } from "lucide-react";
+import { Loader2, Check, X, Pencil, Eye, EyeOff } from "lucide-react";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { useAdminAuth } from "@/hooks/useAdminAuth";
@@ -10,7 +10,7 @@ import {
   type ReservationStatus,
 } from "@/hooks/useReservationRequests";
 import PricingManager from "@/components/PricingManager";
-import SettingsManager from "@/components/SettingsManager";
+import SurchargeManager from "@/components/SurchargeManager";
 
 export default function Admin() {
   const { user, loading, signIn, signOut } = useAdminAuth();
@@ -33,6 +33,7 @@ function AdminLogin({
 }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -80,14 +81,24 @@ function AdminLogin({
           >
             Password
           </label>
-          <input
-            id="admin-password"
-            type="password"
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary"
-          />
+          <div className="relative mt-1">
+            <input
+              id="admin-password"
+              type={showPassword ? "text" : "password"}
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full rounded-md border border-border bg-background px-3 py-2 pr-10 text-sm outline-none transition-smooth focus:border-primary"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword((v) => !v)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-muted-foreground transition-smooth hover:text-primary"
+            >
+              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
         </div>
 
         {error && <p className="mt-3 text-xs text-destructive">{error}</p>}
@@ -204,7 +215,6 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
               <th className="whitespace-nowrap px-4 py-3">Dates</th>
               <th className="whitespace-nowrap px-4 py-3">Guests</th>
               <th className="whitespace-nowrap px-4 py-3">Total Price</th>
-              <th className="whitespace-nowrap px-4 py-3">Cleaning Fee</th>
               <th className="whitespace-nowrap px-4 py-3">Promo Code</th>
               <th className="px-4 py-3">Comments</th>
               <th className="whitespace-nowrap px-4 py-3">Status</th>
@@ -214,13 +224,13 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={11} className="px-4 py-6 text-center text-muted-foreground">
+                <td colSpan={10} className="px-4 py-6 text-center text-muted-foreground">
                   Loading…
                 </td>
               </tr>
             ) : filtered.length === 0 ? (
               <tr>
-                <td colSpan={11} className="px-4 py-6 text-center text-muted-foreground">
+                <td colSpan={10} className="px-4 py-6 text-center text-muted-foreground">
                   No reservations found.
                 </td>
               </tr>
@@ -265,7 +275,6 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
                     {r.children > 0 ? `, ${r.children} child${r.children !== 1 ? "ren" : ""}` : ""})
                   </td>
                   <td className="whitespace-nowrap px-4 py-3">{formatMoney(r.totalPrice)}</td>
-                  <td className="whitespace-nowrap px-4 py-3">{formatMoney(r.cleaningFee)}</td>
                   <td className="whitespace-nowrap px-4 py-3">{r.promoCode || "—"}</td>
                   <td className="max-w-xs truncate px-4 py-3 text-muted-foreground">
                     {r.comments || "—"}
@@ -323,7 +332,7 @@ function AdminDashboard({ onSignOut }: { onSignOut: () => void }) {
       </div>
 
       <PricingManager />
-      <SettingsManager />
+      <SurchargeManager />
     </div>
   );
 }

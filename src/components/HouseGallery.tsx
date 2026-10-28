@@ -24,7 +24,7 @@ function PhotoCard({ photo, className }: { photo: HousePhoto; className: string 
   );
 }
 
-function MobileGalleryCarousel() {
+function MobileGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number) => void }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -57,13 +57,16 @@ function MobileGalleryCarousel() {
         ref={trackRef}
         className="flex snap-x snap-mandatory overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {housePhotos.map((photo) => (
-          <figure
+        {housePhotos.map((photo, index) => (
+          <button
             key={photo.caption}
-            className="relative h-72 w-full shrink-0 snap-center overflow-hidden rounded-lg bg-secondary shadow-soft"
+            type="button"
+            onClick={() => onPhotoClick(index)}
+            aria-label={`View ${photo.caption} full screen`}
+            className="relative h-72 w-full shrink-0 snap-center cursor-zoom-in overflow-hidden rounded-lg bg-secondary shadow-soft"
           >
             <PhotoCard photo={photo} className="" />
-          </figure>
+          </button>
         ))}
       </div>
 
@@ -323,7 +326,7 @@ export default function HouseGallery() {
           </p>
         </div>
 
-        <MobileGalleryCarousel />
+        <MobileGalleryCarousel onPhotoClick={setLightboxIndex} />
         <DesktopGalleryCarousel onPhotoClick={setLightboxIndex} />
       </div>
 

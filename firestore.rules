@@ -31,7 +31,7 @@ service cloud.firestore {
       allow create: if request.resource.data.keys().hasAll([
           'name', 'email', 'checkIn', 'checkOut', 'guests', 'adults', 'children',
           'childrenAges', 'comments', 'promoCode', 'reservationDate', 'status', 'bookingId',
-          'totalPrice', 'cleaningFee'
+          'totalPrice'
         ])
         && request.resource.data.bookingId is string
         && request.resource.data.name is string
@@ -57,9 +57,7 @@ service cloud.firestore {
         && request.resource.data.status == 'pending'
         && request.resource.data.reservationDate == request.time
         && request.resource.data.totalPrice is number
-        && request.resource.data.totalPrice >= 0
-        && request.resource.data.cleaningFee is number
-        && request.resource.data.cleaningFee >= 0;
+        && request.resource.data.totalPrice >= 0;
       allow update, delete: if isAdmin();
     }
 
@@ -70,10 +68,9 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
-    // Booking-wide settings (e.g. the cleaning fee) — shown in the public
-    // booking cost summary, so anyone can read them; only a signed-in
-    // admin can manage them.
-    match /Settings/{settingId} {
+    // Short-stay surcharges — shown in the public booking cost summary,
+    // so anyone can read them; only a signed-in admin can manage them.
+    match /Surcharges/{surchargeId} {
       allow read: if true;
       allow write: if isAdmin();
     }
