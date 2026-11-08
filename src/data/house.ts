@@ -30,3 +30,18 @@ export const housePhotos: HousePhoto[] = [
   { src: pool, alt: "Swimming pool", caption: "Pool" },
   { src: beachfrontView, alt: "Aerial view of the beach and dunes", caption: "Beachfront View" },
 ];
+
+export const houseAmenities: string[] = [
+  "Fully equipped kitchen",
+  "Master bedroom with private bathroom",
+  "Secondary bedroom with 2 individual beds",
+  "Extra bed and a baby crib available upon request",
+  "Dining and living room connected",
+  "Comfortable balcony bridging the house, the garden and the pool",
+  "Closed garage with access to bikes (*)",
+  "Rooftop terrace at the top of the building where you can enjoy the view",
+  "Shared pool",
+];
+
+export const houseAmenitiesFootnote =
+  "(*) Garage & bike access is free of charge but subject to a caution.";

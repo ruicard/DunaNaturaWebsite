@@ -1,6 +1,6 @@
-import { Camera, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { Camera, Check, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { housePhotos, type HousePhoto } from "@/data/house";
+import { houseAmenities, houseAmenitiesFootnote, housePhotos, type HousePhoto } from "@/data/house";
 
 function PhotoCard({ photo, className }: { photo: HousePhoto; className: string }) {
   return (
@@ -328,6 +328,28 @@ export default function HouseGallery() {
 
         <MobileGalleryCarousel onPhotoClick={setLightboxIndex} />
         <DesktopGalleryCarousel onPhotoClick={setLightboxIndex} />
+
+        <div className="mx-auto mt-20 max-w-3xl">
+          <div className="mb-10 text-center">
+            <h3 className="text-2xl font-light md:text-3xl">Amenities</h3>
+            <p className="mt-2 text-muted-foreground">Everything the house offers</p>
+          </div>
+
+          <div className="grid gap-x-8 gap-y-4 sm:grid-cols-2">
+            {houseAmenities.map((item) => (
+              <div key={item} className="flex items-start gap-3">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <Check className="h-3.5 w-3.5" />
+                </span>
+                <span className="text-sm text-foreground">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-6 text-center text-xs text-muted-foreground">
+            {houseAmenitiesFootnote}
+          </p>
+        </div>
       </div>
 
       {lightboxIndex !== null && (
