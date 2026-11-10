@@ -1,5 +1,5 @@
 import relaxIcon from "@/assets/008-relax.png";
-import forestIcon from "@/assets/006-forest.png";
+import bicycleIcon from "@/assets/001-bicycle.png";
 import vacationsIcon from "@/assets/002-vacations.png";
 import roadTripIcon from "@/assets/009-arrow.png";
 import sunriseIcon from "@/assets/003-sunrise.png";
@@ -14,9 +14,9 @@ const features = [
     text: "Forget time. Fall asleep between dunes and pines, wake to the sound of Atlantic waves.",
   },
   {
-    icon: forestIcon,
-    title: "Forest & River Trails",
-    text: "Walk the river, the beach or the pine forest — all just steps from your door.",
+    icon: bicycleIcon,
+    title: "Wooden Trails",
+    text: "Boardwalks lead straight to wild Atlantic sand, the coastal town or the riverside.",
   },
   {
     icon: vacationsIcon,
