@@ -1,7 +1,7 @@
 import relaxIcon from "@/assets/008-relax.png";
 import forestIcon from "@/assets/006-forest.png";
 import vacationsIcon from "@/assets/002-vacations.png";
-import bicycleIcon from "@/assets/001-bicycle.png";
+import roadTripIcon from "@/assets/009-arrow.png";
 import sunriseIcon from "@/assets/003-sunrise.png";
 import kiteIcon from "@/assets/004-kite.png";
 import poolIcon from "@/assets/005-swimming-pool.png";
@@ -24,9 +24,9 @@ const features = [
     text: "Go catch some waves — the beach is always just meters away.",
   },
   {
-    icon: bicycleIcon,
-    title: "Wooden Trails",
-    text: "Boardwalks lead straight to wild Atlantic sand, the coastal town or the riverside.",
+    icon: roadTripIcon,
+    title: "Road Trips",
+    text: "By car you can visit the major cities of the Western side of the north, like Porto, Braga or Viana do Castelo.",
   },
   {
     icon: sunriseIcon,
