@@ -50,13 +50,33 @@ function shortStaySurcharge(surcharges: Surcharge[], nights: number): number {
 }
 
 export default function Reservations() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isPt = i18n.language.startsWith("pt");
   const MONTHS = t("reservations.months", { returnObjects: true }) as string[];
   const DOW = t("reservations.dow", { returnObjects: true }) as string[];
 
   function formatPrice(price: number | null): string {
     if (price === null) return t("reservations.priceTbc");
+    if (isPt) {
+      return Number.isInteger(price) ? `${price} €` : `${price.toFixed(2).replace(".", ",")} €`;
+    }
     return Number.isInteger(price) ? `€${price}` : `€${price.toFixed(2)}`;
+  }
+
+  function formatDateRange(checkIn: Date, checkOut: Date): string {
+    if (isPt) {
+      const monthName = (d: Date) => MONTHS[d.getMonth()].toLowerCase();
+      if (
+        checkIn.getMonth() === checkOut.getMonth() &&
+        checkIn.getFullYear() === checkOut.getFullYear()
+      ) {
+        return `${checkIn.getDate()} – ${checkOut.getDate()} de ${monthName(checkIn)}`;
+      }
+      return `${checkIn.getDate()} de ${monthName(checkIn)} – ${checkOut.getDate()} de ${monthName(
+        checkOut
+      )}`;
+    }
+    return `${MONTHS[checkIn.getMonth()]} ${checkIn.getDate()} – ${MONTHS[checkOut.getMonth()]} ${checkOut.getDate()}`;
   }
 
   const today = startOfDay(new Date());
@@ -176,10 +196,9 @@ export default function Reservations() {
   const totalGuests = adults + children.length;
   const tripSummary =
     checkIn && checkOut
-      ? `${MONTHS[checkIn.getMonth()]} ${checkIn.getDate()} – ${MONTHS[checkOut.getMonth()]} ${checkOut.getDate()} · ${t(
-          "reservations.night",
-          { count: nights }
-        )} · ${t("reservations.guest", { count: totalGuests })}`
+      ? `${formatDateRange(checkIn, checkOut)} · ${t("reservations.night", {
+          count: nights,
+        })} · ${t("reservations.guest", { count: totalGuests })}`
       : "";
 
   return (
