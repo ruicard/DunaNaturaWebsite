@@ -16,7 +16,7 @@
     "eyebrow": "Escapadas off-grid · Esposende, costa norte de Portugal",
     "titleLine1": "Entre os Pinhais",
     "titleLine2": "e o Mar",
-    "subtitle": "Passadiços, dunas e praias atlânticas selvagens. Desligue-se entre o pinhal marítimo e o oceano.",
+    "subtitle": "Passadiços, dunas e praias atlânticas selvagens. Desligue-se entre o pinhal, o rio e o oceano.",
     "cta": "Reservar",
     "slideAlt": "Passadiço entre dunas costeiras ao pôr do sol",
     "showSlide": "Mostrar imagem {{n}}"
@@ -24,7 +24,7 @@
   "gallery": {
     "eyebrow": "A Casa",
     "title": "Galeria de Fotos",
-    "subtitle": "Um olhar mais próximo sobre a casa que alugamos",
+    "subtitle": "Um olhar mais próximo sobre a casa",
     "addPhoto": "Adicionar foto",
     "photos": {
       "livingRoom": "Sala de Estar",
@@ -83,32 +83,32 @@
         "text": "Esqueça o tempo. Adormeça entre dunas e pinheiros, acorde ao som das ondas do Atlântico."
       },
       "woodenTrails": {
-        "title": "Trilhos de Madeira",
+        "title": "Caminhos entre a natureza",
         "text": "Os passadiços levam diretamente à areia selvagem do Atlântico, à vila costeira ou à margem do rio."
       },
       "beachDays": {
         "title": "Dias de Praia",
-        "text": "Vá apanhar umas ondas — a praia está sempre a poucos metros."
+        "text": "Desfrute das ondas — a praia está sempre a poucos metros."
       },
       "roadTrips": {
         "title": "Viagens de Carro",
-        "text": "De carro pode visitar as principais cidades do lado ocidental do norte, como o Porto, Braga ou Viana do Castelo."
+        "text": "De carro pode visitar as principais cidades do norte ocidental, como o Porto, Braga ou Viana do Castelo."
       },
       "goldenHour": {
-        "title": "Hora Dourada",
+        "title": "Pôr do Sol",
         "text": "Relaxe no terraço e aproveite o pôr do sol atlântico, todas as noites."
       },
       "surfing": {
         "title": "Surf",
-        "text": "Experimente algo novo — deixe o vento elevar a sua adrenalina com umas aulas de surf ou kitesurf."
+        "text": "Experimente algo novo — deixe o vento e as ondas elevar a sua adrenalina com umas aulas de surf ou kitesurf."
       },
       "poolDays": {
-        "title": "Dias de Piscina",
-        "text": "Todos os dias de sol são dias de piscina, e a piscina está mesmo ao lado."
+        "title": "Piscina",
+        "text": "Qualquer dia de sol é um dia para desfrutar da piscina, e está mesmo à porta."
       },
       "buggyTours": {
         "title": "Passeios de Buggy",
-        "text": "Desejos selvagens exigem medidas selvagens — passeios de buggy nas redondezas."
+        "text": "Desejos selvagens pedem medidas arrojadas — experimente um passeio de buggy nas redondezas."
       }
     }
   },
