@@ -13,7 +13,7 @@
     "de": "Deutsch"
   },
   "hero": {
-    "eyebrow": "Off-grid escapes · Esposende, Portugal's northern coast",
+    "eyebrow": "Nature escapes · Esposende, Portugal's northern coast",
     "titleLine1": "Between Pines",
     "titleLine2": "and the Sea",
     "subtitle": "Boardwalks, dunes and wild Atlantic beaches. Disconnect between the maritime pine forest and the ocean.",
@@ -22,9 +22,9 @@
     "showSlide": "Show slide {{n}}"
   },
   "gallery": {
-    "eyebrow": "The House",
+    "eyebrow": "The Apartment",
     "title": "Photo Gallery",
-    "subtitle": "A closer look at the house we're renting out",
+    "subtitle": "A closer look at the apartment we're renting out",
     "addPhoto": "Add photo",
     "photos": {
       "livingRoom": "Living Room",
@@ -45,7 +45,7 @@
       "mainBedroom": "Main bedroom",
       "secondaryBedroom": "Secondary bedroom",
       "bathroom": "Bathroom",
-      "exterior": "House exterior and garden",
+      "exterior": "Exterior and garden",
       "terrace": "Outdoor terrace lounge",
       "pool": "Swimming pool",
       "beachfrontView": "Aerial view of the beach and dunes"
@@ -59,14 +59,14 @@
     "showPhotosRange": "Show photos {{from}} to {{to}}",
     "close": "Close",
     "amenitiesTitle": "Amenities",
-    "amenitiesSubtitle": "Everything the house offers",
+    "amenitiesSubtitle": "Everything the apartment offers",
     "amenities": {
       "kitchen": "Fully equipped kitchen",
       "masterBedroom": "Master bedroom with private bathroom",
       "secondaryBedroom": "Secondary bedroom with 2 individual beds",
       "extraBed": "Extra bed and a baby crib available upon request",
       "diningLiving": "Dining and living room connected",
-      "balcony": "Comfortable balcony bridging the house, the garden and the pool",
+      "balcony": "Comfortable balcony bridging the inside, the garden and the pool",
       "garage": "Closed garage with access to bikes (*)",
       "rooftop": "Rooftop terrace at the top of the building where you can enjoy the view",
       "pool": "Shared pool"
@@ -80,19 +80,19 @@
     "features": {
       "slowDown": {
         "title": "Slow Down",
-        "text": "Forget time. Fall asleep between dunes and pines, wake to the sound of Atlantic waves."
+        "text": "Lose track of time. Drift off between dunes and pines, and wake to the sound of the Atlantic."
       },
       "woodenTrails": {
         "title": "Wooden Trails",
-        "text": "Boardwalks lead straight to wild Atlantic sand, the coastal town or the riverside."
+        "text": "Follow the boardwalks through the dunes to wild Atlantic beaches, Esposende’s old town or the banks of the Cávado river."
       },
       "beachDays": {
-        "title": "Beach Days",
-        "text": "Go catch some waves — the beach is always just meters away."
+        "title": "Beach",
+        "text": "A short walk through the dunes and you’re on the beach. Stay until the sun goes down; there’s no rush to get back."
       },
       "roadTrips": {
-        "title": "Road Trips",
-        "text": "By car you can visit the major cities of the Western side of the north, like Porto, Braga or Viana do Castelo."
+        "title": "Day Trips",
+        "text": "Porto, Braga and Viana do Castelo are all an easy drive away. Historic centres, port wine and Minho cooking, and you’re back in time for sunset."
       },
       "goldenHour": {
         "title": "Golden Hour",
@@ -100,15 +100,15 @@
       },
       "surfing": {
         "title": "Surfing",
-        "text": "Try something new — let the wind take your adrenaline up with some surfing or kite-surfing lessons."
+        "text": "The Atlantic winds here are made for it. Book a surf or kitesurf lesson and catch your first wave, or your best one yet."
       },
       "poolDays": {
         "title": "Pool Days",
-        "text": "Every sunny day is a pool day, and the pool is just steps away."
+        "text": "When the ocean feels too wild, the pool is just steps away. A sun lounger, a good book and nothing else on the agenda."
       },
       "buggyTours": {
         "title": "Buggy Tours",
-        "text": "Wild wishes require wild measures — buggy tours nearby."
+        "text": "Off-Road Buggies: Swap the calm for a little adrenaline: guided buggy tours on the trails nearby."
       }
     }
   },
@@ -192,9 +192,9 @@
   "about": {
     "eyebrow": "About",
     "title": "Where the pine forest meets the ocean",
-    "p1": "Duna Natura is a collection of off-grid camping spots tucked between the maritime pine forest and the wild beaches of Portugal's northern coast. We believe the best kind of rest comes from slowing down — trading notifications for birdsong and screens for the horizon.",
-    "p2": "Each spot is chosen for its quiet, its light and its connection to the landscape. Wooden boardwalks lead through the dunes to the Atlantic, where golden-hour sunsets close every evening of your stay.",
-    "p3": "No wifi. No signal. Just pines, dunes and the ocean — the way nature intended."
+    "p1": "Duna Natura is an apartment set between enchanting maritime pine forests, the wild beaches of Portugal's northern coast and the charming seaside town of Esposende. We believe the best rest comes from slowing down to the rhythm of nature.",
+    "p2": "The location is special for its peace and quiet, its light and its connection to the landscape. Wooden boardwalks cross the dunes to the Atlantic, where the sunset closes every evening of your stay.",
+    "p3": "No stress. Just pines, dunes and the ocean, always a short stroll from everything the town has to offer."
   },
   "contact": {
     "eyebrow": "Contact",

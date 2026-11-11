@@ -13,7 +13,7 @@
     "de": "Deutsch"
   },
   "hero": {
-    "eyebrow": "Escapadas off-grid · Esposende, costa norte de Portugal",
+    "eyebrow": "Escapadas na natureza · Esposende, costa norte de Portugal",
     "titleLine1": "Entre os Pinhais",
     "titleLine2": "e o Mar",
     "subtitle": "Passadiços, dunas e praias atlânticas selvagens. Desligue-se entre o pinhal, o rio e o oceano.",
@@ -22,9 +22,9 @@
     "showSlide": "Mostrar imagem {{n}}"
   },
   "gallery": {
-    "eyebrow": "A Casa",
+    "eyebrow": "O apartamento",
     "title": "Galeria de Fotos",
-    "subtitle": "Um olhar mais próximo sobre a casa",
+    "subtitle": "Um olhar mais próximo sobre o apartamento",
     "addPhoto": "Adicionar foto",
     "photos": {
       "livingRoom": "Sala de Estar",
@@ -45,7 +45,7 @@
       "mainBedroom": "Quarto principal",
       "secondaryBedroom": "Quarto secundário",
       "bathroom": "Casa de banho",
-      "exterior": "Exterior da casa e jardim",
+      "exterior": "Exterior do apartamento e jardim",
       "terrace": "Terraço exterior com lounge",
       "pool": "Piscina",
       "beachfrontView": "Vista aérea da praia e das dunas"
@@ -59,14 +59,14 @@
     "showPhotosRange": "Mostrar fotos {{from}} a {{to}}",
     "close": "Fechar",
     "amenitiesTitle": "Comodidades",
-    "amenitiesSubtitle": "Tudo o que a casa oferece",
+    "amenitiesSubtitle": "Tudo o que o apartamento oferece",
     "amenities": {
       "kitchen": "Cozinha totalmente equipada",
       "masterBedroom": "Quarto principal com casa de banho privativa",
       "secondaryBedroom": "Quarto secundário com 2 camas individuais",
       "extraBed": "Cama extra e berço de bebé disponíveis mediante pedido",
       "diningLiving": "Sala de jantar e sala de estar em conjunto",
-      "balcony": "Varanda confortável que liga a casa, o jardim e a piscina",
+      "balcony": "Varanda confortável que liga o interior, o jardim e a piscina",
       "garage": "Garagem fechada com acesso a bicicletas (*)",
       "rooftop": "Terraço no topo do edifício onde pode desfrutar da vista",
       "pool": "Piscina partilhada"
@@ -80,35 +80,35 @@
     "features": {
       "slowDown": {
         "title": "Abrande",
-        "text": "Esqueça o tempo. Adormeça entre dunas e pinheiros, acorde ao som das ondas do Atlântico."
+        "text": "Esqueça o relógio. Adormeça entre dunas e pinheiros e acorde ao som do Atlântico."
       },
       "woodenTrails": {
         "title": "Caminhos entre a natureza",
-        "text": "Os passadiços levam diretamente à areia selvagem do Atlântico, à vila costeira ou à margem do rio."
+        "text": "Siga os passadiços pelas dunas até às praias selvagens do Atlântico, ao centro de Esposende ou às margens do Cávado."
       },
       "beachDays": {
         "title": "Dias de Praia",
-        "text": "Desfrute das ondas — a praia está sempre a poucos metros."
+        "text": "Pés na Areia: Uma curta caminhada pelas dunas e está na praia. Fique até o sol se pôr, sem pressa de voltar."
       },
       "roadTrips": {
         "title": "Viagens de Carro",
-        "text": "De carro pode visitar as principais cidades do norte ocidental, como o Porto, Braga ou Viana do Castelo."
+        "text": "Escapadas pelo Minho: Porto, Braga e Viana do Castelo ficam a pouca distância de carro. Centros históricos, vinho do Porto e cozinha minhota, e está de volta a tempo do pôr do sol."
       },
       "goldenHour": {
         "title": "Pôr do Sol",
-        "text": "Relaxe no terraço e aproveite o pôr do sol atlântico, todas as noites."
+        "text": "Todas as noites acabam da mesma forma: no terraço, bebida na mão, a ver o sol a desaparecer no Atlântico."
       },
       "surfing": {
         "title": "Surf",
-        "text": "Experimente algo novo — deixe o vento e as ondas elevar a sua adrenalina com umas aulas de surf ou kitesurf."
+        "text": "Surf & Kite: O vento atlântico aqui parece feito de propósito. Marque uma aula de surf ou kitesurf e apanhe a sua primeira onda, ou a melhor até hoje."
       },
       "poolDays": {
         "title": "Piscina",
-        "text": "Qualquer dia de sol é um dia para desfrutar da piscina, e está mesmo à porta."
+        "text": "Quando o mar está mais agitado, a piscina está a dois passos. Uma espreguiçadeira, um bom livro e mais nada na agenda."
       },
       "buggyTours": {
         "title": "Passeios de Buggy",
-        "text": "Desejos selvagens pedem medidas arrojadas — experimente um passeio de buggy nas redondezas."
+        "text": "Aventura em Buggy: Troque a calma por um pouco de adrenalina: passeios de buggy pelos trilhos aqui perto."
       }
     }
   },
@@ -192,9 +192,9 @@
   "about": {
     "eyebrow": "Sobre",
     "title": "Onde o pinhal encontra o oceano",
-    "p1": "A Duna Natura é um conjunto de espaços de campismo off-grid escondidos entre o pinhal marítimo e as praias selvagens da costa norte de Portugal. Acreditamos que o melhor descanso vem de abrandar — trocar notificações pelo canto dos pássaros e ecrãs pelo horizonte.",
-    "p2": "Cada espaço é escolhido pela sua tranquilidade, pela sua luz e pela sua ligação à paisagem. Passadiços de madeira atravessam as dunas até ao Atlântico, onde o pôr do sol encerra todas as noites da sua estadia.",
-    "p3": "Sem wifi. Sem sinal. Apenas pinheiros, dunas e o oceano — como a natureza pretendeu."
+    "p1": "A Duna Natura é um apartamento localizado entre os encantados pinhais marítimos, as praias selvagens da costa norte de Portugal e a bela cidade costeira de Esposende. Acreditamos que o melhor descanso vem de abrandar com o ritmo da natureza.",
+    "p2": "A localização é privilegiada pela sua tranquilidade, pela sua luz e pela sua ligação à paisagem. Passadiços de madeira atravessam as dunas até ao Atlântico, onde o pôr do sol encerra todas as noites da sua estadia.",
+    "p3": "Sem stress. Apenas pinheiros, dunas e o oceano, e sempre a poucos passos de tudo o que a cidade pode oferecer."
   },
   "contact": {
     "eyebrow": "Contacto",
