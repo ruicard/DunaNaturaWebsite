@@ -38,13 +38,13 @@ function expandRange(checkIn: string, checkOut: string): string[] {
 interface UseBookedDatesResult {
   bookedDates: Set<string>;
   loading: boolean;
-  error: string | null;
+  error: boolean;
 }
 
 export function useBookedDates(): UseBookedDatesResult {
   const [bookedDates, setBookedDates] = useState<Set<string>>(new Set());
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
@@ -61,10 +61,10 @@ export function useBookedDates(): UseBookedDatesResult {
         });
         setBookedDates(dates);
         setLoading(false);
-        setError(null);
+        setError(false);
       },
       () => {
-        setError("Couldn't load availability. Please contact us to confirm your dates.");
+        setError(true);
         setLoading(false);
       }
     );

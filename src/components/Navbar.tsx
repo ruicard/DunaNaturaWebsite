@@ -1,14 +1,16 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/duna-natura-lockup-black.png";
-
-const links = [
-  { label: "Home", to: "/" },
-  { label: "Contact", to: "/contact" },
-];
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Navbar() {
+  const { t } = useTranslation();
+  const links = [
+    { label: t("nav.home"), to: "/" },
+    { label: t("nav.contact"), to: "/contact" },
+  ];
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -72,8 +74,9 @@ export default function Navbar() {
             onClick={handleBookNow}
             className="whitespace-nowrap rounded-md bg-primary px-1.5 py-1.5 text-[0.55rem] font-medium uppercase tracking-[0.04em] text-primary-foreground transition-smooth hover:opacity-90 sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.15em]"
           >
-            Book Now
+            {t("nav.bookNow")}
           </a>
+          <LanguageSwitcher solid={solid} />
         </nav>
       </div>
     </header>

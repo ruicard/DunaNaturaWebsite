@@ -1,6 +1,7 @@
 import { useRef, useState, type FormEvent } from "react";
 import { Minus, Plus, X, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { useTranslation } from "react-i18next";
 import { db } from "@/lib/firebase";
 import { toDateKey, useBookedDates } from "@/hooks/useBookedDates";
 import { useNightlyRates, type NightlyRate } from "@/hooks/useNightlyRates";
@@ -21,12 +22,6 @@ interface Child {
   id: number;
   age: number;
 }
-
-const DOW = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
-const MONTHS = [
-  "January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December",
-];
 
 function startOfDay(d: Date) {
   return new Date(d.getFullYear(), d.getMonth(), d.getDate());
@@ -49,17 +44,21 @@ function priceForDate(rates: NightlyRate[], dateKey: string): number | null {
   return rate ? rate.price : null;
 }
 
-function formatPrice(price: number | null): string {
-  if (price === null) return "tbc";
-  return Number.isInteger(price) ? `€${price}` : `€${price.toFixed(2)}`;
-}
-
 function shortStaySurcharge(surcharges: Surcharge[], nights: number): number {
   const match = surcharges.find((s) => s.nights === nights);
   return match ? match.percent / 100 : 0;
 }
 
 export default function Reservations() {
+  const { t } = useTranslation();
+  const MONTHS = t("reservations.months", { returnObjects: true }) as string[];
+  const DOW = t("reservations.dow", { returnObjects: true }) as string[];
+
+  function formatPrice(price: number | null): string {
+    if (price === null) return t("reservations.priceTbc");
+    return Number.isInteger(price) ? `€${price}` : `€${price.toFixed(2)}`;
+  }
+
   const today = startOfDay(new Date());
   const { bookedDates, loading, error } = useBookedDates();
   const { rates } = useNightlyRates(true);
@@ -83,16 +82,16 @@ export default function Reservations() {
   function applyPromo() {
     const code = promoInput.trim();
     if (!code) {
-      setPromoError("Enter a promo code.");
+      setPromoError(t("reservations.enterPromoCode"));
       return;
     }
     const match = promoCodes.find((p) => p.code.toUpperCase() === code.toUpperCase());
     if (!match) {
-      setPromoError("Invalid promo code.");
+      setPromoError(t("reservations.invalidPromoCode"));
       return;
     }
     if (match.expirationDate && toDateKey(today) > match.expirationDate) {
-      setPromoError("This promo code has expired.");
+      setPromoError(t("reservations.promoExpired"));
       return;
     }
     setAppliedPromo(match);
@@ -128,7 +127,7 @@ export default function Reservations() {
     view > new Date(today.getFullYear(), today.getMonth(), 1);
 
   function pick(date: Date) {
-    if (date < today || isBooked(date) || Boolean(error)) return;
+    if (date < today || isBooked(date) || error) return;
 
     if (!checkIn || (checkIn && checkOut)) {
       setCheckIn(date);
@@ -146,7 +145,7 @@ export default function Reservations() {
 
     const blocked = datesBetween(checkIn, date).some(isBooked);
     if (blocked) {
-      setRangeError("Some nights in that range are already booked — pick a different check-out date.");
+      setRangeError(t("reservations.rangeErrorBooked"));
       return;
     }
 
@@ -177,7 +176,10 @@ export default function Reservations() {
   const totalGuests = adults + children.length;
   const tripSummary =
     checkIn && checkOut
-      ? `${MONTHS[checkIn.getMonth()]} ${checkIn.getDate()} – ${MONTHS[checkOut.getMonth()]} ${checkOut.getDate()} · ${nights} night${nights !== 1 ? "s" : ""} · ${totalGuests} guest${totalGuests !== 1 ? "s" : ""}`
+      ? `${MONTHS[checkIn.getMonth()]} ${checkIn.getDate()} – ${MONTHS[checkOut.getMonth()]} ${checkOut.getDate()} · ${t(
+          "reservations.night",
+          { count: nights }
+        )} · ${t("reservations.guest", { count: totalGuests })}`
       : "";
 
   return (
@@ -185,11 +187,9 @@ export default function Reservations() {
       <section id="reservations" className="bg-background py-24">
       <div className="container">
         <div className="mb-14 text-center">
-          <p className="eyebrow">Reservations</p>
-          <h2 className="mt-3 text-4xl font-light md:text-5xl">Book Your Escape</h2>
-          <p className="mt-4 text-muted-foreground">
-            Choose your dates and let nature work its magic
-          </p>
+          <p className="eyebrow">{t("reservations.eyebrow")}</p>
+          <h2 className="mt-3 text-4xl font-light md:text-5xl">{t("reservations.title")}</h2>
+          <p className="mt-4 text-muted-foreground">{t("reservations.subtitle")}</p>
         </div>
 
         <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
@@ -197,12 +197,12 @@ export default function Reservations() {
           <div className="rounded-lg bg-card p-8 shadow-soft md:order-2">
             <div className="mb-4 flex items-center justify-between">
               <p className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
-                Check-in & Check-out
+                {t("reservations.checkInOut")}
               </p>
               {loading && (
                 <span className="flex items-center gap-1.5 text-[0.65rem] text-muted-foreground">
                   <Loader2 className="h-3 w-3 animate-spin" />
-                  Checking availability
+                  {t("reservations.checkingAvailability")}
                 </span>
               )}
             </div>
@@ -212,7 +212,7 @@ export default function Reservations() {
                 disabled={!canGoPrev}
                 onClick={() => setView(new Date(year, month - 1, 1))}
                 className="rounded-md p-1 text-foreground transition-smooth hover:bg-muted disabled:opacity-30"
-                aria-label="Previous month"
+                aria-label={t("reservations.previousMonth")}
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -222,15 +222,15 @@ export default function Reservations() {
               <button
                 onClick={() => setView(new Date(year, month + 1, 1))}
                 className="rounded-md p-1 text-foreground transition-smooth hover:bg-muted"
-                aria-label="Next month"
+                aria-label={t("reservations.nextMonth")}
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
             </div>
 
             <div className={`grid grid-cols-7 gap-1 text-center ${loading ? "opacity-50" : ""}`}>
-              {DOW.map((d) => (
-                <span key={d} className="py-1 text-[0.7rem] font-medium text-muted-foreground">
+              {DOW.map((d, i) => (
+                <span key={i} className="py-1 text-[0.7rem] font-medium text-muted-foreground">
                   {d}
                 </span>
               ))}
@@ -247,7 +247,7 @@ export default function Reservations() {
                   <button
                     key={i}
                     disabled={isPast || booked}
-                    title={booked ? "Already booked" : undefined}
+                    title={booked ? t("reservations.alreadyBooked") : undefined}
                     onClick={() => pick(date)}
                     className={[
                       "relative flex aspect-square flex-col items-center justify-center gap-0.5 rounded-md text-sm transition-smooth",
@@ -269,32 +269,32 @@ export default function Reservations() {
             <div className="mt-4 flex items-center justify-center gap-4 text-[0.7rem] text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full border border-border" />
-                Available
+                {t("reservations.legendAvailable")}
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/40" />
-                Booked
+                {t("reservations.legendBooked")}
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-primary" />
-                Selected
+                {t("reservations.legendSelected")}
               </span>
             </div>
 
             <div className="mt-6 border-t border-border pt-4 text-sm">
               {error ? (
-                <p className="text-destructive">{error}</p>
+                <p className="text-destructive">{t("reservations.loadError")}</p>
               ) : rangeError ? (
                 <p className="text-destructive">{rangeError}</p>
               ) : checkIn && checkOut ? (
                 <p className="text-foreground">
-                  {nights} night{nights !== 1 ? "s" : ""} · {adults + children.length} guest
-                  {adults + children.length !== 1 ? "s" : ""}
+                  {t("reservations.night", { count: nights })} ·{" "}
+                  {t("reservations.guest", { count: adults + children.length })}
                 </p>
               ) : checkIn ? (
-                <p className="text-muted-foreground">Select your check-out date</p>
+                <p className="text-muted-foreground">{t("reservations.selectCheckOut")}</p>
               ) : (
-                <p className="text-muted-foreground">Select your check-in date</p>
+                <p className="text-muted-foreground">{t("reservations.selectCheckIn")}</p>
               )}
             </div>
           </div>
@@ -302,8 +302,8 @@ export default function Reservations() {
           {/* Guests */}
           <div className="rounded-lg bg-card p-8 shadow-soft md:order-1">
             <Stepper
-              label="Adults"
-              value={`${adults} adult${adults !== 1 ? "s" : ""}`}
+              label={t("reservations.adults")}
+              value={t("reservations.adult", { count: adults })}
               onDec={() => setAdults((v) => Math.max(1, v - 1))}
               onInc={() => setAdults((v) => Math.min(MAX_ADULTS, v + 1))}
               incDisabled={adults >= MAX_ADULTS}
@@ -311,17 +311,19 @@ export default function Reservations() {
             <div className="my-6 h-px bg-border" />
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">
-                Children
+                {t("reservations.children")}
               </span>
               <button
                 onClick={addChild}
                 className="flex items-center gap-1 text-sm font-medium text-primary transition-smooth hover:opacity-70"
               >
-                <Plus className="h-4 w-4" /> Add Child
+                <Plus className="h-4 w-4" /> {t("reservations.addChild")}
               </button>
             </div>
             {children.length === 0 ? (
-              <p className="mt-4 text-sm text-muted-foreground">No children added</p>
+              <p className="mt-4 text-sm text-muted-foreground">
+                {t("reservations.noChildrenAdded")}
+              </p>
             ) : (
               <div className="mt-4 space-y-2">
                 {children.map((child, index) => (
@@ -329,31 +331,33 @@ export default function Reservations() {
                     key={child.id}
                     className="flex items-center justify-between rounded-md border border-border px-3 py-2"
                   >
-                    <span className="text-sm">Child {index + 1}</span>
+                    <span className="text-sm">
+                      {t("reservations.childLabel", { n: index + 1 })}
+                    </span>
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => setChildAge(child.id, child.age - 1)}
                         disabled={child.age <= MIN_CHILD_AGE}
                         className="flex h-7 w-7 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted disabled:opacity-30"
-                        aria-label={`Decrease age for child ${index + 1}`}
+                        aria-label={t("reservations.decreaseAgeFor", { n: index + 1 })}
                       >
                         <Minus className="h-3.5 w-3.5" />
                       </button>
                       <span className="w-16 text-center text-sm">
-                        {child.age} yr{child.age !== 1 ? "s" : ""}
+                        {t("reservations.yr", { count: child.age })}
                       </span>
                       <button
                         onClick={() => setChildAge(child.id, child.age + 1)}
                         disabled={child.age >= MAX_CHILD_AGE}
                         className="flex h-7 w-7 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted disabled:opacity-30"
-                        aria-label={`Increase age for child ${index + 1}`}
+                        aria-label={t("reservations.increaseAgeFor", { n: index + 1 })}
                       >
                         <Plus className="h-3.5 w-3.5" />
                       </button>
                       <button
                         onClick={() => removeChild(child.id)}
                         className="ml-1 text-muted-foreground transition-smooth hover:text-destructive"
-                        aria-label={`Remove child ${index + 1}`}
+                        aria-label={t("reservations.removeChild", { n: index + 1 })}
                       >
                         <X className="h-4 w-4" />
                       </button>
@@ -364,10 +368,12 @@ export default function Reservations() {
             )}
             {reservation ? (
               <div className="mt-8 rounded-md border border-primary/30 bg-primary/5 p-4 text-sm">
-                <p className="font-medium text-foreground">Request sent!</p>
+                <p className="font-medium text-foreground">{t("reservations.requestSent")}</p>
                 <p className="mt-1 text-muted-foreground">
-                  Thanks, {reservation.name}. We'll reach out at {reservation.email} to confirm
-                  your stay.
+                  {t("reservations.thanksMessage", {
+                    name: reservation.name,
+                    email: reservation.email,
+                  })}
                 </p>
               </div>
             ) : (
@@ -377,10 +383,11 @@ export default function Reservations() {
                     <div className="mt-8 rounded-md border border-border p-4 text-sm">
                       <div className="flex items-center justify-between">
                         <span className="text-muted-foreground">
-                          {nights} night{nights !== 1 ? "s" : ""}
+                          {t("reservations.night", { count: nights })}
                           {avgPricePerNight !== null && (
                             <span className="ml-1 text-xs text-muted-foreground/70">
-                              ({formatPrice(avgPricePerNight)}/night)
+                              ({formatPrice(avgPricePerNight)}
+                              {t("reservations.perNight")})
                             </span>
                           )}
                         </span>
@@ -389,19 +396,21 @@ export default function Reservations() {
                       {appliedPromo && (
                         <div className="mt-2 flex items-center justify-between text-primary">
                           <span>
-                            Promo ({appliedPromo.code} -{appliedPromo.percent}%)
+                            {t("reservations.promoLine", {
+                              code: appliedPromo.code,
+                              percent: appliedPromo.percent,
+                            })}
                           </span>
                           <span>-{formatPrice(discountAmount)}</span>
                         </div>
                       )}
                       <div className="mt-3 flex items-center justify-between border-t border-border pt-3 font-medium">
-                        <span>Total</span>
+                        <span>{t("reservations.total")}</span>
                         <span>{formatPrice(totalCost)}</span>
                       </div>
                       {hasUnpricedNight && (
                         <p className="mt-2 text-xs text-destructive">
-                          Some nights in this range don't have a price yet — we'll confirm the
-                          exact total with you.
+                          {t("reservations.unpricedWarning")}
                         </p>
                       )}
                     </div>
@@ -411,7 +420,10 @@ export default function Reservations() {
                         htmlFor="promo-code"
                         className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
                       >
-                        Promo Code <span className="normal-case text-muted-foreground/70">(optional)</span>
+                        {t("reservations.promoCodeLabel")}{" "}
+                        <span className="normal-case text-muted-foreground/70">
+                          {t("reservations.optional")}
+                        </span>
                       </label>
                       <div className="mt-1 flex gap-2">
                         <input
@@ -429,7 +441,7 @@ export default function Reservations() {
                               applyPromo();
                             }
                           }}
-                          placeholder="Have a code?"
+                          placeholder={t("reservations.havePromoCode")}
                           className="w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary disabled:opacity-60"
                         />
                         {appliedPromo ? (
@@ -438,7 +450,7 @@ export default function Reservations() {
                             onClick={clearPromo}
                             className="whitespace-nowrap rounded-md border border-border px-3 py-2 text-sm font-medium text-muted-foreground transition-smooth hover:bg-muted"
                           >
-                            Remove
+                            {t("reservations.remove")}
                           </button>
                         ) : (
                           <button
@@ -446,14 +458,17 @@ export default function Reservations() {
                             onClick={applyPromo}
                             className="whitespace-nowrap rounded-md border border-border px-3 py-2 text-sm font-medium transition-smooth hover:bg-muted"
                           >
-                            Apply
+                            {t("reservations.apply")}
                           </button>
                         )}
                       </div>
                       {promoError && <p className="mt-1 text-xs text-destructive">{promoError}</p>}
                       {appliedPromo && (
                         <p className="mt-1 text-xs text-primary">
-                          "{appliedPromo.code}" applied — {appliedPromo.percent}% off.
+                          {t("reservations.promoApplied", {
+                            code: appliedPromo.code,
+                            percent: appliedPromo.percent,
+                          })}
                         </p>
                       )}
                     </div>
@@ -464,7 +479,7 @@ export default function Reservations() {
                   onClick={() => setDialogOpen(true)}
                   className="mt-8 w-full rounded-md bg-primary py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
                 >
-                  Continue
+                  {t("reservations.continue")}
                 </button>
               </>
             )}
@@ -503,6 +518,7 @@ function Stepper({
   onInc: () => void;
   incDisabled?: boolean;
 }) {
+  const { t } = useTranslation();
   return (
     <div className="flex items-center justify-between">
       <div>
@@ -515,7 +531,7 @@ function Stepper({
         <button
           onClick={onDec}
           className="flex h-8 w-8 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted"
-          aria-label={`Decrease ${label}`}
+          aria-label={t("reservations.decreaseAria", { label })}
         >
           <Minus className="h-4 w-4" />
         </button>
@@ -523,7 +539,7 @@ function Stepper({
           onClick={onInc}
           disabled={incDisabled}
           className="flex h-8 w-8 items-center justify-center rounded-full border border-border transition-smooth hover:bg-muted disabled:cursor-not-allowed disabled:opacity-30"
-          aria-label={`Increase ${label}`}
+          aria-label={t("reservations.increaseAria", { label })}
         >
           <Plus className="h-4 w-4" />
         </button>
@@ -547,6 +563,7 @@ function ReservationDialog({
   onClose: () => void;
   onSubmitted: (details: ReservationDetails) => void;
 }) {
+  const { t } = useTranslation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [comments, setComments] = useState("");
@@ -558,11 +575,11 @@ function ReservationDialog({
     e.preventDefault();
 
     const nextErrors: { name?: string; email?: string } = {};
-    if (!name.trim()) nextErrors.name = "Name is required";
+    if (!name.trim()) nextErrors.name = t("reservations.nameRequired");
     if (!email.trim()) {
-      nextErrors.email = "Email is required";
+      nextErrors.email = t("reservations.emailRequired");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-      nextErrors.email = "Enter a valid email address";
+      nextErrors.email = t("reservations.enterValidEmail");
     }
 
     setErrors(nextErrors);
@@ -600,7 +617,7 @@ function ReservationDialog({
 
       onSubmitted({ name: name.trim(), email: email.trim(), comments: comments.trim() });
     } catch {
-      setSubmitError("Something went wrong sending your request. Please try again.");
+      setSubmitError(t("reservations.submitError"));
     } finally {
       setSubmitting(false);
     }
@@ -621,13 +638,13 @@ function ReservationDialog({
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
             <h3 id="reservation-dialog-title" className="text-xl font-medium">
-              Your Details
+              {t("reservations.yourDetails")}
             </h3>
             {summary && <p className="mt-1 text-sm text-muted-foreground">{summary}</p>}
           </div>
           <button
             onClick={onClose}
-            aria-label="Close"
+            aria-label={t("reservations.close")}
             className="text-muted-foreground transition-smooth hover:text-foreground"
           >
             <X className="h-5 w-5" />
@@ -640,7 +657,7 @@ function ReservationDialog({
               htmlFor="reservation-name"
               className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
             >
-              Name
+              {t("reservations.name")}
             </label>
             <input
               id="reservation-name"
@@ -648,7 +665,7 @@ function ReservationDialog({
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary"
-              placeholder="Your full name"
+              placeholder={t("reservations.yourFullName")}
             />
             {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
           </div>
@@ -658,7 +675,7 @@ function ReservationDialog({
               htmlFor="reservation-email"
               className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
             >
-              Email
+              {t("reservations.email")}
             </label>
             <input
               id="reservation-email"
@@ -676,7 +693,10 @@ function ReservationDialog({
               htmlFor="reservation-comments"
               className="text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground"
             >
-              Comments <span className="normal-case text-muted-foreground/70">(optional)</span>
+              {t("reservations.comments")}{" "}
+              <span className="normal-case text-muted-foreground/70">
+                {t("reservations.optional")}
+              </span>
             </label>
             <textarea
               id="reservation-comments"
@@ -684,7 +704,7 @@ function ReservationDialog({
               onChange={(e) => setComments(e.target.value)}
               rows={3}
               className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary"
-              placeholder="Anything we should know?"
+              placeholder={t("reservations.anythingWeShouldKnow")}
             />
           </div>
 
@@ -695,7 +715,7 @@ function ReservationDialog({
             disabled={submitting}
             className="mt-2 w-full rounded-md bg-primary py-3 text-sm font-medium uppercase tracking-[0.15em] text-primary-foreground transition-smooth hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {submitting ? "Sending…" : "Send Request"}
+            {submitting ? t("reservations.sending") : t("reservations.sendRequest")}
           </button>
         </form>
       </div>

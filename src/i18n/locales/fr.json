@@ -1,0 +1,214 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "contact": "Contact",
+    "bookNow": "Réserver"
+  },
+  "languageSwitcher": {
+    "label": "Langue",
+    "en": "English",
+    "pt": "Português",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "hero": {
+    "eyebrow": "Escapades hors réseau · Esposende, côte nord du Portugal",
+    "titleLine1": "Entre Pins",
+    "titleLine2": "et Océan",
+    "subtitle": "Pontons en bois, dunes et plages atlantiques sauvages. Déconnectez-vous entre la pinède maritime et l'océan.",
+    "cta": "Réserver",
+    "slideAlt": "Ponton à travers les dunes côtières au coucher du soleil",
+    "showSlide": "Afficher l'image {{n}}"
+  },
+  "gallery": {
+    "eyebrow": "La Maison",
+    "title": "Galerie Photos",
+    "subtitle": "Un aperçu de plus près de la maison que nous louons",
+    "addPhoto": "Ajouter une photo",
+    "photos": {
+      "livingRoom": "Salon",
+      "diningArea": "Salle à Manger",
+      "kitchen": "Cuisine",
+      "mainBedroom": "Chambre Principale",
+      "secondaryBedroom": "Chambre Secondaire",
+      "bathroom": "Salle de Bain",
+      "exterior": "Extérieur",
+      "terrace": "Terrasse",
+      "pool": "Piscine",
+      "beachfrontView": "Vue sur la Plage"
+    },
+    "photoAlts": {
+      "livingRoom": "Salon",
+      "diningArea": "Salle à manger",
+      "kitchen": "Cuisine",
+      "mainBedroom": "Chambre principale",
+      "secondaryBedroom": "Chambre secondaire",
+      "bathroom": "Salle de bain",
+      "exterior": "Extérieur de la maison et jardin",
+      "terrace": "Terrasse extérieure avec salon",
+      "pool": "Piscine",
+      "beachfrontView": "Vue aérienne de la plage et des dunes"
+    },
+    "viewFullScreen": "Voir {{caption}} en plein écran",
+    "showPhoto": "Afficher la photo {{n}}",
+    "previousPhoto": "Photo précédente",
+    "nextPhoto": "Photo suivante",
+    "previousPhotos": "Photos précédentes",
+    "nextPhotos": "Photos suivantes",
+    "showPhotosRange": "Afficher les photos {{from}} à {{to}}",
+    "close": "Fermer",
+    "amenitiesTitle": "Équipements",
+    "amenitiesSubtitle": "Tout ce que la maison propose",
+    "amenities": {
+      "kitchen": "Cuisine entièrement équipée",
+      "masterBedroom": "Chambre principale avec salle de bain privative",
+      "secondaryBedroom": "Chambre secondaire avec 2 lits individuels",
+      "extraBed": "Lit d'appoint et lit bébé disponibles sur demande",
+      "diningLiving": "Salle à manger et salon communicants",
+      "balcony": "Balcon confortable reliant la maison, le jardin et la piscine",
+      "garage": "Garage fermé avec accès à des vélos (*)",
+      "rooftop": "Terrasse sur le toit de l'immeuble où profiter de la vue",
+      "pool": "Piscine partagée"
+    },
+    "amenitiesFootnote": "(*) L'accès au garage et aux vélos est gratuit, mais soumis à une caution."
+  },
+  "experience": {
+    "eyebrow": "L'Expérience",
+    "title": "La Simplicité Rencontre le Confort",
+    "subtitle": "Adoptez la simplicité sans sacrifier le confort",
+    "features": {
+      "slowDown": {
+        "title": "Ralentir",
+        "text": "Oubliez le temps. Endormez-vous entre dunes et pins, réveillez-vous au son des vagues de l'Atlantique."
+      },
+      "woodenTrails": {
+        "title": "Sentiers en Bois",
+        "text": "Les pontons mènent directement au sable sauvage de l'Atlantique, à la ville côtière ou aux berges de la rivière."
+      },
+      "beachDays": {
+        "title": "Journées Plage",
+        "text": "Allez attraper quelques vagues — la plage n'est jamais qu'à quelques mètres."
+      },
+      "roadTrips": {
+        "title": "Road Trips",
+        "text": "En voiture, vous pouvez visiter les grandes villes du nord-ouest, comme Porto, Braga ou Viana do Castelo."
+      },
+      "goldenHour": {
+        "title": "Heure Dorée",
+        "text": "Détendez-vous sur la terrasse et profitez du coucher de soleil atlantique, chaque soir."
+      },
+      "surfing": {
+        "title": "Surf",
+        "text": "Essayez quelque chose de nouveau — laissez le vent faire monter votre adrénaline avec des cours de surf ou de kitesurf."
+      },
+      "poolDays": {
+        "title": "Journées Piscine",
+        "text": "Chaque journée ensoleillée est une journée piscine, et la piscine n'est qu'à quelques pas."
+      },
+      "buggyTours": {
+        "title": "Excursions en Buggy",
+        "text": "Les envies sauvages demandent des mesures sauvages — excursions en buggy à proximité."
+      }
+    }
+  },
+  "reservations": {
+    "eyebrow": "Réservations",
+    "title": "Réservez votre Escapade",
+    "subtitle": "Choisissez vos dates et laissez la nature faire sa magie",
+    "checkInOut": "Arrivée et Départ",
+    "checkingAvailability": "Vérification des disponibilités",
+    "previousMonth": "Mois précédent",
+    "nextMonth": "Mois suivant",
+    "months": [
+      "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+      "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+    ],
+    "dow": ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"],
+    "legendAvailable": "Disponible",
+    "legendBooked": "Réservé",
+    "legendSelected": "Sélectionné",
+    "alreadyBooked": "Déjà réservé",
+    "rangeErrorBooked": "Certaines nuits de cette période sont déjà réservées — choisissez une autre date de départ.",
+    "selectCheckOut": "Sélectionnez votre date de départ",
+    "selectCheckIn": "Sélectionnez votre date d'arrivée",
+    "loadError": "Impossible de charger les disponibilités. Contactez-nous pour confirmer vos dates.",
+    "night_one": "{{count}} nuit",
+    "night_other": "{{count}} nuits",
+    "guest_one": "{{count}} invité",
+    "guest_other": "{{count}} invités",
+    "adults": "Adultes",
+    "adult_one": "{{count}} adulte",
+    "adult_other": "{{count}} adultes",
+    "children": "Enfants",
+    "addChild": "Ajouter un Enfant",
+    "noChildrenAdded": "Aucun enfant ajouté",
+    "childLabel": "Enfant {{n}}",
+    "yr_one": "{{count}} an",
+    "yr_other": "{{count}} ans",
+    "decreaseAgeFor": "Diminuer l'âge de l'enfant {{n}}",
+    "increaseAgeFor": "Augmenter l'âge de l'enfant {{n}}",
+    "removeChild": "Supprimer l'enfant {{n}}",
+    "decreaseAria": "Diminuer {{label}}",
+    "increaseAria": "Augmenter {{label}}",
+    "requestSent": "Demande envoyée !",
+    "thanksMessage": "Merci, {{name}}. Nous vous contacterons à {{email}} pour confirmer votre séjour.",
+    "perNight": "/nuit",
+    "promoLine": "Promo ({{code}} -{{percent}}%)",
+    "total": "Total",
+    "unpricedWarning": "Certaines nuits de cette période n'ont pas encore de prix défini — nous vous confirmerons le montant exact.",
+    "promoCodeLabel": "Code Promo",
+    "optional": "(facultatif)",
+    "havePromoCode": "Vous avez un code ?",
+    "apply": "Appliquer",
+    "remove": "Retirer",
+    "enterPromoCode": "Entrez un code promo.",
+    "invalidPromoCode": "Code promo invalide.",
+    "promoExpired": "Ce code promo a expiré.",
+    "promoApplied": "« {{code}} » appliqué — {{percent}}% de réduction.",
+    "continue": "Continuer",
+    "yourDetails": "Vos Coordonnées",
+    "close": "Fermer",
+    "name": "Nom",
+    "yourFullName": "Votre nom complet",
+    "nameRequired": "Le nom est requis",
+    "email": "Email",
+    "emailRequired": "L'email est requis",
+    "enterValidEmail": "Entrez une adresse email valide",
+    "comments": "Commentaires",
+    "anythingWeShouldKnow": "Y a-t-il quelque chose que nous devrions savoir ?",
+    "submitError": "Une erreur s'est produite lors de l'envoi de votre demande. Veuillez réessayer.",
+    "sending": "Envoi en cours…",
+    "sendRequest": "Envoyer la Demande",
+    "priceTbc": "à confirmer"
+  },
+  "footer": {
+    "tagline": "Séjour hors réseau entre l'Atlantique et la pinède maritime.",
+    "contactUs": "Contactez-nous",
+    "address": "Esposende, Côte Nord du Portugal",
+    "followUs": "Suivez-nous",
+    "rights": "© {{year}} Duna Natura. Tous droits réservés."
+  },
+  "about": {
+    "eyebrow": "À Propos",
+    "title": "Là où la pinède rencontre l'océan",
+    "p1": "Duna Natura est une collection de sites de camping hors réseau nichés entre la pinède maritime et les plages sauvages de la côte nord du Portugal. Nous croyons que le meilleur repos vient en ralentissant — échanger les notifications contre le chant des oiseaux et les écrans contre l'horizon.",
+    "p2": "Chaque site est choisi pour son calme, sa lumière et sa connexion avec le paysage. Des pontons en bois traversent les dunes jusqu'à l'Atlantique, où l'heure dorée clôture chaque soirée de votre séjour.",
+    "p3": "Pas de wifi. Pas de réseau. Juste des pins, des dunes et l'océan — comme la nature l'a voulu."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Contactez-nous",
+    "subtitle": "Des questions sur un séjour ? Envoyez-nous un message et nous vous répondrons.",
+    "namePlaceholder": "Nom",
+    "emailPlaceholder": "Email",
+    "messagePlaceholder": "Message",
+    "sendMessage": "Envoyer le Message",
+    "demoAlert": "Merci ! Ceci est un formulaire de démonstration."
+  },
+  "notFound": {
+    "code": "404",
+    "message": "Ce sentier ne mène nulle part.",
+    "backHome": "Retour à l'Accueil"
+  }
+}

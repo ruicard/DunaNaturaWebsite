@@ -1,27 +1,16 @@
+import { useTranslation } from "react-i18next";
+
 export default function About() {
+  const { t } = useTranslation();
   return (
     <section className="bg-background pt-28 pb-24">
       <div className="container max-w-3xl">
-        <p className="eyebrow">About</p>
-        <h1 className="mt-3 text-4xl font-light md:text-5xl">
-          Where the pine forest meets the ocean
-        </h1>
+        <p className="eyebrow">{t("about.eyebrow")}</p>
+        <h1 className="mt-3 text-4xl font-light md:text-5xl">{t("about.title")}</h1>
         <div className="mt-8 space-y-6 text-muted-foreground leading-relaxed">
-          <p>
-            Duna Natura is a collection of off-grid camping spots tucked between
-            the maritime pine forest and the wild beaches of Portugal's northern
-            coast. We believe the best kind of rest comes from slowing down —
-            trading notifications for birdsong and screens for the horizon.
-          </p>
-          <p>
-            Each spot is chosen for its quiet, its light and its connection to
-            the landscape. Wooden boardwalks lead through the dunes to the
-            Atlantic, where golden-hour sunsets close every evening of your stay.
-          </p>
-          <p>
-            No wifi. No signal. Just pines, dunes and the ocean — the way nature
-            intended.
-          </p>
+          <p>{t("about.p1")}</p>
+          <p>{t("about.p2")}</p>
+          <p>{t("about.p3")}</p>
         </div>
       </div>
     </section>

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { HERO_IMAGES } from "@/data/spots";
 
 const SLIDE_INTERVAL_MS = 3000;
 
 export default function Hero() {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ export default function Hero() {
         <img
           key={image}
           src={image}
-          alt="Boardwalk through coastal dunes at sunset"
+          alt={t("hero.slideAlt")}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-in-out ${
             index === activeIndex ? "opacity-100" : "opacity-0"
           }`}
@@ -33,7 +35,7 @@ export default function Hero() {
           <button
             key={image}
             type="button"
-            aria-label={`Show slide ${index + 1}`}
+            aria-label={t("hero.showSlide", { n: index + 1 })}
             onClick={() => setActiveIndex(index)}
             className={`h-3.5 w-3.5 rounded-full border border-white/80 transition-smooth ${
               index === activeIndex ? "bg-white" : "bg-white/30 hover:bg-white/60"
@@ -44,22 +46,21 @@ export default function Hero() {
 
       <div className="container relative z-10 text-center text-white animate-fade-up">
         <p className="mb-6 text-xs font-medium uppercase tracking-[0.3em] text-white/90">
-          Off-grid escapes · Portugal's northern coast
+          {t("hero.eyebrow")}
         </p>
         <h1 className="text-5xl font-light leading-[1.05] md:text-7xl">
-          Between Pines
+          {t("hero.titleLine1")}
           <br />
-          and the Sea
+          {t("hero.titleLine2")}
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-base text-white/90 md:text-lg">
-          Boardwalks, dunes and wild Atlantic beaches. Disconnect between the
-          maritime pine forest and the ocean.
+          {t("hero.subtitle")}
         </p>
         <a
           href="#reservations"
           className="mt-10 inline-block rounded-md bg-white/95 px-8 py-3 text-sm font-medium uppercase tracking-[0.15em] text-foreground transition-smooth hover:bg-white"
         >
-          Book Now
+          {t("hero.cta")}
         </a>
       </div>
     </section>

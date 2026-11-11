@@ -1,30 +1,34 @@
 import { Camera, Check, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { houseAmenities, houseAmenitiesFootnote, housePhotos, type HousePhoto } from "@/data/house";
+import { useTranslation } from "react-i18next";
+import { houseAmenityKeys, housePhotos, type HousePhoto } from "@/data/house";
 
 function PhotoCard({ photo, className }: { photo: HousePhoto; className: string }) {
+  const { t } = useTranslation();
+  const caption = t(`gallery.photos.${photo.key}`);
   return (
     <>
       {photo.src ? (
         <img
           src={photo.src}
-          alt={photo.alt}
+          alt={t(`gallery.photoAlts.${photo.key}`)}
           className={`h-full w-full object-cover transition-smooth ${className}`}
         />
       ) : (
         <div className="flex h-full w-full flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-border text-muted-foreground">
           <Camera className="h-8 w-8" />
-          <span className="text-xs uppercase tracking-wider">Add photo</span>
+          <span className="text-xs uppercase tracking-wider">{t("gallery.addPhoto")}</span>
         </div>
       )}
       <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-4 py-3 text-sm font-medium text-white">
-        {photo.caption}
+        {caption}
       </figcaption>
     </>
   );
 }
 
 function MobileGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number) => void }) {
+  const { t } = useTranslation();
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -59,10 +63,10 @@ function MobileGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number)
       >
         {housePhotos.map((photo, index) => (
           <button
-            key={photo.caption}
+            key={photo.key}
             type="button"
             onClick={() => onPhotoClick(index)}
-            aria-label={`View ${photo.caption} full screen`}
+            aria-label={t("gallery.viewFullScreen", { caption: t(`gallery.photos.${photo.key}`) })}
             className="relative h-72 w-full shrink-0 snap-center cursor-zoom-in overflow-hidden rounded-lg bg-secondary shadow-soft"
           >
             <PhotoCard photo={photo} className="" />
@@ -74,7 +78,7 @@ function MobileGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number)
         type="button"
         onClick={() => goTo(activeIndex - 1)}
         disabled={activeIndex === 0}
-        aria-label="Previous photo"
+        aria-label={t("gallery.previousPhoto")}
         className="absolute left-2 top-[calc(50%-1.25rem)] flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-foreground shadow-soft transition-smooth hover:bg-white disabled:pointer-events-none disabled:opacity-0"
       >
         <ChevronLeft className="h-5 w-5" />
@@ -83,7 +87,7 @@ function MobileGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number)
         type="button"
         onClick={() => goTo(activeIndex + 1)}
         disabled={activeIndex === housePhotos.length - 1}
-        aria-label="Next photo"
+        aria-label={t("gallery.nextPhoto")}
         className="absolute right-2 top-[calc(50%-1.25rem)] flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-foreground shadow-soft transition-smooth hover:bg-white disabled:pointer-events-none disabled:opacity-0"
       >
         <ChevronRight className="h-5 w-5" />
@@ -92,9 +96,9 @@ function MobileGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number)
       <div className="mt-4 flex items-center justify-center gap-2">
         {housePhotos.map((photo, index) => (
           <button
-            key={photo.caption}
+            key={photo.key}
             type="button"
-            aria-label={`Show photo ${index + 1}`}
+            aria-label={t("gallery.showPhoto", { n: index + 1 })}
             onClick={() => goTo(index)}
             className={`h-2 w-2 rounded-full transition-smooth ${
               index === activeIndex ? "bg-primary" : "bg-border"
@@ -109,6 +113,7 @@ function MobileGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number)
 const CARDS_PER_PAGE = 3;
 
 function DesktopGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number) => void }) {
+  const { t } = useTranslation();
   const trackRef = useRef<HTMLDivElement>(null);
   const [activePage, setActivePage] = useState(0);
 
@@ -152,10 +157,12 @@ function DesktopGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number
               const globalIndex = pageIndex * CARDS_PER_PAGE + itemIndex;
               return (
                 <button
-                  key={photo.caption}
+                  key={photo.key}
                   type="button"
                   onClick={() => onPhotoClick(globalIndex)}
-                  aria-label={`View ${photo.caption} full screen`}
+                  aria-label={t("gallery.viewFullScreen", {
+                    caption: t(`gallery.photos.${photo.key}`),
+                  })}
                   className="group relative aspect-[3/4] cursor-zoom-in overflow-hidden rounded-lg bg-secondary shadow-soft transition-smooth hover:shadow-hover"
                 >
                   <PhotoCard photo={photo} className="group-hover:scale-105" />
@@ -172,7 +179,7 @@ function DesktopGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number
             type="button"
             onClick={() => goTo(activePage - 1)}
             disabled={activePage === 0}
-            aria-label="Previous photos"
+            aria-label={t("gallery.previousPhotos")}
             className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-foreground shadow-soft transition-smooth hover:bg-white disabled:pointer-events-none disabled:opacity-0"
           >
             <ChevronLeft className="h-5 w-5" />
@@ -181,7 +188,7 @@ function DesktopGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number
             type="button"
             onClick={() => goTo(activePage + 1)}
             disabled={activePage === pages.length - 1}
-            aria-label="Next photos"
+            aria-label={t("gallery.nextPhotos")}
             className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-foreground shadow-soft transition-smooth hover:bg-white disabled:pointer-events-none disabled:opacity-0"
           >
             <ChevronRight className="h-5 w-5" />
@@ -192,9 +199,10 @@ function DesktopGalleryCarousel({ onPhotoClick }: { onPhotoClick: (index: number
               <button
                 key={index}
                 type="button"
-                aria-label={`Show photos ${index * CARDS_PER_PAGE + 1} to ${
-                  index * CARDS_PER_PAGE + pages[index].length
-                }`}
+                aria-label={t("gallery.showPhotosRange", {
+                  from: index * CARDS_PER_PAGE + 1,
+                  to: index * CARDS_PER_PAGE + pages[index].length,
+                })}
                 onClick={() => goTo(index)}
                 className={`h-2 w-2 rounded-full transition-smooth ${
                   index === activePage ? "bg-primary" : "bg-border"
@@ -219,6 +227,8 @@ function GalleryLightbox({
   onClose: () => void;
   onNavigate: (index: number) => void;
 }) {
+  const { t } = useTranslation();
+
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
@@ -234,19 +244,20 @@ function GalleryLightbox({
   }, [index, photos.length, onClose, onNavigate]);
 
   const photo = photos[index];
+  const caption = t(`gallery.photos.${photo.key}`);
 
   return (
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4"
       role="dialog"
       aria-modal="true"
-      aria-label={`Photo: ${photo.caption}`}
+      aria-label={caption}
       onClick={onClose}
     >
       <button
         type="button"
         onClick={onClose}
-        aria-label="Close"
+        aria-label={t("gallery.close")}
         className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-smooth hover:bg-white/20"
       >
         <X className="h-6 w-6" />
@@ -259,7 +270,7 @@ function GalleryLightbox({
           onNavigate(index - 1);
         }}
         disabled={index === 0}
-        aria-label="Previous photo"
+        aria-label={t("gallery.previousPhoto")}
         className="absolute left-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-smooth hover:bg-white/20 disabled:pointer-events-none disabled:opacity-0 sm:left-6"
       >
         <ChevronLeft className="h-6 w-6" />
@@ -271,7 +282,7 @@ function GalleryLightbox({
           onNavigate(index + 1);
         }}
         disabled={index === photos.length - 1}
-        aria-label="Next photo"
+        aria-label={t("gallery.nextPhoto")}
         className="absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white transition-smooth hover:bg-white/20 disabled:pointer-events-none disabled:opacity-0 sm:right-6"
       >
         <ChevronRight className="h-6 w-6" />
@@ -284,22 +295,22 @@ function GalleryLightbox({
         {photo.src ? (
           <img
             src={photo.src}
-            alt={photo.alt}
+            alt={t(`gallery.photoAlts.${photo.key}`)}
             className="max-h-[80vh] max-w-full rounded-md object-contain"
           />
         ) : (
           <div className="flex h-[60vh] w-[80vw] max-w-xl flex-col items-center justify-center gap-3 rounded-md border-2 border-dashed border-white/30 text-white/60">
             <Camera className="h-10 w-10" />
-            <span className="text-xs uppercase tracking-wider">Add photo</span>
+            <span className="text-xs uppercase tracking-wider">{t("gallery.addPhoto")}</span>
           </div>
         )}
-        <p className="mt-4 text-sm font-medium text-white">{photo.caption}</p>
+        <p className="mt-4 text-sm font-medium text-white">{caption}</p>
         <div className="mt-3 flex items-center gap-2">
           {photos.map((_, i) => (
             <button
               key={i}
               type="button"
-              aria-label={`Show photo ${i + 1}`}
+              aria-label={t("gallery.showPhoto", { n: i + 1 })}
               onClick={() => onNavigate(i)}
               className={`h-2 w-2 rounded-full transition-smooth ${
                 i === index ? "bg-white" : "bg-white/30"
@@ -313,17 +324,16 @@ function GalleryLightbox({
 }
 
 export default function HouseGallery() {
+  const { t } = useTranslation();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   return (
     <section id="gallery" className="bg-background py-24">
       <div className="container">
         <div className="mb-14 text-center">
-          <p className="eyebrow">The House</p>
-          <h2 className="mt-3 text-4xl font-light md:text-5xl">Photo Gallery</h2>
-          <p className="mt-4 text-muted-foreground">
-            A closer look at the house we're renting out
-          </p>
+          <p className="eyebrow">{t("gallery.eyebrow")}</p>
+          <h2 className="mt-3 text-4xl font-light md:text-5xl">{t("gallery.title")}</h2>
+          <p className="mt-4 text-muted-foreground">{t("gallery.subtitle")}</p>
         </div>
 
         <MobileGalleryCarousel onPhotoClick={setLightboxIndex} />
@@ -331,23 +341,23 @@ export default function HouseGallery() {
 
         <div className="mx-auto mt-20 max-w-3xl">
           <div className="mb-10 text-center">
-            <h3 className="text-2xl font-light md:text-3xl">Amenities</h3>
-            <p className="mt-2 text-muted-foreground">Everything the house offers</p>
+            <h3 className="text-2xl font-light md:text-3xl">{t("gallery.amenitiesTitle")}</h3>
+            <p className="mt-2 text-muted-foreground">{t("gallery.amenitiesSubtitle")}</p>
           </div>
 
           <div className="grid gap-x-8 gap-y-4 sm:grid-cols-2">
-            {houseAmenities.map((item) => (
-              <div key={item} className="flex items-start gap-3">
+            {houseAmenityKeys.map((key) => (
+              <div key={key} className="flex items-start gap-3">
                 <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Check className="h-3.5 w-3.5" />
                 </span>
-                <span className="text-sm text-foreground">{item}</span>
+                <span className="text-sm text-foreground">{t(`gallery.amenities.${key}`)}</span>
               </div>
             ))}
           </div>
 
           <p className="mt-6 text-center text-xs text-muted-foreground">
-            {houseAmenitiesFootnote}
+            {t("gallery.amenitiesFootnote")}
           </p>
         </div>
       </div>

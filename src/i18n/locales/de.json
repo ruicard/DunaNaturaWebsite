@@ -1,0 +1,214 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "contact": "Kontakt",
+    "bookNow": "Jetzt Buchen"
+  },
+  "languageSwitcher": {
+    "label": "Sprache",
+    "en": "English",
+    "pt": "Português",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "hero": {
+    "eyebrow": "Off-Grid-Auszeiten · Esposende, Nordküste Portugals",
+    "titleLine1": "Zwischen Pinien",
+    "titleLine2": "und dem Meer",
+    "subtitle": "Holzstege, Dünen und wilde Atlantikstrände. Schalten Sie ab zwischen dem Pinienwald am Meer und dem Ozean.",
+    "cta": "Jetzt Buchen",
+    "slideAlt": "Holzsteg durch Küstendünen bei Sonnenuntergang",
+    "showSlide": "Bild {{n}} anzeigen"
+  },
+  "gallery": {
+    "eyebrow": "Das Haus",
+    "title": "Fotogalerie",
+    "subtitle": "Ein genauerer Blick auf das Haus, das wir vermieten",
+    "addPhoto": "Foto hinzufügen",
+    "photos": {
+      "livingRoom": "Wohnzimmer",
+      "diningArea": "Essbereich",
+      "kitchen": "Küche",
+      "mainBedroom": "Hauptschlafzimmer",
+      "secondaryBedroom": "Zweites Schlafzimmer",
+      "bathroom": "Badezimmer",
+      "exterior": "Außenbereich",
+      "terrace": "Terrasse",
+      "pool": "Pool",
+      "beachfrontView": "Blick auf den Strand"
+    },
+    "photoAlts": {
+      "livingRoom": "Wohnzimmer",
+      "diningArea": "Essbereich",
+      "kitchen": "Küche",
+      "mainBedroom": "Hauptschlafzimmer",
+      "secondaryBedroom": "Zweites Schlafzimmer",
+      "bathroom": "Badezimmer",
+      "exterior": "Hausaußenbereich und Garten",
+      "terrace": "Außenterrasse mit Lounge",
+      "pool": "Schwimmbecken",
+      "beachfrontView": "Luftaufnahme von Strand und Dünen"
+    },
+    "viewFullScreen": "{{caption}} im Vollbild ansehen",
+    "showPhoto": "Foto {{n}} anzeigen",
+    "previousPhoto": "Vorheriges Foto",
+    "nextPhoto": "Nächstes Foto",
+    "previousPhotos": "Vorherige Fotos",
+    "nextPhotos": "Nächste Fotos",
+    "showPhotosRange": "Fotos {{from}} bis {{to}} anzeigen",
+    "close": "Schließen",
+    "amenitiesTitle": "Ausstattung",
+    "amenitiesSubtitle": "Alles, was das Haus bietet",
+    "amenities": {
+      "kitchen": "Voll ausgestattete Küche",
+      "masterBedroom": "Hauptschlafzimmer mit eigenem Bad",
+      "secondaryBedroom": "Zweites Schlafzimmer mit 2 Einzelbetten",
+      "extraBed": "Zustellbett und Babybett auf Anfrage erhältlich",
+      "diningLiving": "Ess- und Wohnbereich miteinander verbunden",
+      "balcony": "Gemütlicher Balkon, der Haus, Garten und Pool verbindet",
+      "garage": "Geschlossene Garage mit Zugang zu Fahrrädern (*)",
+      "rooftop": "Dachterrasse ganz oben im Gebäude mit herrlicher Aussicht",
+      "pool": "Gemeinsam genutzter Pool"
+    },
+    "amenitiesFootnote": "(*) Der Zugang zu Garage und Fahrrädern ist kostenlos, erfordert jedoch eine Kaution."
+  },
+  "experience": {
+    "eyebrow": "Das Erlebnis",
+    "title": "Einfachheit Trifft Komfort",
+    "subtitle": "Genießen Sie Einfachheit, ohne auf Komfort zu verzichten",
+    "features": {
+      "slowDown": {
+        "title": "Entschleunigen",
+        "text": "Vergessen Sie die Zeit. Schlafen Sie zwischen Dünen und Pinien ein und wachen Sie zum Rauschen der Atlantikwellen auf."
+      },
+      "woodenTrails": {
+        "title": "Holzstege",
+        "text": "Holzstege führen direkt zum wilden Atlantiksand, in die Küstenstadt oder ans Flussufer."
+      },
+      "beachDays": {
+        "title": "Strandtage",
+        "text": "Fangen Sie ein paar Wellen — der Strand ist immer nur wenige Meter entfernt."
+      },
+      "roadTrips": {
+        "title": "Ausflüge mit dem Auto",
+        "text": "Mit dem Auto erreichen Sie die großen Städte im Westen des Nordens, wie Porto, Braga oder Viana do Castelo."
+      },
+      "goldenHour": {
+        "title": "Goldene Stunde",
+        "text": "Entspannen Sie auf der Terrasse und genießen Sie jeden Abend den atlantischen Sonnenuntergang."
+      },
+      "surfing": {
+        "title": "Surfen",
+        "text": "Probieren Sie etwas Neues — lassen Sie den Wind mit Surf- oder Kitesurf-Stunden Ihren Adrenalinspiegel steigen."
+      },
+      "poolDays": {
+        "title": "Pooltage",
+        "text": "Jeder sonnige Tag ist ein Pooltag, und der Pool liegt nur wenige Schritte entfernt."
+      },
+      "buggyTours": {
+        "title": "Buggy-Touren",
+        "text": "Wilde Wünsche erfordern wilde Maßnahmen — Buggy-Touren in der Nähe."
+      }
+    }
+  },
+  "reservations": {
+    "eyebrow": "Reservierungen",
+    "title": "Buchen Sie Ihre Auszeit",
+    "subtitle": "Wählen Sie Ihre Daten und lassen Sie die Natur ihre Magie wirken",
+    "checkInOut": "Anreise & Abreise",
+    "checkingAvailability": "Verfügbarkeit wird geprüft",
+    "previousMonth": "Vorheriger Monat",
+    "nextMonth": "Nächster Monat",
+    "months": [
+      "Januar", "Februar", "März", "April", "Mai", "Juni",
+      "Juli", "August", "September", "Oktober", "November", "Dezember"
+    ],
+    "dow": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+    "legendAvailable": "Verfügbar",
+    "legendBooked": "Belegt",
+    "legendSelected": "Ausgewählt",
+    "alreadyBooked": "Bereits belegt",
+    "rangeErrorBooked": "Einige Nächte in diesem Zeitraum sind bereits belegt — wählen Sie ein anderes Abreisedatum.",
+    "selectCheckOut": "Wählen Sie Ihr Abreisedatum",
+    "selectCheckIn": "Wählen Sie Ihr Anreisedatum",
+    "loadError": "Verfügbarkeit konnte nicht geladen werden. Bitte kontaktieren Sie uns, um Ihre Daten zu bestätigen.",
+    "night_one": "{{count}} Nacht",
+    "night_other": "{{count}} Nächte",
+    "guest_one": "{{count}} Gast",
+    "guest_other": "{{count}} Gäste",
+    "adults": "Erwachsene",
+    "adult_one": "{{count}} Erwachsener",
+    "adult_other": "{{count}} Erwachsene",
+    "children": "Kinder",
+    "addChild": "Kind Hinzufügen",
+    "noChildrenAdded": "Keine Kinder hinzugefügt",
+    "childLabel": "Kind {{n}}",
+    "yr_one": "{{count}} Jahr",
+    "yr_other": "{{count}} Jahre",
+    "decreaseAgeFor": "Alter von Kind {{n}} verringern",
+    "increaseAgeFor": "Alter von Kind {{n}} erhöhen",
+    "removeChild": "Kind {{n}} entfernen",
+    "decreaseAria": "{{label}} verringern",
+    "increaseAria": "{{label}} erhöhen",
+    "requestSent": "Anfrage gesendet!",
+    "thanksMessage": "Danke, {{name}}. Wir melden uns unter {{email}}, um Ihren Aufenthalt zu bestätigen.",
+    "perNight": "/Nacht",
+    "promoLine": "Aktionscode ({{code}} -{{percent}}%)",
+    "total": "Gesamt",
+    "unpricedWarning": "Für einige Nächte in diesem Zeitraum liegt noch kein Preis vor — wir bestätigen Ihnen den genauen Gesamtpreis.",
+    "promoCodeLabel": "Aktionscode",
+    "optional": "(optional)",
+    "havePromoCode": "Haben Sie einen Code?",
+    "apply": "Anwenden",
+    "remove": "Entfernen",
+    "enterPromoCode": "Geben Sie einen Aktionscode ein.",
+    "invalidPromoCode": "Ungültiger Aktionscode.",
+    "promoExpired": "Dieser Aktionscode ist abgelaufen.",
+    "promoApplied": "„{{code}}“ angewendet — {{percent}}% Rabatt.",
+    "continue": "Weiter",
+    "yourDetails": "Ihre Angaben",
+    "close": "Schließen",
+    "name": "Name",
+    "yourFullName": "Ihr vollständiger Name",
+    "nameRequired": "Name ist erforderlich",
+    "email": "E-Mail",
+    "emailRequired": "E-Mail ist erforderlich",
+    "enterValidEmail": "Geben Sie eine gültige E-Mail-Adresse ein",
+    "comments": "Anmerkungen",
+    "anythingWeShouldKnow": "Gibt es etwas, das wir wissen sollten?",
+    "submitError": "Beim Senden Ihrer Anfrage ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "sending": "Wird gesendet…",
+    "sendRequest": "Anfrage Senden",
+    "priceTbc": "noch offen"
+  },
+  "footer": {
+    "tagline": "Off-Grid-Aufenthalt zwischen dem Atlantik und dem Pinienwald am Meer.",
+    "contactUs": "Kontaktieren Sie Uns",
+    "address": "Esposende, Nordküste Portugals",
+    "followUs": "Folgen Sie Uns",
+    "rights": "© {{year}} Duna Natura. Alle Rechte vorbehalten."
+  },
+  "about": {
+    "eyebrow": "Über Uns",
+    "title": "Wo der Pinienwald auf den Ozean trifft",
+    "p1": "Duna Natura ist eine Sammlung von Off-Grid-Campingplätzen zwischen dem Pinienwald am Meer und den wilden Stränden der portugiesischen Nordküste. Wir glauben, dass die beste Erholung durch Entschleunigung entsteht — Benachrichtigungen gegen Vogelgezwitscher und Bildschirme gegen den Horizont eintauschen.",
+    "p2": "Jeder Ort wird wegen seiner Ruhe, seines Lichts und seiner Verbindung zur Landschaft ausgewählt. Holzstege führen durch die Dünen zum Atlantik, wo die goldene Stunde jeden Abend Ihres Aufenthalts beschließt.",
+    "p3": "Kein WLAN. Kein Empfang. Nur Pinien, Dünen und der Ozean — so, wie es die Natur vorgesehen hat."
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Nehmen Sie Kontakt Auf",
+    "subtitle": "Fragen zu einem Aufenthalt? Senden Sie uns eine Nachricht und wir melden uns bei Ihnen.",
+    "namePlaceholder": "Name",
+    "emailPlaceholder": "E-Mail",
+    "messagePlaceholder": "Nachricht",
+    "sendMessage": "Nachricht Senden",
+    "demoAlert": "Danke! Dies ist ein Demo-Formular."
+  },
+  "notFound": {
+    "code": "404",
+    "message": "Dieser Pfad führt ins Nichts.",
+    "backHome": "Zurück zur Startseite"
+  }
+}

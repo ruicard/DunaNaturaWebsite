@@ -1,0 +1,214 @@
+{
+  "nav": {
+    "home": "Home",
+    "contact": "Contact",
+    "bookNow": "Book Now"
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "en": "English",
+    "pt": "Português",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch"
+  },
+  "hero": {
+    "eyebrow": "Off-grid escapes · Esposende, Portugal's northern coast",
+    "titleLine1": "Between Pines",
+    "titleLine2": "and the Sea",
+    "subtitle": "Boardwalks, dunes and wild Atlantic beaches. Disconnect between the maritime pine forest and the ocean.",
+    "cta": "Book Now",
+    "slideAlt": "Boardwalk through coastal dunes at sunset",
+    "showSlide": "Show slide {{n}}"
+  },
+  "gallery": {
+    "eyebrow": "The House",
+    "title": "Photo Gallery",
+    "subtitle": "A closer look at the house we're renting out",
+    "addPhoto": "Add photo",
+    "photos": {
+      "livingRoom": "Living Room",
+      "diningArea": "Dining Area",
+      "kitchen": "Kitchen",
+      "mainBedroom": "Main Bedroom",
+      "secondaryBedroom": "Secondary Bedroom",
+      "bathroom": "Bathroom",
+      "exterior": "Exterior",
+      "terrace": "Terrace",
+      "pool": "Pool",
+      "beachfrontView": "Beachfront View"
+    },
+    "photoAlts": {
+      "livingRoom": "Living room",
+      "diningArea": "Dining area",
+      "kitchen": "Kitchen",
+      "mainBedroom": "Main bedroom",
+      "secondaryBedroom": "Secondary bedroom",
+      "bathroom": "Bathroom",
+      "exterior": "House exterior and garden",
+      "terrace": "Outdoor terrace lounge",
+      "pool": "Swimming pool",
+      "beachfrontView": "Aerial view of the beach and dunes"
+    },
+    "viewFullScreen": "View {{caption}} full screen",
+    "showPhoto": "Show photo {{n}}",
+    "previousPhoto": "Previous photo",
+    "nextPhoto": "Next photo",
+    "previousPhotos": "Previous photos",
+    "nextPhotos": "Next photos",
+    "showPhotosRange": "Show photos {{from}} to {{to}}",
+    "close": "Close",
+    "amenitiesTitle": "Amenities",
+    "amenitiesSubtitle": "Everything the house offers",
+    "amenities": {
+      "kitchen": "Fully equipped kitchen",
+      "masterBedroom": "Master bedroom with private bathroom",
+      "secondaryBedroom": "Secondary bedroom with 2 individual beds",
+      "extraBed": "Extra bed and a baby crib available upon request",
+      "diningLiving": "Dining and living room connected",
+      "balcony": "Comfortable balcony bridging the house, the garden and the pool",
+      "garage": "Closed garage with access to bikes (*)",
+      "rooftop": "Rooftop terrace at the top of the building where you can enjoy the view",
+      "pool": "Shared pool"
+    },
+    "amenitiesFootnote": "(*) Garage & bike access is free of charge but subject to a caution."
+  },
+  "experience": {
+    "eyebrow": "The Experience",
+    "title": "Simplicity Meets Comfort",
+    "subtitle": "Embrace simplicity without sacrificing comfort",
+    "features": {
+      "slowDown": {
+        "title": "Slow Down",
+        "text": "Forget time. Fall asleep between dunes and pines, wake to the sound of Atlantic waves."
+      },
+      "woodenTrails": {
+        "title": "Wooden Trails",
+        "text": "Boardwalks lead straight to wild Atlantic sand, the coastal town or the riverside."
+      },
+      "beachDays": {
+        "title": "Beach Days",
+        "text": "Go catch some waves — the beach is always just meters away."
+      },
+      "roadTrips": {
+        "title": "Road Trips",
+        "text": "By car you can visit the major cities of the Western side of the north, like Porto, Braga or Viana do Castelo."
+      },
+      "goldenHour": {
+        "title": "Golden Hour",
+        "text": "Chill on the terrace and soak up the Atlantic sunset, every single evening."
+      },
+      "surfing": {
+        "title": "Surfing",
+        "text": "Try something new — let the wind take your adrenaline up with some surfing or kite-surfing lessons."
+      },
+      "poolDays": {
+        "title": "Pool Days",
+        "text": "Every sunny day is a pool day, and the pool is just steps away."
+      },
+      "buggyTours": {
+        "title": "Buggy Tours",
+        "text": "Wild wishes require wild measures — buggy tours nearby."
+      }
+    }
+  },
+  "reservations": {
+    "eyebrow": "Reservations",
+    "title": "Book Your Escape",
+    "subtitle": "Choose your dates and let nature work its magic",
+    "checkInOut": "Check-in & Check-out",
+    "checkingAvailability": "Checking availability",
+    "previousMonth": "Previous month",
+    "nextMonth": "Next month",
+    "months": [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ],
+    "dow": ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
+    "legendAvailable": "Available",
+    "legendBooked": "Booked",
+    "legendSelected": "Selected",
+    "alreadyBooked": "Already booked",
+    "rangeErrorBooked": "Some nights in that range are already booked — pick a different check-out date.",
+    "selectCheckOut": "Select your check-out date",
+    "selectCheckIn": "Select your check-in date",
+    "loadError": "Couldn't load availability. Please contact us to confirm your dates.",
+    "night_one": "{{count}} night",
+    "night_other": "{{count}} nights",
+    "guest_one": "{{count}} guest",
+    "guest_other": "{{count}} guests",
+    "adults": "Adults",
+    "adult_one": "{{count}} adult",
+    "adult_other": "{{count}} adults",
+    "children": "Children",
+    "addChild": "Add Child",
+    "noChildrenAdded": "No children added",
+    "childLabel": "Child {{n}}",
+    "yr_one": "{{count}} yr",
+    "yr_other": "{{count}} yrs",
+    "decreaseAgeFor": "Decrease age for child {{n}}",
+    "increaseAgeFor": "Increase age for child {{n}}",
+    "removeChild": "Remove child {{n}}",
+    "decreaseAria": "Decrease {{label}}",
+    "increaseAria": "Increase {{label}}",
+    "requestSent": "Request sent!",
+    "thanksMessage": "Thanks, {{name}}. We'll reach out at {{email}} to confirm your stay.",
+    "perNight": "/night",
+    "promoLine": "Promo ({{code}} -{{percent}}%)",
+    "total": "Total",
+    "unpricedWarning": "Some nights in this range don't have a price yet — we'll confirm the exact total with you.",
+    "promoCodeLabel": "Promo Code",
+    "optional": "(optional)",
+    "havePromoCode": "Have a code?",
+    "apply": "Apply",
+    "remove": "Remove",
+    "enterPromoCode": "Enter a promo code.",
+    "invalidPromoCode": "Invalid promo code.",
+    "promoExpired": "This promo code has expired.",
+    "promoApplied": "\"{{code}}\" applied — {{percent}}% off.",
+    "continue": "Continue",
+    "yourDetails": "Your Details",
+    "close": "Close",
+    "name": "Name",
+    "yourFullName": "Your full name",
+    "nameRequired": "Name is required",
+    "email": "Email",
+    "emailRequired": "Email is required",
+    "enterValidEmail": "Enter a valid email address",
+    "comments": "Comments",
+    "anythingWeShouldKnow": "Anything we should know?",
+    "submitError": "Something went wrong sending your request. Please try again.",
+    "sending": "Sending…",
+    "sendRequest": "Send Request",
+    "priceTbc": "tbc"
+  },
+  "footer": {
+    "tagline": "Off-grid stay between the Atlantic and the maritime pine forest.",
+    "contactUs": "Contact Us",
+    "address": "Esposende, Portugal Northern Coast",
+    "followUs": "Follow Us",
+    "rights": "© {{year}} Duna Natura. All rights reserved."
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "Where the pine forest meets the ocean",
+    "p1": "Duna Natura is a collection of off-grid camping spots tucked between the maritime pine forest and the wild beaches of Portugal's northern coast. We believe the best kind of rest comes from slowing down — trading notifications for birdsong and screens for the horizon.",
+    "p2": "Each spot is chosen for its quiet, its light and its connection to the landscape. Wooden boardwalks lead through the dunes to the Atlantic, where golden-hour sunsets close every evening of your stay.",
+    "p3": "No wifi. No signal. Just pines, dunes and the ocean — the way nature intended."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Get in touch",
+    "subtitle": "Questions about a stay? Send us a message and we'll get back to you.",
+    "namePlaceholder": "Name",
+    "emailPlaceholder": "Email",
+    "messagePlaceholder": "Message",
+    "sendMessage": "Send Message",
+    "demoAlert": "Thanks! This is a demo form."
+  },
+  "notFound": {
+    "code": "404",
+    "message": "This trail leads nowhere.",
+    "backHome": "Back Home"
+  }
+}
