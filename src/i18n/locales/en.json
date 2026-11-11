@@ -16,7 +16,7 @@
     "eyebrow": "Nature escapes · Esposende, Portugal's northern coast",
     "titleLine1": "Between Pines",
     "titleLine2": "and the Sea",
-    "subtitle": "Boardwalks, dunes and wild Atlantic beaches. Disconnect between the maritime pine forest and the ocean.",
+    "subtitle": "Boardwalks, dunes and wild Atlantic beaches. Disconnect between the maritime pine forest, the river and the ocean.",
     "cta": "Book Now",
     "slideAlt": "Boardwalk through coastal dunes at sunset",
     "showSlide": "Show slide {{n}}"
@@ -24,7 +24,7 @@
   "gallery": {
     "eyebrow": "The Apartment",
     "title": "Photo Gallery",
-    "subtitle": "A closer look at the apartment we're renting out",
+    "subtitle": "Step inside your home by the sea",
     "addPhoto": "Add photo",
     "photos": {
       "livingRoom": "Living Room",
@@ -62,16 +62,16 @@
     "amenitiesSubtitle": "Everything the apartment offers",
     "amenities": {
       "kitchen": "Fully equipped kitchen",
-      "masterBedroom": "Master bedroom with private bathroom",
+      "masterBedroom": "Master bedroom with en-suite bathroom",
       "secondaryBedroom": "Secondary bedroom with 2 individual beds",
       "extraBed": "Extra bed and a baby crib available upon request",
       "diningLiving": "Dining and living room connected",
       "balcony": "Comfortable balcony bridging the inside, the garden and the pool",
-      "garage": "Closed garage with access to bikes (*)",
-      "rooftop": "Rooftop terrace at the top of the building where you can enjoy the view",
+      "garage": "Lock-up garage with free use of bikes (*)",
+      "rooftop": "Rooftop terrace with sea views",
       "pool": "Shared pool"
     },
-    "amenitiesFootnote": "(*) Garage & bike access is free of charge but subject to a caution."
+    "amenitiesFootnote": "(*) Garage & bike access is free of charge but subject to a deposit."
   },
   "experience": {
     "eyebrow": "The Experience",
@@ -185,7 +185,7 @@
   "footer": {
     "tagline": "Off-grid stay between the Atlantic and the maritime pine forest.",
     "contactUs": "Contact Us",
-    "address": "Esposende, Portugal Northern Coast",
+    "address": "Esposende, Portugal's Northern Coast",
     "followUs": "Follow Us",
     "rights": "© {{year}} Duna Natura. All rights reserved."
   },
