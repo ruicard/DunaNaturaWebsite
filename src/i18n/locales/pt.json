@@ -13,7 +13,7 @@
     "de": "Deutsch"
   },
   "hero": {
-    "eyebrow": "Escapadas na natureza · Esposende, costa norte de Portugal",
+    "eyebrow": "Descanso na natureza · Esposende, costa norte de Portugal",
     "titleLine1": "Entre os Pinhais",
     "titleLine2": "e o Mar",
     "subtitle": "Passadiços, dunas e praias atlânticas selvagens. Desligue-se entre o pinhal, o rio e o oceano.",
@@ -114,7 +114,7 @@
   },
   "reservations": {
     "eyebrow": "Reservas",
-    "title": "Reserve a sua Escapada",
+    "title": "Reserve a sua estadia",
     "subtitle": "Escolha as suas datas e deixe a natureza fazer o resto",
     "checkInOut": "Check-in & Check-out",
     "checkingAvailability": "A verificar disponibilidade",
@@ -184,7 +184,7 @@
     "priceTbc": "a confirmar"
   },
   "footer": {
-    "tagline": "Escapada na natureza entre o Atlântico e o pinhal marítimo.",
+    "tagline": "Descanso na natureza entre o Atlântico e o pinhal marítimo.",
     "contactUs": "Contacte-nos",
     "address": "Esposende, Costa Norte de Portugal",
     "followUs": "Siga-nos",
