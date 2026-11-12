@@ -13,44 +13,44 @@
     "de": "Deutsch"
   },
   "hero": {
-    "eyebrow": "Escapadas off-grid · Esposende, costa norte de Portugal",
-    "titleLine1": "Entre Pinares",
-    "titleLine2": "y el Mar",
-    "subtitle": "Pasarelas de madera, dunas y playas atlánticas salvajes. Desconecta entre el pinar marítimo y el océano.",
+    "eyebrow": "Descanso en la naturaleza · Esposende, costa norte de Portugal",
+    "titleLine1": "Entre pinares",
+    "titleLine2": "y el mar",
+    "subtitle": "Pasarelas de madera, dunas y playas atlánticas salvajes. Desconecta entre el pinar, el río y el océano.",
     "cta": "Reservar",
-    "slideAlt": "Pasarela entre dunas costeras al atardecer",
+    "slideAlt": "Pasarela de madera entre dunas al atardecer",
     "showSlide": "Mostrar imagen {{n}}"
   },
   "gallery": {
-    "eyebrow": "La Casa",
-    "title": "Galería de Fotos",
-    "subtitle": "Un vistazo más de cerca a la casa que alquilamos",
+    "eyebrow": "El apartamento",
+    "title": "Galería de fotos",
+    "subtitle": "Entra en tu casa junto al mar",
     "addPhoto": "Añadir foto",
     "photos": {
       "livingRoom": "Salón",
-      "diningArea": "Zona de Comedor",
+      "diningArea": "Comedor",
       "kitchen": "Cocina",
-      "mainBedroom": "Dormitorio Principal",
-      "secondaryBedroom": "Dormitorio Secundario",
+      "mainBedroom": "Dormitorio principal",
+      "secondaryBedroom": "Segundo dormitorio",
       "bathroom": "Baño",
       "exterior": "Exterior",
       "terrace": "Terraza",
       "pool": "Piscina",
-      "beachfrontView": "Vista a la Playa"
+      "beachfrontView": "Vistas a la playa"
     },
     "photoAlts": {
       "livingRoom": "Salón",
-      "diningArea": "Zona de comedor",
+      "diningArea": "Comedor",
       "kitchen": "Cocina",
       "mainBedroom": "Dormitorio principal",
-      "secondaryBedroom": "Dormitorio secundario",
+      "secondaryBedroom": "Segundo dormitorio",
       "bathroom": "Baño",
-      "exterior": "Exterior de la casa y jardín",
-      "terrace": "Terraza exterior con zona de estar",
+      "exterior": "Exterior del apartamento y jardín",
+      "terrace": "Terraza exterior con zona chill-out",
       "pool": "Piscina",
       "beachfrontView": "Vista aérea de la playa y las dunas"
     },
-    "viewFullScreen": "Ver {{caption}} en pantalla completa",
+    "viewFullScreen": "Ver {{caption}} a pantalla completa",
     "showPhoto": "Mostrar foto {{n}}",
     "previousPhoto": "Foto anterior",
     "nextPhoto": "Foto siguiente",
@@ -59,64 +59,64 @@
     "showPhotosRange": "Mostrar fotos {{from}} a {{to}}",
     "close": "Cerrar",
     "amenitiesTitle": "Comodidades",
-    "amenitiesSubtitle": "Todo lo que ofrece la casa",
+    "amenitiesSubtitle": "Todo lo que ofrece el apartamento",
     "amenities": {
       "kitchen": "Cocina totalmente equipada",
-      "masterBedroom": "Dormitorio principal con baño privado",
-      "secondaryBedroom": "Dormitorio secundario con 2 camas individuales",
-      "extraBed": "Cama extra y cuna de bebé disponibles bajo petición",
-      "diningLiving": "Comedor y salón conectados",
-      "balcony": "Balcón cómodo que une la casa, el jardín y la piscina",
-      "garage": "Garaje cerrado con acceso a bicicletas (*)",
-      "rooftop": "Terraza en la azotea del edificio donde podrá disfrutar de las vistas",
-      "pool": "Piscina compartida"
+      "masterBedroom": "Dormitorio principal con baño en suite",
+      "secondaryBedroom": "Segundo dormitorio con 2 camas individuales",
+      "extraBed": "Cama supletoria y cuna disponibles bajo petición",
+      "diningLiving": "Salón-comedor diáfano",
+      "balcony": "Amplio balcón que une el interior, el jardín y la piscina",
+      "garage": "Garaje cerrado con bicicletas de uso gratuito (*)",
+      "rooftop": "Terraza en la azotea con vistas al mar",
+      "pool": "Piscina comunitaria"
     },
-    "amenitiesFootnote": "(*) El acceso al garaje y a las bicicletas es gratuito, pero está sujeto a una fianza."
+    "amenitiesFootnote": "(*) El uso del garaje y de las bicicletas es gratuito, pero requiere una fianza."
   },
   "experience": {
-    "eyebrow": "La Experiencia",
-    "title": "Sencillez con Confort",
-    "subtitle": "Abraza la sencillez sin renunciar al confort",
+    "eyebrow": "La experiencia",
+    "title": "Sencillez y confort",
+    "subtitle": "Todo lo que necesitas, nada que te sobre",
     "features": {
       "slowDown": {
-        "title": "Ve Más Despacio",
-        "text": "Olvídate del tiempo. Duérmete entre dunas y pinos, despierta con el sonido de las olas del Atlántico."
+        "title": "Baja el ritmo",
+        "text": "Olvídate del reloj. Duérmete entre dunas y pinos, y despierta con el sonido del Atlántico."
       },
       "woodenTrails": {
-        "title": "Senderos de Madera",
-        "text": "Las pasarelas llevan directamente a la arena salvaje del Atlántico, al pueblo costero o a la ribera del río."
+        "title": "Pasarelas de madera",
+        "text": "Sigue las pasarelas entre las dunas hasta las playas salvajes del Atlántico, el casco antiguo de Esposende o la orilla del río Cávado."
       },
       "beachDays": {
-        "title": "Días de Playa",
-        "text": "Ve a coger algunas olas — la playa siempre está a pocos metros."
+        "title": "Días de playa",
+        "text": "Un breve paseo entre las dunas y ya estás en la playa. Quédate hasta que se ponga el sol, sin prisa por volver."
       },
       "roadTrips": {
-        "title": "Viajes en Coche",
-        "text": "En coche puedes visitar las principales ciudades del lado occidental del norte, como Oporto, Braga o Viana do Castelo."
+        "title": "Escapadas por el Miño",
+        "text": "Oporto, Braga y Viana do Castelo están a un corto trayecto en coche. Cascos históricos, vino de Oporto y cocina minhota, y de vuelta a tiempo para ver el atardecer."
       },
       "goldenHour": {
-        "title": "Hora Dorada",
-        "text": "Relájate en la terraza y disfruta del atardecer atlántico, cada noche."
+        "title": "Hora dorada",
+        "text": "Todas las tardes terminan igual: en la terraza, con una copa en la mano, viendo cómo el sol se esconde en el Atlántico."
       },
       "surfing": {
-        "title": "Surf",
-        "text": "Prueba algo nuevo — deja que el viento dispare tu adrenalina con clases de surf o kitesurf."
+        "title": "Surf y kite",
+        "text": "El viento atlántico de esta costa parece hecho a medida. Reserva una clase de surf o kitesurf y coge tu primera ola, o la mejor de tu vida."
       },
       "poolDays": {
-        "title": "Días de Piscina",
-        "text": "Cada día soleado es un día de piscina, y la piscina está a solo unos pasos."
+        "title": "Días de piscina",
+        "text": "Cuando el mar está demasiado bravo, la piscina está a dos pasos. Una tumbona, un buen libro y nada más en la agenda."
       },
       "buggyTours": {
-        "title": "Excursiones en Buggy",
-        "text": "Deseos salvajes requieren medidas salvajes — excursiones en buggy cerca de aquí."
+        "title": "Aventura en buggy",
+        "text": "Cambia la calma por un poco de adrenalina: rutas guiadas en buggy por los caminos de los alrededores."
       }
     }
   },
   "reservations": {
     "eyebrow": "Reservas",
-    "title": "Reserva tu Escapada",
-    "subtitle": "Elige tus fechas y deja que la naturaleza haga su magia",
-    "checkInOut": "Entrada y Salida",
+    "title": "Reserva tu estancia",
+    "subtitle": "Elige tus fechas y deja que la naturaleza haga el resto",
+    "checkInOut": "Entrada y salida",
     "checkingAvailability": "Comprobando disponibilidad",
     "previousMonth": "Mes anterior",
     "nextMonth": "Mes siguiente",
@@ -124,15 +124,15 @@
       "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
       "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
     ],
-    "dow": ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sá"],
+    "dow": ["Lu", "Ma", "Mi", "Ju", "Vi", "Sá", "Do"],
     "legendAvailable": "Disponible",
-    "legendBooked": "Reservado",
+    "legendBooked": "Ocupado",
     "legendSelected": "Seleccionado",
     "alreadyBooked": "Ya reservado",
-    "rangeErrorBooked": "Algunas noches de ese periodo ya están reservadas — elige otra fecha de salida.",
-    "selectCheckOut": "Selecciona tu fecha de salida",
-    "selectCheckIn": "Selecciona tu fecha de entrada",
-    "loadError": "No se pudo cargar la disponibilidad. Contáctanos para confirmar tus fechas.",
+    "rangeErrorBooked": "Algunas noches de ese periodo ya están reservadas. Elige otra fecha de salida.",
+    "selectCheckOut": "Selecciona la fecha de salida",
+    "selectCheckIn": "Selecciona la fecha de entrada",
+    "loadError": "No hemos podido cargar la disponibilidad. Escríbenos para confirmar tus fechas.",
     "night_one": "{{count}} noche",
     "night_other": "{{count}} noches",
     "guest_one": "{{count}} huésped",
@@ -141,75 +141,75 @@
     "adult_one": "{{count}} adulto",
     "adult_other": "{{count}} adultos",
     "children": "Niños",
-    "addChild": "Añadir Niño",
-    "noChildrenAdded": "No se han añadido niños",
+    "addChild": "Añadir niño",
+    "noChildrenAdded": "No has añadido niños",
     "childLabel": "Niño {{n}}",
     "yr_one": "{{count}} año",
     "yr_other": "{{count}} años",
-    "decreaseAgeFor": "Disminuir edad del niño {{n}}",
-    "increaseAgeFor": "Aumentar edad del niño {{n}}",
-    "removeChild": "Eliminar niño {{n}}",
-    "decreaseAria": "Disminuir {{label}}",
+    "decreaseAgeFor": "Reducir la edad del niño {{n}}",
+    "increaseAgeFor": "Aumentar la edad del niño {{n}}",
+    "removeChild": "Quitar niño {{n}}",
+    "decreaseAria": "Reducir {{label}}",
     "increaseAria": "Aumentar {{label}}",
     "requestSent": "¡Solicitud enviada!",
-    "thanksMessage": "Gracias, {{name}}. Te contactaremos en {{email}} para confirmar tu estancia.",
+    "thanksMessage": "Gracias, {{name}}. Te escribiremos a {{email}} para confirmar tu estancia.",
     "perNight": "/noche",
-    "promoLine": "Promoción ({{code}} -{{percent}}%)",
+    "promoLine": "Descuento ({{code}} -{{percent}} %)",
     "total": "Total",
-    "unpricedWarning": "Algunas noches de este periodo todavía no tienen precio — te confirmaremos el importe exacto.",
-    "promoCodeLabel": "Código Promocional",
+    "unpricedWarning": "Algunas noches de este periodo aún no tienen precio. Te confirmaremos el importe exacto.",
+    "promoCodeLabel": "Código promocional",
     "optional": "(opcional)",
     "havePromoCode": "¿Tienes un código?",
     "apply": "Aplicar",
     "remove": "Quitar",
     "enterPromoCode": "Introduce un código promocional.",
-    "invalidPromoCode": "Código promocional no válido.",
+    "invalidPromoCode": "El código promocional no es válido.",
     "promoExpired": "Este código promocional ha caducado.",
-    "promoApplied": "\"{{code}}\" aplicado — {{percent}}% de descuento.",
+    "promoApplied": "«{{code}}» aplicado: {{percent}} % de descuento.",
     "continue": "Continuar",
-    "yourDetails": "Tus Datos",
+    "yourDetails": "Tus datos",
     "close": "Cerrar",
     "name": "Nombre",
     "yourFullName": "Tu nombre completo",
     "nameRequired": "El nombre es obligatorio",
-    "email": "Email",
-    "emailPlaceholder": "you@example.com",
-    "emailRequired": "El email es obligatorio",
-    "enterValidEmail": "Introduce una dirección de email válida",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "tu@correo.es",
+    "emailRequired": "El correo electrónico es obligatorio",
+    "enterValidEmail": "Introduce un correo electrónico válido",
     "comments": "Comentarios",
     "anythingWeShouldKnow": "¿Hay algo que debamos saber?",
-    "submitError": "Algo salió mal al enviar tu solicitud. Por favor, inténtalo de nuevo.",
+    "submitError": "No hemos podido enviar tu solicitud. Inténtalo de nuevo.",
     "sending": "Enviando…",
-    "sendRequest": "Enviar Solicitud",
+    "sendRequest": "Enviar solicitud",
     "priceTbc": "por confirmar"
   },
   "footer": {
-    "tagline": "Estancia off-grid entre el Atlántico y el pinar marítimo.",
-    "contactUs": "Contáctanos",
-    "address": "Esposende, Costa Norte de Portugal",
+    "tagline": "Descanso en la naturaleza entre el Atlántico y el pinar.",
+    "contactUs": "Contacto",
+    "address": "Esposende, costa norte de Portugal",
     "followUs": "Síguenos",
     "rights": "© {{year}} Duna Natura. Todos los derechos reservados."
   },
   "about": {
-    "eyebrow": "Sobre Nosotros",
+    "eyebrow": "Sobre nosotros",
     "title": "Donde el pinar se encuentra con el océano",
-    "p1": "Duna Natura es una colección de espacios de acampada off-grid escondidos entre el pinar marítimo y las playas salvajes de la costa norte de Portugal. Creemos que el mejor descanso viene de ir más despacio — cambiar las notificaciones por el canto de los pájaros y las pantallas por el horizonte.",
-    "p2": "Cada rincón se elige por su tranquilidad, su luz y su conexión con el paisaje. Pasarelas de madera atraviesan las dunas hasta el Atlántico, donde la hora dorada cierra cada noche de tu estancia.",
-    "p3": "Sin wifi. Sin cobertura. Solo pinos, dunas y el océano — tal como la naturaleza lo concibió."
+    "p1": "Duna Natura es un apartamento situado entre pinares marítimos de ensueño, las playas salvajes de la costa norte de Portugal y la encantadora localidad costera de Esposende. Creemos que el mejor descanso llega cuando te dejas llevar por el ritmo de la naturaleza.",
+    "p2": "Es un lugar privilegiado por su tranquilidad, su luz y su conexión con el paisaje. Las pasarelas de madera cruzan las dunas hasta el Atlántico, donde la puesta de sol pone el broche a cada día de tu estancia.",
+    "p3": "Sin estrés. Solo pinos, dunas y el océano, y siempre a un paseo de todo lo que ofrece el pueblo."
   },
   "contact": {
     "eyebrow": "Contacto",
-    "title": "Ponte en contacto",
-    "subtitle": "¿Tienes preguntas sobre una estancia? Envíanos un mensaje y te responderemos.",
+    "title": "Escríbenos",
+    "subtitle": "¿Tienes alguna pregunta sobre tu estancia? Envíanos un mensaje y te responderemos lo antes posible.",
     "namePlaceholder": "Nombre",
-    "emailPlaceholder": "Email",
+    "emailPlaceholder": "Correo electrónico",
     "messagePlaceholder": "Mensaje",
-    "sendMessage": "Enviar Mensaje",
-    "demoAlert": "¡Gracias! Este es un formulario de demostración."
+    "sendMessage": "Enviar mensaje",
+    "demoAlert": "¡Gracias! Este formulario es de demostración."
   },
   "notFound": {
     "code": "404",
     "message": "Este sendero no lleva a ninguna parte.",
-    "backHome": "Volver al Inicio"
+    "backHome": "Volver al inicio"
   }
 }

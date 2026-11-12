@@ -11,7 +11,7 @@ export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 
 // Languages selectable from the UI right now. The rest are fully translated
 // and loaded below — flip them on by adding them here once reviewed.
-export const ENABLED_LANGUAGES: SupportedLanguage[] = ["en", "pt"];
+export const ENABLED_LANGUAGES: SupportedLanguage[] = ["en", "pt", "es"];
 
 const STORAGE_KEY = "duna-natura-lang";
 

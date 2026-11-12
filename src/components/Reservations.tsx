@@ -51,20 +51,20 @@ function shortStaySurcharge(surcharges: Surcharge[], nights: number): number {
 
 export default function Reservations() {
   const { t, i18n } = useTranslation();
-  const isPt = i18n.language.startsWith("pt");
+  const useDayMonthFormat = ["pt", "es"].includes(i18n.language);
   const MONTHS = t("reservations.months", { returnObjects: true }) as string[];
   const DOW = t("reservations.dow", { returnObjects: true }) as string[];
 
   function formatPrice(price: number | null): string {
     if (price === null) return t("reservations.priceTbc");
-    if (isPt) {
+    if (useDayMonthFormat) {
       return Number.isInteger(price) ? `${price} €` : `${price.toFixed(2).replace(".", ",")} €`;
     }
     return Number.isInteger(price) ? `€${price}` : `€${price.toFixed(2)}`;
   }
 
   function formatDateRange(checkIn: Date, checkOut: Date): string {
-    if (isPt) {
+    if (useDayMonthFormat) {
       const monthName = (d: Date) => MONTHS[d.getMonth()].toLowerCase();
       if (
         checkIn.getMonth() === checkOut.getMonth() &&
@@ -141,7 +141,7 @@ export default function Reservations() {
   const year = view.getFullYear();
   const month = view.getMonth();
   const firstWeekdaySunday = new Date(year, month, 1).getDay();
-  const firstWeekday = isPt ? (firstWeekdaySunday + 6) % 7 : firstWeekdaySunday;
+  const firstWeekday = useDayMonthFormat ? (firstWeekdaySunday + 6) % 7 : firstWeekdaySunday;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   const canGoPrev =
