@@ -173,6 +173,7 @@
     "yourFullName": "Votre nom complet",
     "nameRequired": "Le nom est requis",
     "email": "Email",
+    "emailPlaceholder": "you@example.com",
     "emailRequired": "L'email est requis",
     "enterValidEmail": "Entrez une adresse email valide",
     "comments": "Commentaires",

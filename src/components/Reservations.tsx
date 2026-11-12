@@ -140,7 +140,8 @@ export default function Reservations() {
 
   const year = view.getFullYear();
   const month = view.getMonth();
-  const firstWeekday = new Date(year, month, 1).getDay();
+  const firstWeekdaySunday = new Date(year, month, 1).getDay();
+  const firstWeekday = isPt ? (firstWeekdaySunday + 6) % 7 : firstWeekdaySunday;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   const canGoPrev =
@@ -702,7 +703,7 @@ function ReservationDialog({
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm outline-none transition-smooth focus:border-primary"
-              placeholder="you@example.com"
+              placeholder={t("reservations.emailPlaceholder")}
             />
             {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
           </div>

@@ -124,7 +124,7 @@
       "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
       "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
     ],
-    "dow": ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"],
+    "dow": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
     "legendAvailable": "Disponível",
     "legendBooked": "Reservado",
     "legendSelected": "Selecionado",
@@ -173,6 +173,7 @@
     "yourFullName": "O seu nome completo",
     "nameRequired": "O nome é obrigatório",
     "email": "Email",
+    "emailPlaceholder": "o-seu@email.pt",
     "emailRequired": "O email é obrigatório",
     "enterValidEmail": "Introduza um endereço de email válido",
     "comments": "Comentários",
