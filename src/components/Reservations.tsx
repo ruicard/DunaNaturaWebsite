@@ -51,7 +51,10 @@ function shortStaySurcharge(surcharges: Surcharge[], nights: number): number {
 
 export default function Reservations() {
   const { t, i18n } = useTranslation();
-  const useDayMonthFormat = ["pt", "es"].includes(i18n.language);
+  const useDayMonthFormat = ["pt", "es", "fr"].includes(i18n.language);
+  // Portuguese/Spanish join day and month with "de" ("20 de noviembre");
+  // French has no connector ("20 novembre").
+  const dayMonthConnector = i18n.language === "fr" ? "" : "de ";
   const MONTHS = t("reservations.months", { returnObjects: true }) as string[];
   const DOW = t("reservations.dow", { returnObjects: true }) as string[];
 
@@ -70,9 +73,9 @@ export default function Reservations() {
         checkIn.getMonth() === checkOut.getMonth() &&
         checkIn.getFullYear() === checkOut.getFullYear()
       ) {
-        return `${checkIn.getDate()} – ${checkOut.getDate()} de ${monthName(checkIn)}`;
+        return `${checkIn.getDate()} – ${checkOut.getDate()} ${dayMonthConnector}${monthName(checkIn)}`;
       }
-      return `${checkIn.getDate()} de ${monthName(checkIn)} – ${checkOut.getDate()} de ${monthName(
+      return `${checkIn.getDate()} ${dayMonthConnector}${monthName(checkIn)} – ${checkOut.getDate()} ${dayMonthConnector}${monthName(
         checkOut
       )}`;
     }

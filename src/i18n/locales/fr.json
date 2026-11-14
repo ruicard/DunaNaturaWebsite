@@ -13,40 +13,40 @@
     "de": "Deutsch"
   },
   "hero": {
-    "eyebrow": "Escapades hors réseau · Esposende, côte nord du Portugal",
-    "titleLine1": "Entre Pins",
-    "titleLine2": "et Océan",
-    "subtitle": "Pontons en bois, dunes et plages atlantiques sauvages. Déconnectez-vous entre la pinède maritime et l'océan.",
+    "eyebrow": "Parenthèse nature · Esposende, côte nord du Portugal",
+    "titleLine1": "Entre pins",
+    "titleLine2": "et océan",
+    "subtitle": "Pontons de bois, dunes et plages sauvages de l'Atlantique. Déconnectez entre la pinède, la rivière et l'océan.",
     "cta": "Réserver",
-    "slideAlt": "Ponton à travers les dunes côtières au coucher du soleil",
+    "slideAlt": "Ponton de bois à travers les dunes au coucher du soleil",
     "showSlide": "Afficher l'image {{n}}"
   },
   "gallery": {
-    "eyebrow": "La Maison",
-    "title": "Galerie Photos",
-    "subtitle": "Un aperçu de plus près de la maison que nous louons",
+    "eyebrow": "L'appartement",
+    "title": "Galerie photos",
+    "subtitle": "Entrez dans votre maison au bord de la mer",
     "addPhoto": "Ajouter une photo",
     "photos": {
       "livingRoom": "Salon",
-      "diningArea": "Salle à Manger",
+      "diningArea": "Salle à manger",
       "kitchen": "Cuisine",
-      "mainBedroom": "Chambre Principale",
-      "secondaryBedroom": "Chambre Secondaire",
-      "bathroom": "Salle de Bain",
+      "mainBedroom": "Chambre parentale",
+      "secondaryBedroom": "Deuxième chambre",
+      "bathroom": "Salle de bains",
       "exterior": "Extérieur",
       "terrace": "Terrasse",
       "pool": "Piscine",
-      "beachfrontView": "Vue sur la Plage"
+      "beachfrontView": "Vue sur la plage"
     },
     "photoAlts": {
       "livingRoom": "Salon",
       "diningArea": "Salle à manger",
       "kitchen": "Cuisine",
-      "mainBedroom": "Chambre principale",
-      "secondaryBedroom": "Chambre secondaire",
-      "bathroom": "Salle de bain",
-      "exterior": "Extérieur de la maison et jardin",
-      "terrace": "Terrasse extérieure avec salon",
+      "mainBedroom": "Chambre parentale",
+      "secondaryBedroom": "Deuxième chambre",
+      "bathroom": "Salle de bains",
+      "exterior": "Extérieur de l'appartement et jardin",
+      "terrace": "Terrasse extérieure avec coin salon",
       "pool": "Piscine",
       "beachfrontView": "Vue aérienne de la plage et des dunes"
     },
@@ -59,64 +59,64 @@
     "showPhotosRange": "Afficher les photos {{from}} à {{to}}",
     "close": "Fermer",
     "amenitiesTitle": "Équipements",
-    "amenitiesSubtitle": "Tout ce que la maison propose",
+    "amenitiesSubtitle": "Tout ce que propose l'appartement",
     "amenities": {
       "kitchen": "Cuisine entièrement équipée",
-      "masterBedroom": "Chambre principale avec salle de bain privative",
-      "secondaryBedroom": "Chambre secondaire avec 2 lits individuels",
+      "masterBedroom": "Chambre parentale avec salle de bains privative",
+      "secondaryBedroom": "Deuxième chambre avec 2 lits simples",
       "extraBed": "Lit d'appoint et lit bébé disponibles sur demande",
-      "diningLiving": "Salle à manger et salon communicants",
-      "balcony": "Balcon confortable reliant la maison, le jardin et la piscine",
-      "garage": "Garage fermé avec accès à des vélos (*)",
-      "rooftop": "Terrasse sur le toit de l'immeuble où profiter de la vue",
+      "diningLiving": "Séjour ouvert avec coin repas",
+      "balcony": "Grand balcon reliant l'intérieur, le jardin et la piscine",
+      "garage": "Garage fermé avec vélos à disposition gratuitement (*)",
+      "rooftop": "Toit-terrasse avec vue sur la mer",
       "pool": "Piscine partagée"
     },
-    "amenitiesFootnote": "(*) L'accès au garage et aux vélos est gratuit, mais soumis à une caution."
+    "amenitiesFootnote": "(*) L'accès au garage et aux vélos est gratuit, moyennant le versement d'une caution."
   },
   "experience": {
-    "eyebrow": "L'Expérience",
-    "title": "La Simplicité Rencontre le Confort",
-    "subtitle": "Adoptez la simplicité sans sacrifier le confort",
+    "eyebrow": "L'expérience",
+    "title": "Simplicité et confort",
+    "subtitle": "Tout ce dont vous avez besoin, rien de superflu",
     "features": {
       "slowDown": {
-        "title": "Ralentir",
-        "text": "Oubliez le temps. Endormez-vous entre dunes et pins, réveillez-vous au son des vagues de l'Atlantique."
+        "title": "Prendre son temps",
+        "text": "Oubliez la montre. Endormez-vous entre dunes et pins, et réveillez-vous au son de l'Atlantique."
       },
       "woodenTrails": {
-        "title": "Sentiers en Bois",
-        "text": "Les pontons mènent directement au sable sauvage de l'Atlantique, à la ville côtière ou aux berges de la rivière."
+        "title": "Pontons de bois",
+        "text": "Suivez les pontons à travers les dunes jusqu'aux plages sauvages de l'Atlantique, la vieille ville d'Esposende ou les rives du Cávado."
       },
       "beachDays": {
-        "title": "Journées Plage",
-        "text": "Allez attraper quelques vagues — la plage n'est jamais qu'à quelques mètres."
+        "title": "Les pieds dans le sable",
+        "text": "Une courte balade à travers les dunes et vous voilà sur la plage. Restez jusqu'au coucher du soleil, rien ne presse."
       },
       "roadTrips": {
-        "title": "Road Trips",
-        "text": "En voiture, vous pouvez visiter les grandes villes du nord-ouest, comme Porto, Braga ou Viana do Castelo."
+        "title": "Escapades dans le Minho",
+        "text": "Porto, Braga et Viana do Castelo sont à deux pas en voiture. Centres historiques, vin de Porto et cuisine du Minho, et retour à temps pour le coucher du soleil."
       },
       "goldenHour": {
-        "title": "Heure Dorée",
-        "text": "Détendez-vous sur la terrasse et profitez du coucher de soleil atlantique, chaque soir."
+        "title": "Heure dorée",
+        "text": "Chaque soirée se termine de la même façon : sur la terrasse, un verre à la main, à regarder le soleil plonger dans l'Atlantique."
       },
       "surfing": {
-        "title": "Surf",
-        "text": "Essayez quelque chose de nouveau — laissez le vent faire monter votre adrénaline avec des cours de surf ou de kitesurf."
+        "title": "Surf et kite",
+        "text": "Ici, le vent de l'Atlantique semble fait pour ça. Réservez un cours de surf ou de kitesurf et prenez votre première vague, ou la plus belle de votre vie."
       },
       "poolDays": {
-        "title": "Journées Piscine",
-        "text": "Chaque journée ensoleillée est une journée piscine, et la piscine n'est qu'à quelques pas."
+        "title": "Farniente à la piscine",
+        "text": "Quand l'océan est trop agité, la piscine est à deux pas. Un transat, un bon livre et rien d'autre au programme."
       },
       "buggyTours": {
-        "title": "Excursions en Buggy",
-        "text": "Les envies sauvages demandent des mesures sauvages — excursions en buggy à proximité."
+        "title": "Aventure en buggy",
+        "text": "Troquez le calme contre un peu d'adrénaline : balades guidées en buggy sur les pistes des environs."
       }
     }
   },
   "reservations": {
     "eyebrow": "Réservations",
-    "title": "Réservez votre Escapade",
-    "subtitle": "Choisissez vos dates et laissez la nature faire sa magie",
-    "checkInOut": "Arrivée et Départ",
+    "title": "Réservez votre séjour",
+    "subtitle": "Choisissez vos dates et laissez la nature faire le reste",
+    "checkInOut": "Arrivée et départ",
     "checkingAvailability": "Vérification des disponibilités",
     "previousMonth": "Mois précédent",
     "nextMonth": "Mois suivant",
@@ -124,92 +124,92 @@
       "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
       "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
     ],
-    "dow": ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"],
+    "dow": ["Lu", "Ma", "Me", "Je", "Ve", "Sa", "Di"],
     "legendAvailable": "Disponible",
-    "legendBooked": "Réservé",
+    "legendBooked": "Indisponible",
     "legendSelected": "Sélectionné",
     "alreadyBooked": "Déjà réservé",
-    "rangeErrorBooked": "Certaines nuits de cette période sont déjà réservées — choisissez une autre date de départ.",
-    "selectCheckOut": "Sélectionnez votre date de départ",
-    "selectCheckIn": "Sélectionnez votre date d'arrivée",
-    "loadError": "Impossible de charger les disponibilités. Contactez-nous pour confirmer vos dates.",
+    "rangeErrorBooked": "Certaines nuits de cette période sont déjà réservées. Choisissez une autre date de départ.",
+    "selectCheckOut": "Choisissez votre date de départ",
+    "selectCheckIn": "Choisissez votre date d'arrivée",
+    "loadError": "Impossible d'afficher les disponibilités. Contactez-nous pour confirmer vos dates.",
     "night_one": "{{count}} nuit",
     "night_other": "{{count}} nuits",
-    "guest_one": "{{count}} invité",
-    "guest_other": "{{count}} invités",
+    "guest_one": "{{count}} voyageur",
+    "guest_other": "{{count}} voyageurs",
     "adults": "Adultes",
     "adult_one": "{{count}} adulte",
     "adult_other": "{{count}} adultes",
     "children": "Enfants",
-    "addChild": "Ajouter un Enfant",
+    "addChild": "Ajouter un enfant",
     "noChildrenAdded": "Aucun enfant ajouté",
     "childLabel": "Enfant {{n}}",
     "yr_one": "{{count}} an",
     "yr_other": "{{count}} ans",
     "decreaseAgeFor": "Diminuer l'âge de l'enfant {{n}}",
     "increaseAgeFor": "Augmenter l'âge de l'enfant {{n}}",
-    "removeChild": "Supprimer l'enfant {{n}}",
+    "removeChild": "Retirer l'enfant {{n}}",
     "decreaseAria": "Diminuer {{label}}",
     "increaseAria": "Augmenter {{label}}",
-    "requestSent": "Demande envoyée !",
-    "thanksMessage": "Merci, {{name}}. Nous vous contacterons à {{email}} pour confirmer votre séjour.",
+    "requestSent": "Demande envoyée !",
+    "thanksMessage": "Merci, {{name}}. Nous vous écrirons à {{email}} pour confirmer votre séjour.",
     "perNight": "/nuit",
-    "promoLine": "Promo ({{code}} -{{percent}}%)",
+    "promoLine": "Réduction ({{code}} -{{percent}} %)",
     "total": "Total",
-    "unpricedWarning": "Certaines nuits de cette période n'ont pas encore de prix défini — nous vous confirmerons le montant exact.",
-    "promoCodeLabel": "Code Promo",
+    "unpricedWarning": "Certaines nuits de cette période n'ont pas encore de tarif. Nous vous confirmerons le montant exact.",
+    "promoCodeLabel": "Code promo",
     "optional": "(facultatif)",
-    "havePromoCode": "Vous avez un code ?",
+    "havePromoCode": "Vous avez un code ?",
     "apply": "Appliquer",
     "remove": "Retirer",
-    "enterPromoCode": "Entrez un code promo.",
-    "invalidPromoCode": "Code promo invalide.",
+    "enterPromoCode": "Saisissez un code promo.",
+    "invalidPromoCode": "Ce code promo n'est pas valide.",
     "promoExpired": "Ce code promo a expiré.",
-    "promoApplied": "« {{code}} » appliqué — {{percent}}% de réduction.",
+    "promoApplied": "« {{code}} » appliqué : {{percent}} % de réduction.",
     "continue": "Continuer",
-    "yourDetails": "Vos Coordonnées",
+    "yourDetails": "Vos coordonnées",
     "close": "Fermer",
     "name": "Nom",
-    "yourFullName": "Votre nom complet",
-    "nameRequired": "Le nom est requis",
-    "email": "Email",
-    "emailPlaceholder": "you@example.com",
-    "emailRequired": "L'email est requis",
-    "enterValidEmail": "Entrez une adresse email valide",
+    "yourFullName": "Vos nom et prénom",
+    "nameRequired": "Veuillez indiquer votre nom",
+    "email": "E-mail",
+    "emailPlaceholder": "vous@exemple.fr",
+    "emailRequired": "Veuillez indiquer votre adresse e-mail",
+    "enterValidEmail": "Saisissez une adresse e-mail valide",
     "comments": "Commentaires",
-    "anythingWeShouldKnow": "Y a-t-il quelque chose que nous devrions savoir ?",
-    "submitError": "Une erreur s'est produite lors de l'envoi de votre demande. Veuillez réessayer.",
+    "anythingWeShouldKnow": "Quelque chose à nous signaler ?",
+    "submitError": "Votre demande n'a pas pu être envoyée. Veuillez réessayer.",
     "sending": "Envoi en cours…",
-    "sendRequest": "Envoyer la Demande",
+    "sendRequest": "Envoyer la demande",
     "priceTbc": "à confirmer"
   },
   "footer": {
-    "tagline": "Séjour hors réseau entre l'Atlantique et la pinède maritime.",
-    "contactUs": "Contactez-nous",
-    "address": "Esposende, Côte Nord du Portugal",
+    "tagline": "Parenthèse nature entre l'Atlantique et la pinède.",
+    "contactUs": "Nous contacter",
+    "address": "Esposende, côte nord du Portugal",
     "followUs": "Suivez-nous",
     "rights": "© {{year}} Duna Natura. Tous droits réservés."
   },
   "about": {
-    "eyebrow": "À Propos",
+    "eyebrow": "À propos",
     "title": "Là où la pinède rencontre l'océan",
-    "p1": "Duna Natura est une collection de sites de camping hors réseau nichés entre la pinède maritime et les plages sauvages de la côte nord du Portugal. Nous croyons que le meilleur repos vient en ralentissant — échanger les notifications contre le chant des oiseaux et les écrans contre l'horizon.",
-    "p2": "Chaque site est choisi pour son calme, sa lumière et sa connexion avec le paysage. Des pontons en bois traversent les dunes jusqu'à l'Atlantique, où l'heure dorée clôture chaque soirée de votre séjour.",
-    "p3": "Pas de wifi. Pas de réseau. Juste des pins, des dunes et l'océan — comme la nature l'a voulu."
+    "p1": "Duna Natura est un appartement niché entre des pinèdes enchanteresses, les plages sauvages de la côte nord du Portugal et la charmante ville balnéaire d'Esposende. Nous sommes convaincus que le vrai repos commence quand on vit au rythme de la nature.",
+    "p2": "Un emplacement privilégié pour son calme, sa lumière et son lien avec le paysage. Des pontons de bois traversent les dunes jusqu'à l'Atlantique, où le coucher du soleil vient clore chaque journée de votre séjour.",
+    "p3": "Zéro stress. Rien que les pins, les dunes et l'océan, et toujours à quelques pas de tout ce que la ville a à offrir."
   },
   "contact": {
     "eyebrow": "Contact",
-    "title": "Contactez-nous",
-    "subtitle": "Des questions sur un séjour ? Envoyez-nous un message et nous vous répondrons.",
+    "title": "Écrivez-nous",
+    "subtitle": "Une question sur votre séjour ? Envoyez-nous un message, nous vous répondrons dans les meilleurs délais.",
     "namePlaceholder": "Nom",
-    "emailPlaceholder": "Email",
+    "emailPlaceholder": "E-mail",
     "messagePlaceholder": "Message",
-    "sendMessage": "Envoyer le Message",
-    "demoAlert": "Merci ! Ceci est un formulaire de démonstration."
+    "sendMessage": "Envoyer le message",
+    "demoAlert": "Merci ! Ce formulaire est une démonstration."
   },
   "notFound": {
     "code": "404",
     "message": "Ce sentier ne mène nulle part.",
-    "backHome": "Retour à l'Accueil"
+    "backHome": "Retour à l'accueil"
   }
 }
