@@ -49,33 +49,47 @@ function shortStaySurcharge(surcharges: Surcharge[], nights: number): number {
   return match ? match.percent / 100 : 0;
 }
 
+// Day-before-month locales each join day and month slightly differently:
+// Portuguese/Spanish use "de" ("20 de noviembre"), French uses nothing
+// ("20 novembre"), German suffixes the day with a period and keeps the
+// month capitalized ("20. November").
+const DAY_MONTH_STYLES: Record<string, { connector: string; daySuffix: string; lowercaseMonth: boolean }> = {
+  pt: { connector: "de ", daySuffix: "", lowercaseMonth: true },
+  es: { connector: "de ", daySuffix: "", lowercaseMonth: true },
+  fr: { connector: "", daySuffix: "", lowercaseMonth: true },
+  de: { connector: "", daySuffix: ".", lowercaseMonth: false },
+};
+
 export default function Reservations() {
   const { t, i18n } = useTranslation();
-  const useDayMonthFormat = ["pt", "es", "fr"].includes(i18n.language);
-  // Portuguese/Spanish join day and month with "de" ("20 de noviembre");
-  // French has no connector ("20 novembre").
-  const dayMonthConnector = i18n.language === "fr" ? "" : "de ";
+  const dayMonthStyle = DAY_MONTH_STYLES[i18n.language];
+  const useCommaPrice = Boolean(dayMonthStyle);
   const MONTHS = t("reservations.months", { returnObjects: true }) as string[];
   const DOW = t("reservations.dow", { returnObjects: true }) as string[];
 
   function formatPrice(price: number | null): string {
     if (price === null) return t("reservations.priceTbc");
-    if (useDayMonthFormat) {
+    if (useCommaPrice) {
       return Number.isInteger(price) ? `${price} €` : `${price.toFixed(2).replace(".", ",")} €`;
     }
     return Number.isInteger(price) ? `€${price}` : `€${price.toFixed(2)}`;
   }
 
   function formatDateRange(checkIn: Date, checkOut: Date): string {
-    if (useDayMonthFormat) {
-      const monthName = (d: Date) => MONTHS[d.getMonth()].toLowerCase();
+    if (dayMonthStyle) {
+      const { connector, daySuffix, lowercaseMonth } = dayMonthStyle;
+      const monthName = (d: Date) => {
+        const name = MONTHS[d.getMonth()];
+        return lowercaseMonth ? name.toLowerCase() : name;
+      };
+      const day = (d: Date) => `${d.getDate()}${daySuffix}`;
       if (
         checkIn.getMonth() === checkOut.getMonth() &&
         checkIn.getFullYear() === checkOut.getFullYear()
       ) {
-        return `${checkIn.getDate()} – ${checkOut.getDate()} ${dayMonthConnector}${monthName(checkIn)}`;
+        return `${day(checkIn)} – ${day(checkOut)} ${connector}${monthName(checkIn)}`;
       }
-      return `${checkIn.getDate()} ${dayMonthConnector}${monthName(checkIn)} – ${checkOut.getDate()} ${dayMonthConnector}${monthName(
+      return `${day(checkIn)} ${connector}${monthName(checkIn)} – ${day(checkOut)} ${connector}${monthName(
         checkOut
       )}`;
     }
@@ -141,10 +155,14 @@ export default function Reservations() {
     setChildren((c) => c.map((child) => (child.id === id ? { ...child, age: clamped } : child)));
   }
 
+  // Every locale in DAY_MONTH_STYLES also lists its weekdays Monday-first
+  // in its translation file; English is the only Sunday-first one.
+  const weekStartsMonday = Boolean(dayMonthStyle);
+
   const year = view.getFullYear();
   const month = view.getMonth();
   const firstWeekdaySunday = new Date(year, month, 1).getDay();
-  const firstWeekday = useDayMonthFormat ? (firstWeekdaySunday + 6) % 7 : firstWeekdaySunday;
+  const firstWeekday = weekStartsMonday ? (firstWeekdaySunday + 6) % 7 : firstWeekdaySunday;
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   const canGoPrev =

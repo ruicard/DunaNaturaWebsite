@@ -2,7 +2,7 @@
   "nav": {
     "home": "Startseite",
     "contact": "Kontakt",
-    "bookNow": "Jetzt Buchen"
+    "bookNow": "Jetzt buchen"
   },
   "languageSwitcher": {
     "label": "Sprache",
@@ -13,24 +13,24 @@
     "de": "Deutsch"
   },
   "hero": {
-    "eyebrow": "Off-Grid-Auszeiten · Esposende, Nordküste Portugals",
+    "eyebrow": "Auszeit in der Natur · Esposende, Nordküste Portugals",
     "titleLine1": "Zwischen Pinien",
-    "titleLine2": "und dem Meer",
-    "subtitle": "Holzstege, Dünen und wilde Atlantikstrände. Schalten Sie ab zwischen dem Pinienwald am Meer und dem Ozean.",
-    "cta": "Jetzt Buchen",
-    "slideAlt": "Holzsteg durch Küstendünen bei Sonnenuntergang",
+    "titleLine2": "und Meer",
+    "subtitle": "Holzstege, Dünen und wilde Atlantikstrände. Abschalten zwischen Pinienwald, Fluss und Ozean.",
+    "cta": "Jetzt buchen",
+    "slideAlt": "Holzsteg durch die Dünen bei Sonnenuntergang",
     "showSlide": "Bild {{n}} anzeigen"
   },
   "gallery": {
-    "eyebrow": "Das Haus",
+    "eyebrow": "Die Ferienwohnung",
     "title": "Fotogalerie",
-    "subtitle": "Ein genauerer Blick auf das Haus, das wir vermieten",
+    "subtitle": "Willkommen in Ihrem Zuhause am Meer",
     "addPhoto": "Foto hinzufügen",
     "photos": {
       "livingRoom": "Wohnzimmer",
       "diningArea": "Essbereich",
       "kitchen": "Küche",
-      "mainBedroom": "Hauptschlafzimmer",
+      "mainBedroom": "Elternschlafzimmer",
       "secondaryBedroom": "Zweites Schlafzimmer",
       "bathroom": "Badezimmer",
       "exterior": "Außenbereich",
@@ -42,12 +42,12 @@
       "livingRoom": "Wohnzimmer",
       "diningArea": "Essbereich",
       "kitchen": "Küche",
-      "mainBedroom": "Hauptschlafzimmer",
+      "mainBedroom": "Elternschlafzimmer",
       "secondaryBedroom": "Zweites Schlafzimmer",
       "bathroom": "Badezimmer",
-      "exterior": "Hausaußenbereich und Garten",
-      "terrace": "Außenterrasse mit Lounge",
-      "pool": "Schwimmbecken",
+      "exterior": "Außenansicht der Ferienwohnung mit Garten",
+      "terrace": "Terrasse mit Lounge-Möbeln",
+      "pool": "Swimmingpool",
       "beachfrontView": "Luftaufnahme von Strand und Dünen"
     },
     "viewFullScreen": "{{caption}} im Vollbild ansehen",
@@ -59,64 +59,64 @@
     "showPhotosRange": "Fotos {{from}} bis {{to}} anzeigen",
     "close": "Schließen",
     "amenitiesTitle": "Ausstattung",
-    "amenitiesSubtitle": "Alles, was das Haus bietet",
+    "amenitiesSubtitle": "Alles, was die Ferienwohnung bietet",
     "amenities": {
       "kitchen": "Voll ausgestattete Küche",
-      "masterBedroom": "Hauptschlafzimmer mit eigenem Bad",
+      "masterBedroom": "Elternschlafzimmer mit eigenem Bad",
       "secondaryBedroom": "Zweites Schlafzimmer mit 2 Einzelbetten",
-      "extraBed": "Zustellbett und Babybett auf Anfrage erhältlich",
-      "diningLiving": "Ess- und Wohnbereich miteinander verbunden",
-      "balcony": "Gemütlicher Balkon, der Haus, Garten und Pool verbindet",
-      "garage": "Geschlossene Garage mit Zugang zu Fahrrädern (*)",
-      "rooftop": "Dachterrasse ganz oben im Gebäude mit herrlicher Aussicht",
-      "pool": "Gemeinsam genutzter Pool"
+      "extraBed": "Zustellbett und Babybett auf Anfrage",
+      "diningLiving": "Offener Wohn- und Essbereich",
+      "balcony": "Großzügiger Balkon mit direktem Zugang zu Garten und Pool",
+      "garage": "Abschließbare Garage mit kostenlosen Fahrrädern (*)",
+      "rooftop": "Dachterrasse mit Meerblick",
+      "pool": "Gemeinschaftspool"
     },
-    "amenitiesFootnote": "(*) Der Zugang zu Garage und Fahrrädern ist kostenlos, erfordert jedoch eine Kaution."
+    "amenitiesFootnote": "(*) Die Nutzung von Garage und Fahrrädern ist kostenlos, setzt jedoch eine Kaution voraus."
   },
   "experience": {
     "eyebrow": "Das Erlebnis",
-    "title": "Einfachheit Trifft Komfort",
-    "subtitle": "Genießen Sie Einfachheit, ohne auf Komfort zu verzichten",
+    "title": "Einfach und komfortabel",
+    "subtitle": "Alles, was Sie brauchen – und nichts, was Sie nicht brauchen",
     "features": {
       "slowDown": {
         "title": "Entschleunigen",
-        "text": "Vergessen Sie die Zeit. Schlafen Sie zwischen Dünen und Pinien ein und wachen Sie zum Rauschen der Atlantikwellen auf."
+        "text": "Vergessen Sie die Uhr. Schlafen Sie zwischen Dünen und Pinien ein und wachen Sie mit dem Rauschen des Atlantiks auf."
       },
       "woodenTrails": {
         "title": "Holzstege",
-        "text": "Holzstege führen direkt zum wilden Atlantiksand, in die Küstenstadt oder ans Flussufer."
+        "text": "Folgen Sie den Holzstegen durch die Dünen zu wilden Atlantikstränden, in die Altstadt von Esposende oder ans Ufer des Cávado."
       },
       "beachDays": {
-        "title": "Strandtage",
-        "text": "Fangen Sie ein paar Wellen — der Strand ist immer nur wenige Meter entfernt."
+        "title": "Füße im Sand",
+        "text": "Ein kurzer Spaziergang durch die Dünen, und schon sind Sie am Strand. Bleiben Sie, bis die Sonne untergeht – ganz ohne Eile."
       },
       "roadTrips": {
-        "title": "Ausflüge mit dem Auto",
-        "text": "Mit dem Auto erreichen Sie die großen Städte im Westen des Nordens, wie Porto, Braga oder Viana do Castelo."
+        "title": "Ausflüge ins Minho",
+        "text": "Porto, Braga und Viana do Castelo sind bequem mit dem Auto erreichbar. Historische Altstädte, Portwein und Minho-Küche – und rechtzeitig zum Sonnenuntergang zurück."
       },
       "goldenHour": {
         "title": "Goldene Stunde",
-        "text": "Entspannen Sie auf der Terrasse und genießen Sie jeden Abend den atlantischen Sonnenuntergang."
+        "text": "Jeder Abend endet gleich: auf der Terrasse, ein Glas in der Hand, während die Sonne im Atlantik versinkt."
       },
       "surfing": {
-        "title": "Surfen",
-        "text": "Probieren Sie etwas Neues — lassen Sie den Wind mit Surf- oder Kitesurf-Stunden Ihren Adrenalinspiegel steigen."
+        "title": "Surfen & Kiten",
+        "text": "Der Atlantikwind hier ist wie dafür gemacht. Buchen Sie einen Surf- oder Kitesurfkurs und reiten Sie Ihre erste Welle – oder Ihre bisher beste."
       },
       "poolDays": {
         "title": "Pooltage",
-        "text": "Jeder sonnige Tag ist ein Pooltag, und der Pool liegt nur wenige Schritte entfernt."
+        "text": "Wenn der Ozean zu wild ist, liegt der Pool nur wenige Schritte entfernt. Eine Sonnenliege, ein gutes Buch und sonst nichts auf dem Programm."
       },
       "buggyTours": {
-        "title": "Buggy-Touren",
-        "text": "Wilde Wünsche erfordern wilde Maßnahmen — Buggy-Touren in der Nähe."
+        "title": "Buggy-Abenteuer",
+        "text": "Tauschen Sie die Ruhe gegen eine Portion Adrenalin: geführte Buggy-Touren auf den Pisten der Umgebung."
       }
     }
   },
   "reservations": {
-    "eyebrow": "Reservierungen",
-    "title": "Buchen Sie Ihre Auszeit",
-    "subtitle": "Wählen Sie Ihre Daten und lassen Sie die Natur ihre Magie wirken",
-    "checkInOut": "Anreise & Abreise",
+    "eyebrow": "Buchung",
+    "title": "Buchen Sie Ihren Aufenthalt",
+    "subtitle": "Wählen Sie Ihre Reisedaten und lassen Sie die Natur den Rest erledigen",
+    "checkInOut": "An- und Abreise",
     "checkingAvailability": "Verfügbarkeit wird geprüft",
     "previousMonth": "Vorheriger Monat",
     "nextMonth": "Nächster Monat",
@@ -124,15 +124,15 @@
       "Januar", "Februar", "März", "April", "Mai", "Juni",
       "Juli", "August", "September", "Oktober", "November", "Dezember"
     ],
-    "dow": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
-    "legendAvailable": "Verfügbar",
+    "dow": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+    "legendAvailable": "Frei",
     "legendBooked": "Belegt",
     "legendSelected": "Ausgewählt",
     "alreadyBooked": "Bereits belegt",
-    "rangeErrorBooked": "Einige Nächte in diesem Zeitraum sind bereits belegt — wählen Sie ein anderes Abreisedatum.",
-    "selectCheckOut": "Wählen Sie Ihr Abreisedatum",
-    "selectCheckIn": "Wählen Sie Ihr Anreisedatum",
-    "loadError": "Verfügbarkeit konnte nicht geladen werden. Bitte kontaktieren Sie uns, um Ihre Daten zu bestätigen.",
+    "rangeErrorBooked": "Einige Nächte in diesem Zeitraum sind bereits belegt. Bitte wählen Sie ein anderes Abreisedatum.",
+    "selectCheckOut": "Bitte wählen Sie Ihr Abreisedatum",
+    "selectCheckIn": "Bitte wählen Sie Ihr Anreisedatum",
+    "loadError": "Die Verfügbarkeit konnte nicht geladen werden. Bitte kontaktieren Sie uns, um Ihre Reisedaten abzustimmen.",
     "night_one": "{{count}} Nacht",
     "night_other": "{{count}} Nächte",
     "guest_one": "{{count}} Gast",
@@ -141,7 +141,7 @@
     "adult_one": "{{count}} Erwachsener",
     "adult_other": "{{count}} Erwachsene",
     "children": "Kinder",
-    "addChild": "Kind Hinzufügen",
+    "addChild": "Kind hinzufügen",
     "noChildrenAdded": "Keine Kinder hinzugefügt",
     "childLabel": "Kind {{n}}",
     "yr_one": "{{count}} Jahr",
@@ -152,64 +152,64 @@
     "decreaseAria": "{{label}} verringern",
     "increaseAria": "{{label}} erhöhen",
     "requestSent": "Anfrage gesendet!",
-    "thanksMessage": "Danke, {{name}}. Wir melden uns unter {{email}}, um Ihren Aufenthalt zu bestätigen.",
+    "thanksMessage": "Vielen Dank, {{name}}. Wir melden uns unter {{email}}, um Ihren Aufenthalt zu bestätigen.",
     "perNight": "/Nacht",
-    "promoLine": "Aktionscode ({{code}} -{{percent}}%)",
+    "promoLine": "Rabatt ({{code}} -{{percent}} %)",
     "total": "Gesamt",
-    "unpricedWarning": "Für einige Nächte in diesem Zeitraum liegt noch kein Preis vor — wir bestätigen Ihnen den genauen Gesamtpreis.",
-    "promoCodeLabel": "Aktionscode",
+    "unpricedWarning": "Für einige Nächte in diesem Zeitraum steht noch kein Preis fest. Wir teilen Ihnen den genauen Gesamtbetrag mit.",
+    "promoCodeLabel": "Gutscheincode",
     "optional": "(optional)",
-    "havePromoCode": "Haben Sie einen Code?",
-    "apply": "Anwenden",
+    "havePromoCode": "Haben Sie einen Gutscheincode?",
+    "apply": "Einlösen",
     "remove": "Entfernen",
-    "enterPromoCode": "Geben Sie einen Aktionscode ein.",
-    "invalidPromoCode": "Ungültiger Aktionscode.",
-    "promoExpired": "Dieser Aktionscode ist abgelaufen.",
-    "promoApplied": "„{{code}}“ angewendet — {{percent}}% Rabatt.",
+    "enterPromoCode": "Bitte geben Sie einen Gutscheincode ein.",
+    "invalidPromoCode": "Dieser Gutscheincode ist ungültig.",
+    "promoExpired": "Dieser Gutscheincode ist abgelaufen.",
+    "promoApplied": "„{{code}}“ eingelöst: {{percent}} % Rabatt.",
     "continue": "Weiter",
     "yourDetails": "Ihre Angaben",
     "close": "Schließen",
     "name": "Name",
-    "yourFullName": "Ihr vollständiger Name",
-    "nameRequired": "Name ist erforderlich",
+    "yourFullName": "Vor- und Nachname",
+    "nameRequired": "Bitte geben Sie Ihren Namen ein",
     "email": "E-Mail",
-    "emailPlaceholder": "you@example.com",
-    "emailRequired": "E-Mail ist erforderlich",
-    "enterValidEmail": "Geben Sie eine gültige E-Mail-Adresse ein",
+    "emailPlaceholder": "ihre@email.de",
+    "emailRequired": "Bitte geben Sie Ihre E-Mail-Adresse ein",
+    "enterValidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein",
     "comments": "Anmerkungen",
     "anythingWeShouldKnow": "Gibt es etwas, das wir wissen sollten?",
-    "submitError": "Beim Senden Ihrer Anfrage ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
-    "sending": "Wird gesendet…",
-    "sendRequest": "Anfrage Senden",
-    "priceTbc": "noch offen"
+    "submitError": "Ihre Anfrage konnte leider nicht gesendet werden. Bitte versuchen Sie es erneut.",
+    "sending": "Wird gesendet …",
+    "sendRequest": "Anfrage senden",
+    "priceTbc": "auf Anfrage"
   },
   "footer": {
-    "tagline": "Off-Grid-Aufenthalt zwischen dem Atlantik und dem Pinienwald am Meer.",
-    "contactUs": "Kontaktieren Sie Uns",
+    "tagline": "Auszeit in der Natur zwischen Atlantik und Pinienwald.",
+    "contactUs": "Kontakt",
     "address": "Esposende, Nordküste Portugals",
-    "followUs": "Folgen Sie Uns",
+    "followUs": "Folgen Sie uns",
     "rights": "© {{year}} Duna Natura. Alle Rechte vorbehalten."
   },
   "about": {
-    "eyebrow": "Über Uns",
+    "eyebrow": "Über uns",
     "title": "Wo der Pinienwald auf den Ozean trifft",
-    "p1": "Duna Natura ist eine Sammlung von Off-Grid-Campingplätzen zwischen dem Pinienwald am Meer und den wilden Stränden der portugiesischen Nordküste. Wir glauben, dass die beste Erholung durch Entschleunigung entsteht — Benachrichtigungen gegen Vogelgezwitscher und Bildschirme gegen den Horizont eintauschen.",
-    "p2": "Jeder Ort wird wegen seiner Ruhe, seines Lichts und seiner Verbindung zur Landschaft ausgewählt. Holzstege führen durch die Dünen zum Atlantik, wo die goldene Stunde jeden Abend Ihres Aufenthalts beschließt.",
-    "p3": "Kein WLAN. Kein Empfang. Nur Pinien, Dünen und der Ozean — so, wie es die Natur vorgesehen hat."
+    "p1": "Duna Natura ist eine Ferienwohnung zwischen zauberhaften Pinienwäldern, den wilden Stränden der portugiesischen Nordküste und dem charmanten Küstenstädtchen Esposende. Wir sind überzeugt: Die beste Erholung beginnt, wenn man sich dem Rhythmus der Natur anpasst.",
+    "p2": "Die Lage besticht durch ihre Ruhe, ihr Licht und ihre Nähe zur Landschaft. Holzstege führen durch die Dünen bis zum Atlantik, wo der Sonnenuntergang jeden Tag Ihres Aufenthalts krönt.",
+    "p3": "Kein Stress. Nur Pinien, Dünen und der Ozean – und alles, was das Städtchen zu bieten hat, ist nur einen kurzen Spaziergang entfernt."
   },
   "contact": {
     "eyebrow": "Kontakt",
-    "title": "Nehmen Sie Kontakt Auf",
-    "subtitle": "Fragen zu einem Aufenthalt? Senden Sie uns eine Nachricht und wir melden uns bei Ihnen.",
+    "title": "Schreiben Sie uns",
+    "subtitle": "Haben Sie Fragen zu Ihrem Aufenthalt? Schicken Sie uns eine Nachricht – wir antworten so schnell wie möglich.",
     "namePlaceholder": "Name",
     "emailPlaceholder": "E-Mail",
     "messagePlaceholder": "Nachricht",
-    "sendMessage": "Nachricht Senden",
-    "demoAlert": "Danke! Dies ist ein Demo-Formular."
+    "sendMessage": "Nachricht senden",
+    "demoAlert": "Vielen Dank! Dies ist ein Demo-Formular."
   },
   "notFound": {
     "code": "404",
-    "message": "Dieser Pfad führt ins Nichts.",
+    "message": "Dieser Pfad führt ins Leere.",
     "backHome": "Zurück zur Startseite"
   }
 }
