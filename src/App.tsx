@@ -7,8 +7,11 @@ import Contact from "./pages/Contact";
 import Locations from "./pages/Locations";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import { useAnalyticsPageView } from "./hooks/useAnalyticsPageView";
 
 export default function App() {
+  useAnalyticsPageView();
+
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
