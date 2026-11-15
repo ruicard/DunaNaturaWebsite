@@ -13,16 +13,6 @@ export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number];
 // and loaded below — flip them on by adding them here once reviewed.
 export const ENABLED_LANGUAGES: SupportedLanguage[] = ["en", "pt", "es", "fr", "de"];
 
-const STORAGE_KEY = "duna-natura-lang";
-
-function isSupportedLanguage(value: string | null): value is SupportedLanguage {
-  return SUPPORTED_LANGUAGES.includes(value as SupportedLanguage);
-}
-
-const stored = typeof window !== "undefined" ? localStorage.getItem(STORAGE_KEY) : null;
-const initialLanguage: SupportedLanguage =
-  isSupportedLanguage(stored) && ENABLED_LANGUAGES.includes(stored) ? stored : "en";
-
 i18n.use(initReactI18next).init({
   resources: {
     en: { translation: en },
@@ -31,16 +21,14 @@ i18n.use(initReactI18next).init({
     fr: { translation: fr },
     de: { translation: de },
   },
-  lng: initialLanguage,
+  // The actual active language is driven by the URL (see src/i18n/routing.ts
+  // and LanguageRoute) — this is just the value before the router's first
+  // render settles it, so it doesn't matter which supported language it is.
+  lng: "en",
   fallbackLng: "en",
   interpolation: {
     escapeValue: false,
   },
 });
-
-export function setLanguage(lang: SupportedLanguage) {
-  i18n.changeLanguage(lang);
-  localStorage.setItem(STORAGE_KEY, lang);
-}
 
 export default i18n;

@@ -4,24 +4,33 @@ import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/duna-natura-lockup-black.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { buildPath, stripLanguagePrefix } from "@/i18n/routing";
+import type { SupportedLanguage } from "@/i18n/config";
 
 export default function Navbar() {
   const { t } = useTranslation();
-  const links = [
-    { label: t("nav.home"), to: "/" },
-    { label: t("nav.contact"), to: "/contact" },
-  ];
-  const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const onHome = pathname === "/";
+  const isAdmin = pathname === "/admin";
+  const { lang, basePath } = stripLanguagePrefix(pathname);
+  const currentLang = (isAdmin ? "en" : lang) as SupportedLanguage;
+  const onHome = !isAdmin && basePath === "/";
+
+  const homePath = buildPath(currentLang, "/");
+  const contactPath = buildPath(currentLang, "/contact");
+  const links = [
+    { label: t("nav.home"), to: homePath },
+    { label: t("nav.contact"), to: contactPath },
+  ];
+
+  const [scrolled, setScrolled] = useState(false);
 
   function handleBookNow(e: MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
     if (onHome) {
       document.getElementById("reservations")?.scrollIntoView();
     } else {
-      navigate("/#reservations");
+      navigate(`${homePath}#reservations`);
     }
   }
 
@@ -51,7 +60,7 @@ export default function Navbar() {
       )}
     >
       <div className="container flex h-16 items-center justify-between sm:h-20">
-        <Link to="/" className="flex shrink-0 items-center">
+        <Link to={homePath} className="flex shrink-0 items-center">
           <img src={logo} alt="Duna Natura" className="h-10 w-auto sm:h-14 md:h-16" />
         </Link>
 
@@ -60,7 +69,7 @@ export default function Navbar() {
             <Link
               key={l.to}
               to={l.to}
-              onClick={l.to === "/" ? handleHomeClick : undefined}
+              onClick={l.to === homePath ? handleHomeClick : undefined}
               className={cn(
                 "whitespace-nowrap text-[0.55rem] font-medium uppercase tracking-[0.04em] transition-smooth hover:opacity-70 sm:text-xs sm:tracking-[0.15em]",
                 solid ? "text-foreground" : "text-white"
@@ -76,7 +85,7 @@ export default function Navbar() {
           >
             {t("nav.bookNow")}
           </a>
-          <LanguageSwitcher solid={solid} />
+          {!isAdmin && <LanguageSwitcher solid={solid} />}
         </nav>
       </div>
     </header>

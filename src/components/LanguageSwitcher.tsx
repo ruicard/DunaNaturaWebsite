@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { ENABLED_LANGUAGES, setLanguage, type SupportedLanguage } from "@/i18n/config";
+import { ENABLED_LANGUAGES, type SupportedLanguage } from "@/i18n/config";
+import { buildPath, stripLanguagePrefix } from "@/i18n/routing";
 
 const FLAGS: Record<SupportedLanguage, string> = {
   en: "🇬🇧",
@@ -14,6 +16,8 @@ const FLAGS: Record<SupportedLanguage, string> = {
 
 export default function LanguageSwitcher({ solid }: { solid: boolean }) {
   const { t, i18n } = useTranslation();
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -39,8 +43,11 @@ export default function LanguageSwitcher({ solid }: { solid: boolean }) {
   }, []);
 
   function choose(lang: SupportedLanguage) {
-    setLanguage(lang);
     setOpen(false);
+    if (lang === current) return;
+    const { basePath } = stripLanguagePrefix(pathname);
+    i18n.changeLanguage(lang);
+    navigate(buildPath(lang, basePath));
   }
 
   return (
