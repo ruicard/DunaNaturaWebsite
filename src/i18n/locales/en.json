@@ -211,5 +211,23 @@
     "code": "404",
     "message": "This trail leads nowhere.",
     "backHome": "Back Home"
+  },
+  "seo": {
+    "home": {
+      "title": "Duna Natura — Apartment by the Sea, Esposende",
+      "description": "A nature escape between the Atlantic, the maritime pine forest and the charming seaside town of Esposende, Portugal's northern coast."
+    },
+    "locations": {
+      "title": "Photo Gallery & Amenities — Duna Natura",
+      "description": "Step inside the apartment: photos of every room, the terrace, the pool, and the full list of amenities included in your stay."
+    },
+    "about": {
+      "title": "About — Duna Natura",
+      "description": "Where the pine forest meets the ocean: the story behind Duna Natura's apartment in Esposende, Portugal."
+    },
+    "contact": {
+      "title": "Contact — Duna Natura",
+      "description": "Questions about your stay at Duna Natura? Send us a message and we'll get back to you."
+    }
   }
 }

@@ -121,10 +121,28 @@
     "previousMonth": "Vorheriger Monat",
     "nextMonth": "Nächster Monat",
     "months": [
-      "Januar", "Februar", "März", "April", "Mai", "Juni",
-      "Juli", "August", "September", "Oktober", "November", "Dezember"
+      "Januar",
+      "Februar",
+      "März",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Dezember"
     ],
-    "dow": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+    "dow": [
+      "Mo",
+      "Di",
+      "Mi",
+      "Do",
+      "Fr",
+      "Sa",
+      "So"
+    ],
     "legendAvailable": "Frei",
     "legendBooked": "Belegt",
     "legendSelected": "Ausgewählt",
@@ -211,5 +229,23 @@
     "code": "404",
     "message": "Dieser Pfad führt ins Leere.",
     "backHome": "Zurück zur Startseite"
+  },
+  "seo": {
+    "home": {
+      "title": "Duna Natura — Ferienwohnung am Meer, Esposende",
+      "description": "Eine Auszeit in der Natur zwischen dem Atlantik, dem Pinienwald am Meer und dem charmanten Küstenstädtchen Esposende an der Nordküste Portugals."
+    },
+    "locations": {
+      "title": "Fotogalerie und Ausstattung — Duna Natura",
+      "description": "Entdecken Sie die Ferienwohnung: Fotos jedes Zimmers, der Terrasse, des Pools und die vollständige Liste der im Aufenthalt enthaltenen Ausstattung."
+    },
+    "about": {
+      "title": "Über uns — Duna Natura",
+      "description": "Wo der Pinienwald auf den Ozean trifft: die Geschichte hinter der Ferienwohnung Duna Natura in Esposende, Portugal."
+    },
+    "contact": {
+      "title": "Kontakt — Duna Natura",
+      "description": "Fragen zu Ihrem Aufenthalt bei Duna Natura? Schreiben Sie uns, wir melden uns bei Ihnen."
+    }
   }
 }

@@ -8,9 +8,11 @@ import Locations from "./pages/Locations";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import { useAnalyticsPageView } from "./hooks/useAnalyticsPageView";
+import { usePageMeta } from "./hooks/usePageMeta";
 
 export default function App() {
   useAnalyticsPageView();
+  usePageMeta();
 
   return (
     <div className="flex min-h-screen flex-col">

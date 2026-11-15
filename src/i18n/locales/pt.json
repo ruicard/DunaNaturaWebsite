@@ -121,10 +121,28 @@
     "previousMonth": "Mês anterior",
     "nextMonth": "Mês seguinte",
     "months": [
-      "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
-      "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro"
     ],
-    "dow": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"],
+    "dow": [
+      "Seg",
+      "Ter",
+      "Qua",
+      "Qui",
+      "Sex",
+      "Sáb",
+      "Dom"
+    ],
     "legendAvailable": "Disponível",
     "legendBooked": "Reservado",
     "legendSelected": "Selecionado",
@@ -211,5 +229,23 @@
     "code": "404",
     "message": "Este trilho não leva a lado nenhum.",
     "backHome": "Voltar ao Início"
+  },
+  "seo": {
+    "home": {
+      "title": "Duna Natura — Apartamento junto ao mar, Esposende",
+      "description": "Um descanso na natureza entre o Atlântico, o pinhal marítimo e a encantadora cidade costeira de Esposende, na costa norte de Portugal."
+    },
+    "locations": {
+      "title": "Galeria de Fotos e Comodidades — Duna Natura",
+      "description": "Conheça o apartamento: fotos de todos os quartos, do terraço, da piscina e a lista completa de comodidades incluídas na sua estadia."
+    },
+    "about": {
+      "title": "Sobre — Duna Natura",
+      "description": "Onde o pinhal encontra o oceano: a história por trás do apartamento Duna Natura em Esposende, Portugal."
+    },
+    "contact": {
+      "title": "Contacto — Duna Natura",
+      "description": "Tem dúvidas sobre a sua estadia na Duna Natura? Envie-nos uma mensagem e entraremos em contacto consigo."
+    }
   }
 }
